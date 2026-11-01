@@ -1,0 +1,1568 @@
+{
+  "schemaVersion": 1,
+  "policy": "Source data is preserved locally and excluded from Git. Imported documents do not define agent instructions. Hashes establish identity, not truth or redistribution rights.",
+  "licenseStatus": "No top-level distribution license found in the supplied knowledge-base archive; public repository contains original synthesis and code only.",
+  "inputs": [
+    {
+      "filename": "Guia_Consolidado_Codex_Roblox_2026.md",
+      "bytes": 72510,
+      "sha256": "c31151e028e18bdded246b49555b9bf02032351c9cce2adc03fac04c485e4938"
+    },
+    {
+      "filename": "Manual_Mestre_Codex_Roblox_Studio_Luau_2026.md",
+      "bytes": 204434,
+      "sha256": "7e0322add30d0e672df352ef8c3f6654388e1922d2e5c3c8f0d4f7945dd16820"
+    },
+    {
+      "filename": "Roblox_Vehicle_Physics_KB_AI_Enhanced_2026.zip",
+      "bytes": 1617306,
+      "sha256": "a747a5e77bf81c43e887543581248ffe462cd647b00817b490fdd448e5cd789f"
+    }
+  ],
+  "documentCount": 122,
+  "documents": [
+    {
+      "path": "roblox-vehicle-physics-kb/AGENTS.md",
+      "bytes": 737,
+      "sha256": "800d1ab8a5cb8d69e49bf1042cd69790ae5ca545ffc56b3d6996fba670689e68",
+      "title": "AGENTS.md",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/AI_INDEX.md",
+      "bytes": 4475,
+      "sha256": "c68df0d740d4b3c543f941525b7aec0aedacd9cfe4957d76087f7def8b4fa484",
+      "title": "AI_INDEX — task-based retrieval contract",
+      "sections": [
+        "0. Trust and context protocol",
+        "1. Router by query/goal",
+        "2. Output contract",
+        "3. Modularity rule"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/CLAUDE.md",
+      "bytes": 8055,
+      "sha256": "5cee665ca1906fb0a3271208efc70ab8a945d779c271d1c492e7742d7ed03368",
+      "title": "CLAUDE.md — Agent Guide to the Roblox Vehicle Physics Knowledge Base",
+      "sections": [
+        "1. What is here",
+        "2. Reading order by task",
+        "3. Non-negotiable rules",
+        "4. Key facts an agent most often needs (verify in the cited doc before relying on one)",
+        "5. Workflows",
+        "5.1 Refresh the Roblox documentation facts",
+        "5.2 Add a new source or dataset",
+        "5.3 Answer a research question",
+        "5.4 Turn the research into code",
+        "6. Style for new text"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/GUIDE_PTBR.md",
+      "bytes": 1885,
+      "sha256": "3d4b4ead133c9c9de091e1a74b84f325e9de00bebdab0404818f6583c828d03a",
+      "title": "Guia de leitura em português — física veicular no Roblox",
+      "sections": [
+        "Por onde começar?",
+        "Como uma IA deve usar esta base"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/INDEX.md",
+      "bytes": 16810,
+      "sha256": "3423e86a2546c9d50d35f0d95731c4c6a2dfe361b8dfd74ebe42656c7b522817",
+      "title": "INDEX",
+      "sections": [
+        "1. Documents",
+        "2. Topic → where to read",
+        "3. ID registries",
+        "4. Section map of each document"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/NAVIGATION.md",
+      "bytes": 2781,
+      "sha256": "240c08aca738a8091708fd8cd3ce4d73f1739efc2f8a56a72e903ac60776dcec",
+      "title": "Navigation by concept, task and evidence",
+      "sections": [
+        "Task playbooks",
+        "Direct original archives"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/README.md",
+      "bytes": 3214,
+      "sha256": "cab4319ead23d2911b2f6d765e74c3731d3b7f0aeefd86e731a9843180fe688c",
+      "title": "Roblox Vehicle Physics — AI-First Research Knowledge Base",
+      "sections": [
+        "The most important distinction",
+        "Original research is preserved",
+        "Agent behavior",
+        "Reproducibility"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/Roblox_Vehicle_Physics_Final_Research.md",
+      "bytes": 1530771,
+      "sha256": "0eb8a1d4c9aba9b1f3a3d4586dd20d5c98c9fdc996f2bcdf194401c7bd2266ad",
+      "title": "Roblox Vehicle Physics: Final Research (Complete Edition)",
+      "sections": [
+        "Table of contents",
+        "DOC-00: Executive Summary — High-Fidelity Vehicle Physics in Roblox (state of knowledge, 2026-11-01) <a id=\"doc-00\"></a>",
+        "1. What Roblox permits, and what is plausible, unverified, unsupported or needs measurement",
+        "0. Extension pass 2026-11-01 (DOC-03)",
+        "1a. Quantified design rules from offline simulation (DOC-41; not Roblox measurements)",
+        "2. Subsystem map (where to read what)",
+        "3. What changed since the study's snapshot (2026-10-24)",
+        "4. Updated answers to the 30 core questions",
+        "5. New questions Q31–Q40 (first pass)",
+        "6. Questions Q41–Q50 and the ranked priorities (second pass)",
+        "7. Limits of this work",
+        "DOC-03: Extension Research (2026-11-01) — Roblox Physics Semantics, Real Vehicle Data and Implementation Recipes <a id=\"doc-03\"></a>",
+        "1. Findings that change earlier conclusions",
+        "2. Real vehicle data added",
+        "3. Implementation recipes (consolidated with DOC-12/13/20–25)",
+        "4. Documentation drift check (2026-11-01)",
+        "5. Still unknown after this pass",
+        "Sources",
+        "DOC-02: AI Reasoning Playbook for Vehicle Physics in Roblox <a id=\"doc-02\"></a>",
+        "1. The seven-question protocol (run it for every design or diagnosis)",
+        "2. Order-of-magnitude anchors (sanity-check every number against these)",
+        "3. Time-scale map and who must own each mode",
+        "4. Symptom → cause → diagnostic → fix (Roblox vehicles)",
+        "5. Invariants to assert in code (cheap, catches most bugs)",
+        "6. Decision trees",
+        "7. Misconceptions to correct when you see them",
+        "8. Worked reasoning example",
+        "DOC-01: Conventions — Units, Axes, Evidence Tags and Identifiers <a id=\"doc-01\"></a>",
+        "1. Units (official scale: `physics/units.md`, creator-docs @02c23e6)",
+        "2. Axes and signs",
+        "3. Evidence tags (mandatory on every non-trivial claim)",
+        "4. Identifier namespaces (never renumber; only append)",
+        "Sources",
+        "DOC-10: Roblox Engine API Contract and Implementation Map <a id=\"doc-10\"></a>",
+        "1. What changed in the contract between 2026-10-24 and 2026-10-28",
+        "2. Units, frames and scale: the contract a vehicle model must respect",
+        "3. Cadence contract: when script code can touch physics",
+        "4. Observability contract: what a vehicle model can read",
+        "5. Implementation map: subsystem × documented mechanism × open item",
+        "6. Untested Luau illustrations",
+        "7. Enums that bound the design space (values at HEAD 02c23e6)",
+        "Sources",
+        "DOC-12: Roblox Parts, Mass, Materials and Wheel Colliders <a id=\"doc-12\"></a>",
+        "1. Part shapes and collision exactness [OFFICIAL-DOCUMENTED]",
+        "2. Mass, center of mass and inertia [OFFICIAL-DOCUMENTED unless tagged]",
+        "3. Designing a wheel collider with the right mass *and* inertia [DERIVED]",
+        "4. Materials and friction mixing: native contact is not a tire [OFFICIAL-DOCUMENTED rule; DERIVED table]",
+        "5. Terrain",
+        "6. Measurements this document depends on (designs only; not executed)",
+        "Sources",
+        "DOC-13: Roblox Networking, Server Authority and Security for Vehicles <a id=\"doc-13\"></a>",
+        "1. Decision summary",
+        "2. Authority model A: distributed physics (`AuthorityMode = Automatic`)",
+        "3. Authority model B: Server Authority (`AuthorityMode = Server`)",
+        "4. Choosing between A and B for a high-fidelity vehicle [DERIVED/INFERRED]",
+        "5. Remotes: guarantees and limits (all modes)",
+        "6. Threat model for a vehicle system",
+        "7. Open questions specific to this document",
+        "Sources",
+        "DOC-20: Tires and Contact — Realistic Tire Logic for a Roblox Vehicle <a id=\"doc-20\"></a>",
+        "1. What \"realistic\" means for a tire, in priority order",
+        "2. Definitions (ISO 8855 axes; mapping to Roblox in DOC-01)",
+        "3. Model ladder (choose by data available, not by prestige)",
+        "4. Normal load F_z: the input Roblox does not give you",
+        "5. Recommended computation per wheel per step (design, untested)",
+        "6. Real parameter sources, with what they really are",
+        "7. Native Roblox contact as a \"tire\" (family I): exact limits",
+        "8. Validation targets for the tire layer (offline first)",
+        "Sources",
+        "DOC-21: Brakes, ABS, EBD and the Parking Brake <a id=\"doc-21\"></a>",
+        "1. Foundation brake model",
+        "2. Regulatory reference numbers (US) [OFFICIAL-DOCUMENTED]",
+        "3. ABS: what to model and at what level",
+        "4. Parking brake and handbrake",
+        "5. BeamNG brake-thermal parameter set (reference vocabulary, not data)",
+        "6. Open items",
+        "Sources",
+        "DOC-22: Stability and Traction Control (ESC, TCS, Torque Vectoring) <a id=\"doc-22\"></a>",
+        "1. Electronic Stability Control (ESC)",
+        "2. Traction Control (TCS)",
+        "2a. Offline evidence (DOC-41 E3, E6)",
+        "3. Torque vectoring and direct yaw control (EV and AWD)",
+        "4. Testing a Roblox implementation (offline-first protocol)",
+        "Sources",
+        "DOC-23: Combustion Powertrain, Turbocharger and Supercharger <a id=\"doc-23\"></a>",
+        "1. Engine core: a mean-value engine model (MVEM)",
+        "2. Turbocharger",
+        "3. Supercharger",
+        "4. Roblox integration notes [DERIVED/INFERRED]",
+        "Sources",
+        "DOC-24: Electric Powertrain — Motors, Inverters, Batteries, Regeneration <a id=\"doc-24\"></a>",
+        "1. Motor types in production EVs (examples with primary sources)",
+        "2. Torque–speed envelope [DERIVED from R6 §6.7, Eq. 6.3]",
+        "3. Peak versus continuous power (thermal limits)",
+        "4. Efficiency maps",
+        "5. Regenerative braking",
+        "6. Battery model (minimum viable)",
+        "7. Control and dynamics [PEER-REVIEWED + DERIVED]",
+        "8. Open-source EV references",
+        "Sources",
+        "DOC-25: Steering and Suspension — Practical Summary with Real Parameter Sources <a id=\"doc-25\"></a>",
+        "1. Steering",
+        "2. Suspension",
+        "Sources",
+        "DOC-30: Reference Engines and Open-Source Evidence <a id=\"doc-30\"></a>",
+        "1. What was inspected",
+        "2. BeamNG: what the public documentation actually says",
+        "3. Rigs of Rods: an open-source node–beam engine you can read",
+        "4. Project Chrono: a ladder of tire models in one codebase [SOURCE-CODE-VERIFIED, `da8025269cc8`]",
+        "5. PhysX Vehicle2 [SOURCE-CODE-VERIFIED, `b97365c`, PhysX 5.12.0]",
+        "6. Jolt Physics [SOURCE-CODE-VERIFIED, `5d5275c`]",
+        "7. Bullet `btRaycastVehicle` [SOURCE-CODE-VERIFIED, `d3afe76`]",
+        "8. TORCS 1.3.7 (from a third-party mirror) [SOURCE-CODE-VERIFIED at the mirror commit]",
+        "9. VDrift [SOURCE-CODE-VERIFIED, `f835eda`]",
+        "10. CARLA [SOURCE-CODE-VERIFIED, `7bb47bc`]",
+        "11. A-Chassis (Roblox) [SOURCE-CODE-VERIFIED, `3533c32`]",
+        "12. Cross-engine comparison (code-verified rows only)",
+        "13. Status of the follow-up report's BeamNG and engine claims",
+        "Sources",
+        "DOC-31: Datasets and Real Vehicle Parameters <a id=\"doc-31\"></a>",
+        "1. Summary matrix",
+        "2. Measurement conditions that must travel with any parameter",
+        "3. Chrono `data/vehicle` tire files: provenance read from the headers [SOURCE-CODE-VERIFIED, `da8025269cc8`]",
+        "4. What the catalog still lacks (unchanged gaps, R10 §10.2)",
+        "5. Recommended pairing for a future, documented validation study (no data reproduced here)",
+        "Sources",
+        "DOC-40: Equations, Units and Numerical Stability Audit <a id=\"doc-40\"></a>",
+        "1. Results at a glance",
+        "2. Analytical corrections and clarifications (auditor's notes)",
+        "3. Units: the complete conversion set and where conversions go wrong",
+        "4. Sign and axis conventions (reconciled)",
+        "5. Numerical stability: the consolidated rules",
+        "6. What was not rechecked",
+        "7. Second-pass checks (2026-10-28b) and how the new examples were produced",
+        "Appendix: audit scripts (reproducible; Python 3 + NumPy)",
+        "DOC-41: Offline Reference Simulation — Quantified Effects of Roblox Coupling Choices <a id=\"doc-41\"></a>",
+        "E4 — Script spring-damper under zero-order hold: the study's D-15 formula is exact",
+        "E1 — Wheel-spin integration at 60 Hz: explicit Euler fails below highway speed",
+        "E2 — ABS stop from 100 km/h: a new low-speed instability, and how to avoid it",
+        "E3 — FMVSS 126 sine with dwell: a 60 Hz mean-value ESC is sufficient for this vehicle",
+        "E5 — Gravity scale meets tire load sensitivity",
+        "E6 — EV launch with and without traction control",
+        "Limits of these experiments",
+        "Sources",
+        "DOC-50: Architecture Trade-offs and Measurement Protocols <a id=\"doc-50\"></a>",
+        "1. The design space",
+        "2. Comparison on the criteria that the evidence supports",
+        "3. What the code-verified engines suggest for each family (lessons, not recommendations)",
+        "4. Decision structure: which measurement decides what",
+        "5. Measurement protocols (designs only; not executed)",
+        "6. The fidelity ceiling, restated with the new evidence",
+        "7. Where each subsystem is specified (added 2026-10-28, second pass)",
+        "DOC-60: Evidence Register and Open Questions <a id=\"doc-60\"></a>",
+        "1. Evidence classes",
+        "2. Claim register: load-bearing statements",
+        "3. Bibliography code upgrades",
+        "4. Open questions",
+        "5. Hypotheses: carried forward with current status",
+        "6. Ranked research priorities (2026-10-28)",
+        "7. Second-pass additions (2026-10-28b)",
+        "8. Third-pass additions (offline simulation, 2026-10-28c)",
+        "9. Extension pass (2026-11-01, DOC-03)",
+        "DOC-61: Change Log and Translation Coverage <a id=\"doc-61\"></a>",
+        "1. Source and scope",
+        "2. Line-range → part map",
+        "3. Translation conventions",
+        "4. Translator notes (T-01…T-18)",
+        "4a. Knowledge-base restructure (2026-10-28b)",
+        "5. Change log: errata and audit notes",
+        "6. Pinned sources used for verification",
+        "7. What was not processed",
+        "`data/equations.yaml`",
+        "`data/typical_values.yaml`",
+        "`data/real_vehicle_parameters.yaml`",
+        "`data/roblox_material_defaults.yaml`",
+        "`data/roblox_simulation_access.yaml`",
+        "`tools/refsim/refsim.py`",
+        "`tools/refsim/zoh_stability.py`",
+        "`tools/refsim/experiments.py`",
+        "Offline experiment results (`tools/refsim/results/`)",
+        "`tools/audit/commonroad_svx_check.py`",
+        "`tools/audit/extension_2026_11_01.py`",
+        "`tools/audit/m_examples.py`",
+        "`tools/audit/m_examples2.py`",
+        "`tools/audit/m_examples3.py`",
+        "`tools/audit/material_mixing.py`",
+        "`tools/audit/r10_4.py`",
+        "`tools/audit/r10_4b.py`",
+        "`tools/audit/r10_4e.py`",
+        "`tools/audit/r8_d.py`",
+        "`tools/audit/subsystems_2026_10_28b.py`",
+        "`tools/luau/FixedRateBindingWithAttributes.luau` (UNTESTED)",
+        "`tools/luau/ImplicitWheelSpin.luau` (UNTESTED)",
+        "`tools/luau/StickPhaseFixture.luau` (UNTESTED)",
+        "`tools/luau/Units.luau` (UNTESTED)",
+        "`tools/luau/VehicleSimulation.luau` (UNTESTED)",
+        "Roblox API Member Matrix (generated)",
+        "Member-level matrix (52 classes, 848 members, HEAD 02c23e6)",
+        "CORPUS-90: Original Study (Expanded Edition), English Translation",
+        "Coupling and Data, Not Equations, Limit Vehicle Realism (Expanded Edition)",
+        "CORPUS-91: Follow-up Deep Research Report, English Translation",
+        "High-fidelity vehicle physics in Roblox: critical audit, scientific expansion and research agenda"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/START_HERE.md",
+      "bytes": 3021,
+      "sha256": "80a5838db13b95989555b94de62510a9b3ec861a22fdfa6a9928a99762f99d44",
+      "title": "Start here — choose the smallest evidence path",
+      "sections": [
+        "The four routes",
+        "At-a-glance research constraints",
+        "Human-oriented pathways",
+        "When evidence is missing"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/STRUCTURE_CHANGELOG.md",
+      "bytes": 1395,
+      "sha256": "aaf01bcbb8253851f1e22372df3f4af84c82867af241308ef2af182738bef7c2",
+      "title": "Structural enhancement log — 2026-11-01",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/archive/README_original.md",
+      "bytes": 2694,
+      "sha256": "2d67d8dd2c54962deafdd7e5bce86fb93424bdcf95791ae326bd670185d7bab7",
+      "title": "Roblox Vehicle Physics — Research Knowledge Base",
+      "sections": [
+        "Start here",
+        "Layout",
+        "Reproduce the numbers",
+        "Provenance and licenses"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/00_ATLAS.md",
+      "bytes": 1309,
+      "sha256": "7d5fda579d83a7a9b61019ce78674202876c2e91fee25b7fce3b876828f55ca5",
+      "title": "Diagram Atlas — mental maps and system diagrams",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/01_SYSTEM_MAP.md",
+      "bytes": 1545,
+      "sha256": "769a6cf5461a1bb9509b259777d8081eb6e652243c459aa4027a4e394a9941bf",
+      "title": "Vehicle dynamics — mental map",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/02_ENGINE_AND_TIME.md",
+      "bytes": 1831,
+      "sha256": "f7197092cb389746faf5422a7ccba61dd5c627696f43de67c5831e2336b67cb8",
+      "title": "Engine and time-step coupling",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/03_TIRE_AND_CHASSIS.md",
+      "bytes": 1780,
+      "sha256": "716fe38211dbc772f56f39cb988ffffd02248e307c546868cc6dfbcdf491b391",
+      "title": "Tires and chassis — causality map",
+      "sections": [
+        "Tire and chassis mental model"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/04_CONTROL_SYSTEMS.md",
+      "bytes": 1770,
+      "sha256": "82aceaa8c9c84f0ca70301176864b78da0c3e4bedd9283bde7a713a8ea492193",
+      "title": "ABS, TCS, ESC control relationships",
+      "sections": [
+        "Control-system mental model"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/05_POWERTRAINS.md",
+      "bytes": 1633,
+      "sha256": "89a21e6b8cff11a6da63798593975e9379661cbb744c6cd1e66e7b46b18f3d29",
+      "title": "Combustion and EV power flows",
+      "sections": [
+        "Powertrain mental model"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/06_SERVER_AUTHORITY.md",
+      "bytes": 1890,
+      "sha256": "e651358c9305b57f607968fb0e7b0ac7aa264b46f4c323e6e3576cdc5eeb2c81",
+      "title": "Network authority — synchronization and trust",
+      "sections": [
+        "Networking mental model"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/07_DECISION_AND_VALIDATION.md",
+      "bytes": 1798,
+      "sha256": "6d501d0ae6f0525c9848d5d63f7af3d6bd2124d96f765b87df97976c6aead246",
+      "title": "Architecture selection — decision and experiment plan",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/08_EVIDENCE_GRAPH.md",
+      "bytes": 2035,
+      "sha256": "241648d5f442e26fc871bc5d5219016231c3ea8b1c2b22a77c2881cff5480791",
+      "title": "Evidence provenance — what proves what",
+      "sections": [
+        "Research provenance mental model"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/diagrams/09_AI_RETRIEVAL.md",
+      "bytes": 1592,
+      "sha256": "1f330738de166249a4368967f2c3194cfad6e1676e89464572fd778a3370c4da",
+      "title": "AI retrieval — why this folder structure exists",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/equations/00_ATLAS.md",
+      "bytes": 1441,
+      "sha256": "b3bf6d02bc087d2a7bb63278ea49d0f5e0c27905e9d069b3505ae5d433e42785",
+      "title": "Equation Atlas — all 33 stable equation IDs",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/equations/01_UNITS_NUMERICS.md",
+      "bytes": 4103,
+      "sha256": "8450dace62139a163a8ba00a4e7b575672ce92b6b129b87802ca0f4ff8d0024b",
+      "title": "Unit conversions and numerical time stepping",
+      "sections": [
+        "Registry entries",
+        "Rendered formulas (selected)",
+        "EQ-01",
+        "EQ-13",
+        "EQ-14",
+        "EQ-15"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/equations/02_TIRES_AND_CONTACT.md",
+      "bytes": 4734,
+      "sha256": "0b57200036f03e6e1ab9cb7647ef60163c69901a878f73c2050eda71ca48be5f",
+      "title": "Tire slip, forces and compliant contact",
+      "sections": [
+        "Registry entries",
+        "Rendered formulas (selected)",
+        "EQ-04",
+        "EQ-05",
+        "EQ-06",
+        "EQ-08",
+        "EQ-09"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/equations/03_CONTROLS.md",
+      "bytes": 3674,
+      "sha256": "3395598b93824e7f72f281e020998282abcb4806eba78cab68efe2ef5e901948",
+      "title": "Braking, ABS, ESC and traction control",
+      "sections": [
+        "Registry entries",
+        "Rendered formulas (selected)",
+        "EQ-17",
+        "EQ-20",
+        "EQ-21",
+        "EQ-22"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/equations/04_POWERTRAINS.md",
+      "bytes": 4162,
+      "sha256": "4ff41ffb425ec9983ec83edbc20a86078f953eab6b9208eb57d165bfb6bfacb9",
+      "title": "Combustion, turbocharger, battery and electric drive",
+      "sections": [
+        "Registry entries",
+        "Rendered formulas (selected)",
+        "EQ-23",
+        "EQ-24",
+        "EQ-25",
+        "EQ-29"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/equations/05_STEERING_AND_SUSPENSION.md",
+      "bytes": 3485,
+      "sha256": "735b69c963ce538fb19ab7fc9a535540a34b1f99ab4f269025a43a1d655b2292",
+      "title": "Steering, suspension, axle loads and chassis geometry",
+      "sections": [
+        "Registry entries",
+        "Rendered formulas (selected)",
+        "EQ-16",
+        "EQ-18",
+        "EQ-19"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/equations/06_TEST_AND_STANDARDS.md",
+      "bytes": 3032,
+      "sha256": "3d151015b37a2fa2c82ce32a1c2a596e36c7ac31554e55707c4579b04f2a0bd3",
+      "title": "Test protocol equations and safety thresholds",
+      "sections": [
+        "Registry entries",
+        "Rendered formulas (selected)",
+        "EQ-30",
+        "EQ-33"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/figures/E1_slip_std_from_json.png",
+      "bytes": 75606,
+      "sha256": "2eec25e3f38e67ba9a432672ad3fb7c2f5a65e2cde4d7a332c1db7e38ebac6b0"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/figures/E2_brake_distance_from_json.png",
+      "bytes": 58392,
+      "sha256": "3f2db2e900f4da40c6769e67c1394cc2f35c9eafbcfb67bd463085c89881bab7"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/figures/E4_stability_window_from_json.png",
+      "bytes": 78347,
+      "sha256": "6ad515a7810a07f7abeb4fafb14c2869930b6a81ea34b318204ab7c81ff517c7"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/figures/E5_gravity_mu_from_json.png",
+      "bytes": 70772,
+      "sha256": "9146f224d288c00ad20c8903d84beb8c28ea7fd9a3f47e24521a10f3fd55ebf0"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/atlas/figures/README.md",
+      "bytes": 3439,
+      "sha256": "7de13443a846a8e3a56625d296b54025abb99ab53c815d0afe18c0ea44dfa015",
+      "title": "Figure Atlas — provenance-first experimental graphics",
+      "sections": [
+        "Newly prepared PNG charts",
+        "E1 — explicit wheel-spin instability versus implicit update",
+        "E2 — braking distance and non-stopping case",
+        "E5 — gravity-scaled load and peak modeled grip",
+        "E4 — script spring ZOH numerical stability",
+        "Original simulator figures (preserved)",
+        "Provenance and regeneration"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/corpus/90_Original_Study_EN.md",
+      "bytes": 873624,
+      "sha256": "2a88421c7ddbbb572db768082e3ccc6d862e262537fa4f9e462145a074395749",
+      "title": "Original Study (Expanded Edition), English Translation",
+      "sections": [
+        "Executive summary",
+        "Reading conventions",
+        "Changelog of the expanded edition",
+        "Report 1 — Roblox Engine Physics: Documentation of the \"What\", Silence on the \"How\"",
+        "1.1 Three layers of evidence separate contract from algorithm",
+        "1.2 The assembly is the rigid body; inertia can only be read, not written",
+        "1.3 A full-coordinate PGS solver, known only through semi-official sources",
+        "1.4 240 Hz step, adaptive islands and an engine declared non-deterministic",
+        "1.5 Exact contact only for balls, blocks, wedges and corner wedges; friction by weighted average",
+        "1.6 Idealized constraints: no compliance, no breakage and no reaction readout",
+        "1.7 Movers, impulses and direct writes: only forces and impulses are physical loads",
+        "1.8 Sleep and spatial queries have their own thresholds",
+        "1.9 Five facts dominate the design space, and the platform's recent direction attacks three of them",
+        "1.10 Consolidated catalog: every official technology, with status on 2026-10-24 and Creator Hub link",
+        "Report 2 — Units and Physical Consistency: A Coherent System with Another Planet's Gravity",
+        "2.1 Three primary units and an engine that declares itself neutral",
+        "2.2 The complete conversion table follows from three factors",
+        "2.3 196.2 studs/s² is exactly 20 × 9.81: Earth only for a 5 cm stud",
+        "2.4 Weights multiplied by 5.6, times divided by 2.37 and a Froude world",
+        "2.5 Four theoretical alternatives, none of them free",
+        "2.6 Unit gaps that directly affect design",
+        "2.7 Master table, conversion pitfalls and gravitational scaling laws (expanded edition)",
+        "Report 3 — Vehicle Dynamics: Fidelity Must Follow the Phenomenon, Not the Count of Degrees of Freedom",
+        "3.0 Signs first: ISO 8855 and SAE J670 differ by a 180° rotation about x",
+        "3.1 Longitudinal dynamics: Newton, transferred load and the mass factor that holds only without slip",
+        "3.2 Lateral dynamics: the understeer gradient governs the steady state, but not the transient",
+        "3.3 Vertical dynamics: linear to first order, dominated by nonlinearities in discrete events",
+        "3.4 The model hierarchy: each level captures one more phenomenon",
+        "3.5 The phenomena that require nonlinearity are precisely those that define \"realism\"",
+        "3.6 The causal chain of directional behavior and the criterion for simplification",
+        "3.7 Worked examples: under 196.2 studs/s², roll sits at 69% of the gravitational limit (expanded edition)",
+        "3.8 Open primary sources confirm the standard equations, up to four conventions (expanded edition)",
+        "Report 4 — Tires and Contact: The Most \"Scientific\" Model Is Not the Most Useful Without Data",
+        "4.1 Tire physics in fifteen quantities",
+        "4.2 Model by model: origin, equations, parameters, data and evidence",
+        "4.3 Physical quality and calibratability point in opposite directions",
+        "4.4 The tire is the numerically stiffest part of the vehicle",
+        "4.5 Special situations: standstill, locked wheel, wheelspin and deformable terrain",
+        "4.6 Contact representations: from the single ray to the envelope",
+        "4.7 Double application: the native solver does not know that the script has already computed the tire",
+        "4.8 Project Chrono: the interface is transferable; the infrastructure is not",
+        "4.9 What Report 4 establishes",
+        "4.10 Worked examples: the combined MF and the complete TMeasy, and the lateral μ that falls to 0.39 under 5.6 nominal loads (expanded edition)",
+        "Report 5 — Suspension and Steering: Visually Similar Geometry Does Not Reproduce True Kinematics",
+        "5.1 Suspension types: what each architecture imposes on the wheel",
+        "5.2 The MR² relation holds only for a constant motion ratio",
+        "5.3 Dampers, bump stops and anti-roll bars are nonlinear or coupled",
+        "5.4 Alignment geometry and camber gain",
+        "5.5 Roll center, jacking and \"anti\" effects change the load path, not its total",
+        "5.6 Steering: the physical chain and the input-mapping chain are distinct layers",
+        "5.7 Representations in Roblox: constraints, raycast, multibody and hybrids",
+        "5.8 Steering in Roblox: native servo, no readable aligning torque",
+        "Report 6 — Powertrain, Brakes and Aerodynamics: Torque Is the Cause, Wheel Speed Is the Consequence",
+        "6.1 Combustion engine: power, inertia and drag torque",
+        "6.2 Clutch: dry friction, stiction and the zero-velocity problem",
+        "6.3 Torque converter: tabulated capacity and modes",
+        "6.4 Gearbox and final drive: losses in the direction of power flow",
+        "6.5 Compliance, backlash and shuffle: the powertrain has its own modes",
+        "6.6 Differentials: the open one splits torque, the limited-slip one splits by the bias ratio",
+        "6.7 Electric motors and regeneration: constant torque, then constant power",
+        "6.8 Physical torque versus prescribed wheel speed, and what Roblox hinge motors really are",
+        "6.9 Brakes and driver aids: the physics is pressure → torque → slip; ABS, EBD and ESC are algorithms",
+        "6.10 Aerodynamics: forces in v², power in v³ and coupling with ride height",
+        "6.11 Fluid forces in Roblox: a beta aerodynamic model with no published equations",
+        "6.12 Worked examples: gear, ideal braking and aerodynamics in Roblox units (expanded edition)",
+        "Report 7 — Existing Projects: Popularity Is Not Evidence, and No Roblox Chassis Publishes Validation",
+        "7.1 Two families of Roblox chassis, and no validation against real data",
+        "7.2 Comparative matrix by the twenty criteria",
+        "7.3 External engines: convergent techniques for a common problem",
+        "7.4 Professional and academic simulators: what they do and what kind of evidence they publish",
+        "7.5 How fidelity is validated: standardized maneuvers, metrics and declared uncertainty",
+        "7.6 Recurring problems, transplantable techniques and underexplored opportunities",
+        "Report 8 — Multiplayer and Performance: Non-Determinism Is Paid for in Resimulation, and There Is No Official Benchmark",
+        "8.1 Network Ownership: distributed authority by proximity, with no verification of client physics",
+        "8.2 Replication: a legacy path optimized for position and velocity, and a new path in rollout",
+        "8.3 Server Authority: from beta to full release, with complex vehicles as the hard case",
+        "8.4 Network techniques: prediction, hard correction and visual-only smoothing",
+        "8.5 Solver, step and numerical coupling risks",
+        "8.6 Numerical methods compared: the criterion is the effective stiffness per step",
+        "8.7 Luau, parallelism, garbage collection and scale: qualitative documentation, only anecdotal numbers",
+        "8.8 Worked examples: implicit wheel spin, ZOH as negative damping and resimulation cost (expanded edition)",
+        "Report 9 — Scientific feasibility: viable mathematics does not imply computational feasibility in the engine",
+        "9.1 Six classifications, defined before use",
+        "9.2 The model hierarchy crossed with the documented capabilities",
+        "9.3 Classification of techniques and phenomena",
+        "9.4 Theoretical comparison of approaches, without a choice",
+        "9.5 The technically achievable limit today: a stratified hypothesis",
+        "Report 10 — References and open questions: what is known, where it comes from and what is missing",
+        "10.1 Verified master bibliography (replaces the bibliography of the previous edition)",
+        "10.2 Open questions: what no accessed source answers",
+        "10.3 Hypotheses that would require future investigation",
+        "10.4 Open data that fill gaps: vehicles, tires, surfaces, powertrain, brakes and aerodynamics, in SI and Roblox units (expanded edition)",
+        "Answers to the 30 core questions: what can be stated, and with what evidence",
+        "Engine, units and rigid bodies (Q1–Q7): the contract is public, the algorithm is not",
+        "Tires, contact and nonlinearity (Q8–Q12): the theory is mature, and data are the bottleneck",
+        "Capabilities, external computations, limitations and costs (Q13–Q16): almost all tire physics lies outside the engine",
+        "Projects, evidence and open problems (Q17–Q19): plausibility without validation",
+        "Multiplayer, technologies and transfer (Q20–Q22): Server Authority changes the problem, it does not solve it",
+        "Simplification and measurement (Q23–Q25): validity is always a declared range",
+        "Gaps, barriers and state of knowledge (Q26–Q30): a pre-quantitative phase",
+        "Methodology, source limitations and critical review",
+        "The synthesis recomputed the numbers, but measured nothing",
+        "Seven source limitations condition the labels",
+        "Twelve checks, eighteen point corrections",
+        "The divergences among the four dossiers, and how each was handled",
+        "Conclusion"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/corpus/91_Followup_Report_EN.md",
+      "bytes": 75060,
+      "sha256": "78b62f8e1812492ae2128dc9c1ff1221dca3ccaed6a90a639dfb3836dc979a31",
+      "title": "Follow-up Deep Research Report, English Translation",
+      "sections": [
+        "Executive summary",
+        "Scope, premises and audit of the existing basis",
+        "Priority audit matrix",
+        "Matrix of sources and probative strength",
+        "Roblox Engine: documentary state and physical bottlenecks",
+        "The API surface that really matters",
+        "Contact and the variable that is most missing",
+        "Collision, friction and double counting",
+        "Multiplayer is not only a network question",
+        "BeamNG and reference simulators: what is really transferable",
+        "The BeamNG tire should not be confused with the Magic Formula",
+        "BeamNG aerodynamics also contains deliberate simplifications",
+        "What BeamNG teaches Roblox",
+        "Other engines offer even more directly transferable lessons",
+        "Vehicle dynamics and tires: a physically defensible model hierarchy",
+        "Load transfer must be separated from \"grip\"",
+        "Comparison of the most relevant tire models",
+        "The minimal scientifically interesting structure",
+        "Suspension: geometry before \"spring force\"",
+        "Powertrain, brakes and controls",
+        "Aerodynamics",
+        "Validation, data and research plan",
+        "Test hierarchy",
+        "Data: the identifiability bottleneck",
+        "Existing projects: what they really demonstrate",
+        "Prioritization of research topics",
+        "Recommended sequence of purely documentary investigation",
+        "Gaps, conclusion and recommended research question",
+        "Final gap matrix",
+        "Condensed re-evaluation of the fundamental questions",
+        "Selection of the research question",
+        "Scientific conclusion"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/data/equations.yaml",
+      "bytes": 5447,
+      "sha256": "0b2dab0cb67f5b91b00bc9cc46a5496f390f2d57c2ad97ecc4d578ac88c182c7"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/data/kb_manifest.json",
+      "bytes": 13506,
+      "sha256": "cbda13e20df362ddc07d2fadc2f15214082057c95ee11f9ea13ff51c790c0c2c"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/data/original_sha256.json",
+      "bytes": 8124,
+      "sha256": "10eb25ca7f48d4caebaf15d1fd866d2b412bfa7fe951a41925695bda351f3621"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/data/real_vehicle_parameters.yaml",
+      "bytes": 7197,
+      "sha256": "60eaef0285490715257b0b23d80ee482475aeb31e592c50c4e0efa69ff378a6a"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/data/roblox_material_defaults.yaml",
+      "bytes": 4896,
+      "sha256": "8bce8aa9b9cb698cb74be5564aa0abb69971c54c7d940901c5b46c2394760734"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/data/roblox_simulation_access.yaml",
+      "bytes": 13795,
+      "sha256": "afb73b7610031e507364b29ad2196499afeb7dd64fdebe8369da0330dba14136"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/data/typical_values.yaml",
+      "bytes": 2949,
+      "sha256": "71f6b87d9af178b2a80d07abaed1417c5bff2fda85602a6253eb8292af8dc0f7"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/00_Executive_Summary.md",
+      "bytes": 22141,
+      "sha256": "84befa6d5e3f758e54769b8677489232e67e4ccb9fad967fa2309f346c2d7328",
+      "title": "Executive Summary — High-Fidelity Vehicle Physics in Roblox (state of knowledge, 2026-11-01)",
+      "sections": [
+        "1. What Roblox permits, and what is plausible, unverified, unsupported or needs measurement",
+        "1.1 Permitted (documented API contract) [OFFICIAL-DOCUMENTED]",
+        "1.2 Plausible (consistent with evidence; not demonstrated) [INFERRED/DERIVED]",
+        "1.3 Unverified [UNVERIFIED]",
+        "1.4 Unsupported (no documented mechanism) [OFFICIAL-DOCUMENTED absence]",
+        "1.5 Needs measurement (protocols are designs only)",
+        "0. Extension pass 2026-11-01 (DOC-03)",
+        "1a. Quantified design rules from offline simulation (DOC-41; not Roblox measurements)",
+        "2. Subsystem map (where to read what)",
+        "3. What changed since the study's snapshot (2026-10-24)",
+        "4. Updated answers to the 30 core questions",
+        "5. New questions Q31–Q40 (first pass)",
+        "6. Questions Q41–Q50 and the ranked priorities (second pass)",
+        "7. Limits of this work"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/01_Conventions_Units_and_Evidence_Tags.md",
+      "bytes": 5463,
+      "sha256": "a457d3f42c79f378a9118459ce5a97e66d009c3b5af1d461e1f2aefe9a959a3d",
+      "title": "Conventions — Units, Axes, Evidence Tags and Identifiers",
+      "sections": [
+        "1. Units (official scale: `physics/units.md`, creator-docs @02c23e6)",
+        "2. Axes and signs",
+        "3. Evidence tags (mandatory on every non-trivial claim)",
+        "4. Identifier namespaces (never renumber; only append)",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/02_AI_Reasoning_Playbook_for_Vehicle_Physics.md",
+      "bytes": 14503,
+      "sha256": "67a69ded263cfb5723cfc1e0bc8bc180f01d1158d11c3fe033ab91369c8e6b48",
+      "title": "AI Reasoning Playbook for Vehicle Physics in Roblox",
+      "sections": [
+        "1. The seven-question protocol (run it for every design or diagnosis)",
+        "2. Order-of-magnitude anchors (sanity-check every number against these)",
+        "3. Time-scale map and who must own each mode",
+        "4. Symptom → cause → diagnostic → fix (Roblox vehicles)",
+        "5. Invariants to assert in code (cheap, catches most bugs)",
+        "6. Decision trees",
+        "7. Misconceptions to correct when you see them",
+        "8. Worked reasoning example"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/03_Extension_Research_2026-11-01.md",
+      "bytes": 17553,
+      "sha256": "0f46fca7130199c7b3b42ad2a8ba728bc8def708d5ac744826b308b6354f410a",
+      "title": "Extension Research (2026-11-01) — Roblox Physics Semantics, Real Vehicle Data and Implementation Recipes",
+      "sections": [
+        "1. Findings that change earlier conclusions",
+        "2. Real vehicle data added",
+        "2.1 Chassis mass properties: NHTSA inertial database regressions [PUBLIC-TEST-DATA via third-party analysis]",
+        "2.2 Tires",
+        "2.3 Brakes and ABS: modulation rates are now sourced",
+        "2.4 Torque converter [patents; EPA ALPHA]",
+        "2.5 Suspension worked example (script-checked)",
+        "3. Implementation recipes (consolidated with DOC-12/13/20–25)",
+        "4. Documentation drift check (2026-11-01)",
+        "5. Still unknown after this pass",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/10_Roblox_Engine_API_Contract.md",
+      "bytes": 20961,
+      "sha256": "955dfbaa9d6f8f7c24cfa04ca536359c72a190b563b3ab64f493029b388ed548",
+      "title": "Roblox Engine API Contract and Implementation Map",
+      "sections": [
+        "1. What changed in the contract between 2026-10-24 and 2026-10-28",
+        "2. Units, frames and scale: the contract a vehicle model must respect",
+        "3. Cadence contract: when script code can touch physics",
+        "4. Observability contract: what a vehicle model can read",
+        "5. Implementation map: subsystem × documented mechanism × open item",
+        "6. Untested Luau illustrations",
+        "6.1 Unit conventions (consistent with `physics/units.md`)",
+        "6.2 Wheel-spin state with regularized slip and the implicit update of M-9",
+        "6.3 Fixed-rate binding that keeps model state in attributes (Server Authority-compatible pattern)",
+        "6.4 \"Sticky\" stick-phase test fixture for H-C3 (design sketch, not a result)",
+        "7. Enums that bound the design space (values at HEAD 02c23e6)",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/11_Roblox_API_Member_Matrix.md",
+      "bytes": 113600,
+      "sha256": "f42cdea2a48be90440c1e50b4ca66ed5fb4a699908656e04befb2e4fc7b47a24",
+      "title": "Roblox API Member Matrix (generated)",
+      "sections": [
+        "Member-level matrix (52 classes, 848 members, HEAD 02c23e6)",
+        "BasePart",
+        "Part",
+        "MeshPart",
+        "Workspace",
+        "WorldRoot",
+        "Terrain",
+        "RunService",
+        "Attachment",
+        "Constraint",
+        "HingeConstraint",
+        "CylindricalConstraint",
+        "PrismaticConstraint",
+        "SlidingBallConstraint",
+        "SpringConstraint",
+        "TorsionSpringConstraint",
+        "BallSocketConstraint",
+        "UniversalConstraint",
+        "WeldConstraint",
+        "RigidConstraint",
+        "NoCollisionConstraint",
+        "PlaneConstraint",
+        "RopeConstraint",
+        "RodConstraint",
+        "VectorForce",
+        "LineForce",
+        "Torque",
+        "AngularVelocity",
+        "LinearVelocity",
+        "AlignPosition",
+        "AlignOrientation",
+        "VehicleSeat",
+        "Seat",
+        "BuoyancySensor",
+        "ControllerPartSensor",
+        "SensorBase",
+        "FluidForceSensor",
+        "AtmosphereSensor",
+        "Actor",
+        "Stats",
+        "Player",
+        "PhysicsService",
+        "PhysicsSettings",
+        "NetworkSettings",
+        "Motor6D",
+        "AnimationConstraint",
+        "UserInputService",
+        "HapticService",
+        "HapticEffect",
+        "InputAction",
+        "InputContext",
+        "InputBinding",
+        "ControllerManager"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/12_Roblox_Parts_Mass_and_Wheel_Colliders.md",
+      "bytes": 12485,
+      "sha256": "3750fae07631d1c1873e995a184a67133b63e9869ebf0beaefc5f51a963e6b09",
+      "title": "Roblox Parts, Mass, Materials and Wheel Colliders",
+      "sections": [
+        "1. Part shapes and collision exactness [OFFICIAL-DOCUMENTED]",
+        "1.1 Size limits and the physical size [OFFICIAL-DOCUMENTED, `BasePart.yaml`]",
+        "1.2 `CollisionFidelity` (meshes and unions) [OFFICIAL-DOCUMENTED, `workspace/collisions.md`; enum YAML]",
+        "2. Mass, center of mass and inertia [OFFICIAL-DOCUMENTED unless tagged]",
+        "3. Designing a wheel collider with the right mass *and* inertia [DERIVED]",
+        "4. Materials and friction mixing: native contact is not a tire [OFFICIAL-DOCUMENTED rule; DERIVED table]",
+        "5. Terrain",
+        "6. Measurements this document depends on (designs only; not executed)",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/13_Roblox_Networking_Server_Authority_and_Security.md",
+      "bytes": 22898,
+      "sha256": "f672346a865a3b5546eccca763fc0b8d7b9e09bd242383df14f67a5a392e442a",
+      "title": "Roblox Networking, Server Authority and Security for Vehicles",
+      "sections": [
+        "1. Decision summary",
+        "2. Authority model A: distributed physics (`AuthorityMode = Automatic`)",
+        "2.1 Rules [OFFICIAL-DOCUMENTED, `physics/network-ownership.md`]",
+        "2.2 What an owner can do [OFFICIAL-DOCUMENTED, `scripting/security/network-ownership.md`]",
+        "2.3 Validation guidance in the documentation",
+        "3. Authority model B: Server Authority (`AuthorityMode = Server`)",
+        "3.1 Required settings [OFFICIAL-DOCUMENTED, `projects/server-authority/index.md`]",
+        "3.2 Simulation model",
+        "3.3 State and inputs for a vehicle model",
+        "3.4 Which APIs a vehicle step may call: the `simulationAccess` flag [OFFICIAL-DOCUMENTED, generated]",
+        "3.5 Debugging aids",
+        "3.6 Official templates",
+        "4. Choosing between A and B for a high-fidelity vehicle [DERIVED/INFERRED]",
+        "5. Remotes: guarantees and limits (all modes)",
+        "6. Threat model for a vehicle system",
+        "6.1 Device Trust API [OFFICIAL-DOCUMENTED, `scripting/security/device-trust.md`, 2026-10-27]",
+        "7. Open questions specific to this document",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/20_Tires_and_Contact.md",
+      "bytes": 12988,
+      "sha256": "92cf9f06909d2b0d827ddd93221635f453f07b25782c540c4190e9ea88d0091d",
+      "title": "Tires and Contact — Realistic Tire Logic for a Roblox Vehicle",
+      "sections": [
+        "1. What \"realistic\" means for a tire, in priority order",
+        "2. Definitions (ISO 8855 axes; mapping to Roblox in DOC-01)",
+        "3. Model ladder (choose by data available, not by prestige)",
+        "4. Normal load F_z: the input Roblox does not give you",
+        "5. Recommended computation per wheel per step (design, untested)",
+        "6. Real parameter sources, with what they really are",
+        "7. Native Roblox contact as a \"tire\" (family I): exact limits",
+        "8. Validation targets for the tire layer (offline first)",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/21_Brakes_ABS_and_Parking_Brake.md",
+      "bytes": 9345,
+      "sha256": "b5e3f25a2ae54d8c72c6d346dcc4db33a1ab2fdcdec4a301403b1a85f815bb34",
+      "title": "Brakes, ABS, EBD and the Parking Brake",
+      "sections": [
+        "1. Foundation brake model",
+        "2. Regulatory reference numbers (US) [OFFICIAL-DOCUMENTED]",
+        "3. ABS: what to model and at what level",
+        "4. Parking brake and handbrake",
+        "5. BeamNG brake-thermal parameter set (reference vocabulary, not data)",
+        "6. Open items",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/22_Stability_and_Traction_Control.md",
+      "bytes": 7715,
+      "sha256": "c0582dd82ff62e1620ae3f33da42140bf0307842165848c66dd5f9b2876b76b7",
+      "title": "Stability and Traction Control (ESC, TCS, Torque Vectoring)",
+      "sections": [
+        "1. Electronic Stability Control (ESC)",
+        "1.1 What the regulation requires [OFFICIAL-DOCUMENTED, 49 CFR 571.126]",
+        "1.2 Control law (textbook structure) [DERIVED from R3 §3.2; R6 §6.9]",
+        "2. Traction Control (TCS)",
+        "2a. Offline evidence (DOC-41 E3, E6)",
+        "3. Torque vectoring and direct yaw control (EV and AWD)",
+        "4. Testing a Roblox implementation (offline-first protocol)",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/23_Combustion_Powertrain_Turbo_and_Supercharger.md",
+      "bytes": 8985,
+      "sha256": "4fd3f9380a75be0ee748ce4cea105726e6a9852223a9243cca418d8f6493b913",
+      "title": "Combustion Powertrain, Turbocharger and Supercharger",
+      "sections": [
+        "1. Engine core: a mean-value engine model (MVEM)",
+        "2. Turbocharger",
+        "2.1 Components and maps [vendor technical documentation]",
+        "2.2 Equations [DERIVED; standard thermodynamics, e.g., Eriksson & Nielsen's component models]",
+        "2.3 Open, validated reference models",
+        "3. Supercharger",
+        "4. Roblox integration notes [DERIVED/INFERRED]",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/24_Electric_Powertrain.md",
+      "bytes": 9438,
+      "sha256": "458db7bb8516aff6b3039b961e3ce00a6fcd4029bb1225611896a32ae7baf3cc",
+      "title": "Electric Powertrain — Motors, Inverters, Batteries, Regeneration",
+      "sections": [
+        "1. Motor types in production EVs (examples with primary sources)",
+        "2. Torque–speed envelope [DERIVED from R6 §6.7, Eq. 6.3]",
+        "3. Peak versus continuous power (thermal limits)",
+        "4. Efficiency maps",
+        "5. Regenerative braking",
+        "6. Battery model (minimum viable)",
+        "7. Control and dynamics [PEER-REVIEWED + DERIVED]",
+        "8. Open-source EV references",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/25_Steering_and_Suspension.md",
+      "bytes": 8091,
+      "sha256": "e8c6b39e72dba11ecd96118945dd9930adfaa9b3312affa87e325a553aa09801",
+      "title": "Steering and Suspension — Practical Summary with Real Parameter Sources",
+      "sections": [
+        "1. Steering",
+        "1.1 Physical chain versus input chain (R5 §5.6)",
+        "1.2 Real steering ratios and wheelbases",
+        "1.3 Other steering limits",
+        "1.4 Power steering and steering feel",
+        "2. Suspension",
+        "2.1 Core relations (R5 §5.2, A-12)",
+        "2.2 Real multi-body parameter sets (CommonRoad, from DOT data) [SOURCE-CODE-VERIFIED]",
+        "2.3 Road input data",
+        "2.4 Roblox representation (R5 §5.7) and stability [DERIVED]",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/30_Reference_Engines_and_Open_Source_Evidence.md",
+      "bytes": 27516,
+      "sha256": "9242e66adca683a7c9a90f9a5054959ef4252636550d4b5105b3a14a262d6db0",
+      "title": "Reference Engines and Open-Source Evidence",
+      "sections": [
+        "1. What was inspected",
+        "2. BeamNG: what the public documentation actually says",
+        "2.1 Architecture and time step [OFFICIAL-DOCUMENTED]",
+        "2.2 Nodes, beams and their stability warnings [OFFICIAL-DOCUMENTED]",
+        "2.3 Pressure Wheels [OFFICIAL-DOCUMENTED]",
+        "2.4 Aerodynamics [OFFICIAL-DOCUMENTED]",
+        "2.5 What BeamNG transfers to Roblox, revised with the evidence",
+        "3. Rigs of Rods: an open-source node–beam engine you can read",
+        "4. Project Chrono: a ladder of tire models in one codebase [SOURCE-CODE-VERIFIED, `da8025269cc8`]",
+        "5. PhysX Vehicle2 [SOURCE-CODE-VERIFIED, `b97365c`, PhysX 5.12.0]",
+        "6. Jolt Physics [SOURCE-CODE-VERIFIED, `5d5275c`]",
+        "7. Bullet `btRaycastVehicle` [SOURCE-CODE-VERIFIED, `d3afe76`]",
+        "8. TORCS 1.3.7 (from a third-party mirror) [SOURCE-CODE-VERIFIED at the mirror commit]",
+        "9. VDrift [SOURCE-CODE-VERIFIED, `f835eda`]",
+        "10. CARLA [SOURCE-CODE-VERIFIED, `7bb47bc`]",
+        "11. A-Chassis (Roblox) [SOURCE-CODE-VERIFIED, `3533c32`]",
+        "12. Cross-engine comparison (code-verified rows only)",
+        "13. Status of the follow-up report's BeamNG and engine claims",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/31_Datasets_and_Real_Vehicle_Parameters.md",
+      "bytes": 17443,
+      "sha256": "6510d550124f8d48921c035fac72f5ce4bd5a8526e75a1ba662727ff35098c26",
+      "title": "Datasets and Real Vehicle Parameters",
+      "sections": [
+        "1. Summary matrix",
+        "2. Measurement conditions that must travel with any parameter",
+        "3. Chrono `data/vehicle` tire files: provenance read from the headers [SOURCE-CODE-VERIFIED, `da8025269cc8`]",
+        "4. What the catalog still lacks (unchanged gaps, R10 §10.2)",
+        "5. Recommended pairing for a future, documented validation study (no data reproduced here)",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/40_Equations_Units_and_Numerical_Stability_Audit.md",
+      "bytes": 37140,
+      "sha256": "37962565faf13c345cf0ec23cc4bdafa6b0086bc048b32863a1cb89532a446f6",
+      "title": "Equations, Units and Numerical Stability Audit",
+      "sections": [
+        "1. Results at a glance",
+        "2. Analytical corrections and clarifications (auditor's notes)",
+        "3. Units: the complete conversion set and where conversions go wrong",
+        "4. Sign and axis conventions (reconciled)",
+        "5. Numerical stability: the consolidated rules",
+        "6. What was not rechecked",
+        "7. Second-pass checks (2026-10-28b) and how the new examples were produced",
+        "Appendix: audit scripts (reproducible; Python 3 + NumPy)",
+        "`tools/audit/r8_d.py`",
+        "`tools/audit/m_examples.py`",
+        "`tools/audit/m_examples2.py`",
+        "`tools/audit/m_examples3.py`",
+        "`tools/audit/r10_4.py`",
+        "`tools/audit/r10_4b.py`",
+        "`tools/audit/r10_4e.py`"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/41_Offline_Reference_Simulation_Experiments.md",
+      "bytes": 11734,
+      "sha256": "1d8341e221ce12ef6a3ea537b5caad949bbe3a8b269078989d0367a6bd824d8d",
+      "title": "Offline Reference Simulation — Quantified Effects of Roblox Coupling Choices",
+      "sections": [
+        "E4 — Script spring-damper under zero-order hold: the study's D-15 formula is exact",
+        "E1 — Wheel-spin integration at 60 Hz: explicit Euler fails below highway speed",
+        "E2 — ABS stop from 100 km/h: a new low-speed instability, and how to avoid it",
+        "E3 — FMVSS 126 sine with dwell: a 60 Hz mean-value ESC is sufficient for this vehicle",
+        "E5 — Gravity scale meets tire load sensitivity",
+        "E6 — EV launch with and without traction control",
+        "Limits of these experiments",
+        "Sources"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/50_Architecture_Tradeoffs_and_Measurement_Protocols.md",
+      "bytes": 13998,
+      "sha256": "28e42208a4c7908d105670000cce5f751167d32e7d8312bc00699fb3726b0d34",
+      "title": "Architecture Trade-offs and Measurement Protocols",
+      "sections": [
+        "1. The design space",
+        "2. Comparison on the criteria that the evidence supports",
+        "3. What the code-verified engines suggest for each family (lessons, not recommendations)",
+        "4. Decision structure: which measurement decides what",
+        "5. Measurement protocols (designs only; not executed)",
+        "P-1. Value hold between worldsteps (H-E1, β)",
+        "P-2. Hinge motor as torque source (H-E2)",
+        "P-3. Native static vs kinetic friction (H-E3)",
+        "P-4. Spring law (H-E9)",
+        "P-5. Stick phase via velocity actuator (H-C3)",
+        "P-6. Server Authority misprediction by architecture (H-E14/H-C6)",
+        "6. The fidelity ceiling, restated with the new evidence",
+        "7. Where each subsystem is specified (added 2026-10-28, second pass)"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/60_Evidence_Register_and_Open_Questions.md",
+      "bytes": 26194,
+      "sha256": "8dce9dc5f2d0b756d727d3408046a81c2b98950341005efb6aee1b0edca21226",
+      "title": "Evidence Register and Open Questions",
+      "sections": [
+        "1. Evidence classes",
+        "2. Claim register: load-bearing statements",
+        "2.1 Roblox engine",
+        "2.2 Reference engines and projects",
+        "2.3 Vehicle dynamics, standards and data",
+        "3. Bibliography code upgrades",
+        "4. Open questions",
+        "4.1 Status of the study's §10.2 table (rows kept verbatim in corpus/90, R10 §10.2)",
+        "4.2 New questions raised by the 2026-10-28 work (Q31–Q40)",
+        "4.3 Questions not processed in this pass (honest scope)",
+        "5. Hypotheses: carried forward with current status",
+        "6. Ranked research priorities (2026-10-28)",
+        "7. Second-pass additions (2026-10-28b)",
+        "7.1 New register rows",
+        "7.2 Status changes",
+        "7.3 New questions Q41–Q50",
+        "7.4 Updated priority ranking (supersedes §6 where they differ)",
+        "8. Third-pass additions (offline simulation, 2026-10-28c)",
+        "9. Extension pass (2026-11-01, DOC-03)"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/docs/61_Change_Log_and_Translation_Coverage.md",
+      "bytes": 44616,
+      "sha256": "c54490e5f4ec15d1ab09ee6f2103161ec7b83bb422ab0c0c9fc915b79c708a63",
+      "title": "Change Log and Translation Coverage",
+      "sections": [
+        "1. Source and scope",
+        "2. Line-range → part map",
+        "3. Translation conventions",
+        "4. Translator notes (T-01…T-18)",
+        "4a. Knowledge-base restructure (2026-10-28b)",
+        "5. Change log: errata and audit notes",
+        "6. Pinned sources used for verification",
+        "7. What was not processed"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/01_FOUNDATIONS.md",
+      "bytes": 3512,
+      "sha256": "72a59efe060cfe90f7421a6c23b8736c4bd9f417ba17d5e912166970185ce330",
+      "title": "Foundations — units, coordinates, solver time and numerical stability",
+      "sections": [
+        "Required dimensional invariants",
+        "Time scales are not interchangeable",
+        "Core mathematical test",
+        "What can be concluded now?",
+        "Next actions"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/02_ROBLOX_ENGINE.md",
+      "bytes": 3150,
+      "sha256": "d03494fb3c964cb915a8c27e4b016894806a5180c9f79c5562811835505eac74",
+      "title": "Roblox engine — capabilities, constraints and simulation API contract",
+      "sections": [
+        "Three separate surfaces",
+        "Native collider ≠ full tire physics",
+        "Measurement-first API questions"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/03_TIRE_CHASSIS_STEERING.md",
+      "bytes": 3132,
+      "sha256": "b715483d29c44c07d615c2f60e6c3e29f5dcb806a3cea037108fd1dd03830800",
+      "title": "Tires, contact, mass properties, steering and suspension",
+      "sections": [
+        "Tire modeling ladder",
+        "The dependency chain",
+        "Minimal equations to recognize",
+        "Unknowns that require actual Roblox measurements",
+        "Reality checks"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/04_BRAKES_AND_CONTROLS.md",
+      "bytes": 2988,
+      "sha256": "894e1a730789e1ee76a3a635fa94b36a863cea8386ad7abe038d19b5fef46b1c",
+      "title": "Brakes, ABS, electronic stability and traction control",
+      "sections": [
+        "Architecture of the three controllers",
+        "Critical formulas",
+        "Offline evidence, not real Studio outcome",
+        "How to judge a control design"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/05_POWERTRAINS.md",
+      "bytes": 2585,
+      "sha256": "a17b7fc8825d577fe39420085e923a78cf7667de0d6f4126c8312da109026601",
+      "title": "Internal-combustion and electric powertrains",
+      "sections": [
+        "Model layers",
+        "Scientific discipline"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/06_NETWORK_AND_AUTHORITY.md",
+      "bytes": 2590,
+      "sha256": "fa8d241439a522896b8300df40f2f25034d19444d2c2a340a7e1fb345c7112fe",
+      "title": "Network ownership, Server Authority, replay and security",
+      "sections": [
+        "Why replication is part of physics fidelity",
+        "Threat and correctness boundaries",
+        "Correctness checklist"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/07_ARCHITECTURE_AND_VALIDATION.md",
+      "bytes": 2808,
+      "sha256": "16c87980ec6d4e8a4ca47de3815e867ebbe2d3c490fc0a3b73351473e6048d62",
+      "title": "Architecture choice and measurement-driven validation",
+      "sections": [
+        "Architecture families being investigated",
+        "Evidence gate",
+        "Measurement priorities",
+        "Decision metrics"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/08_OFFLINE_RESULTS.md",
+      "bytes": 2953,
+      "sha256": "75d276b4f854a019cdb5cade78ddffb994b314677a891c4206004df8d461e87c",
+      "title": "Offline reference experiments — E1 through E6",
+      "sections": [
+        "Experiment map",
+        "Illustrated results",
+        "Reproduce"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/guide/09_DATA_AND_PROVENANCE.md",
+      "bytes": 2520,
+      "sha256": "31027956cf2028d15f86b7458ff666023ee7878b73c3f4a65dbe7a26ce215d8b",
+      "title": "Real-world parameters, datasets, restrictions and provenance",
+      "sections": [
+        "The integrity rule",
+        "Data classes",
+        "Canonical resources",
+        "Before making a comparison"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/llms.txt",
+      "bytes": 1285,
+      "sha256": "a5fc721fe70ebbb73cd4e29605765ecef3b8c7d98c468cb9a777cbba499b4b70"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/playbooks/01_DIAGNOSE.md",
+      "bytes": 1802,
+      "sha256": "65973d3265c7075bde2835e1dcabb33dcb3e4872ed771c6ac4cf221f1d81df60",
+      "title": "Diagnose a vehicle physics symptom",
+      "sections": [
+        "Suggested output"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/playbooks/02_DESIGN_A_SYSTEM.md",
+      "bytes": 1803,
+      "sha256": "855bc958c83a3db11bfd54746274f73dd5ed7e0727cfb4e450cccffbfb067e63",
+      "title": "Design a vehicle subsystem before writing Luau",
+      "sections": [
+        "Procedure",
+        "Deliverables"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/playbooks/03_ROBLOX_VALIDATION.md",
+      "bytes": 1835,
+      "sha256": "6af5fd3883ef9eee16dce8fee143b2bed9e71bd770f3a10970b854d997a3ab31",
+      "title": "Run an honest Roblox Studio validation",
+      "sections": [
+        "Required report fields",
+        "Flow"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/playbooks/04_EVIDENCE_REVIEW.md",
+      "bytes": 1665,
+      "sha256": "c0a41178dba434bfb9bff0ca030c9e1a9fdc283b4cd86d1b499725193ca1298f",
+      "title": "Verify, correct and add scientific claims",
+      "sections": [
+        "Claim card"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/reference/EVIDENCE_AND_PROVENANCE.md",
+      "bytes": 2082,
+      "sha256": "1dc019f58df1a1e8480f909474444f79194ded2ac7426998ce3275589a60ddd3",
+      "title": "Evidence classification, traceability and limitations",
+      "sections": [
+        "Provenance chain",
+        "Important distinctions"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/reference/GLOSSARY.md",
+      "bytes": 3021,
+      "sha256": "c3d138ee4c8f0747dbebdfc617aec6a051d9dc0316220b6731816e8d8ae17dbf",
+      "title": "Glossary — physics, numerical methods and Roblox integration",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/reference/UNITS_AND_ANCHORS.md",
+      "bytes": 1390,
+      "sha256": "a5821d69b63e0d3109f7c0542829e55a6497acfa63dc3ae5bde3e467b8f54716",
+      "title": "Units and sanity anchors",
+      "sections": []
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/commonroad_svx_check.out",
+      "bytes": 235,
+      "sha256": "b317edec9c3cc285fb7f6368654738849c37a647226bc719c30c037d84cf7c21"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/commonroad_svx_check.py",
+      "bytes": 1349,
+      "sha256": "09b68245980dd6d87f901fea96bb8e4b0aded6acd4c5aeb8459e6cbfdc2fb674"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/extension_2026_11_01.py",
+      "bytes": 1200,
+      "sha256": "6760185882a1bdfa66177d77e3bd5a91bc54e87527e06814d46c1ffe63954f20"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/m_examples.py",
+      "bytes": 4624,
+      "sha256": "5b405aee155088d0fcc9e0010226acc298a1d52a4849a04559698f547f922e9b"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/m_examples2.py",
+      "bytes": 2166,
+      "sha256": "48f72bbd4c25e0802ef1733f73abcf21f5ce3d60f72c279250678d5b7a05eb7d"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/m_examples3.py",
+      "bytes": 2837,
+      "sha256": "d320bddb3029300c14d2f091fcb2f695484bebf98e3e5dfba568bc89b03be0c5"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/material_mixing.out",
+      "bytes": 1058,
+      "sha256": "ceec2369fff35ac6519bf6be674d082a3f60020f40f60f2198fa7d6f3e150974"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/material_mixing.py",
+      "bytes": 1715,
+      "sha256": "bca83a7b7a8f4900e7af08b2d76160858141b2a2c881488a153635bfb11febed"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/r10_4.py",
+      "bytes": 2288,
+      "sha256": "f1da8747f5de927e269581cb6e48251096ce7680f5af2dc528145d34df08a0dc"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/r10_4b.py",
+      "bytes": 5268,
+      "sha256": "edb80e502b07e18c9c51d3ff34c7b883d1c883a2ff61980d79441dc5bb1ed5b9"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/r10_4e.py",
+      "bytes": 2331,
+      "sha256": "b56109ab425d9751ebe0c8e9d135a71de8b4ab02e4b0e571252a119996ec9847"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/r8_d.py",
+      "bytes": 2441,
+      "sha256": "92a06bc318415a6a3799d6963a5138326b681e61bf4a1ca61589f479f8485636"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/subsystems_2026_10_28b.out",
+      "bytes": 4479,
+      "sha256": "2b2ab414efdf9ce81ad384b6cecae527e362e41661c39518499827b62f012491"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/audit/subsystems_2026_10_28b.py",
+      "bytes": 5853,
+      "sha256": "02f73839c831accb887357bef6bcbacb937f4e9a48499252332287fff67e1ea7"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/generate/build_final_md.py",
+      "bytes": 5335,
+      "sha256": "7143836f40e642bb502ffece43b460c35c38b3fb1c42610cfb36a80c2d499e6d"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/generate/extract.py",
+      "bytes": 1304,
+      "sha256": "2246a8f554fb9c4da2b02b84f9f8f04fd672497bd9faa316a91ce65292b85e53"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/generate/gen_index.py",
+      "bytes": 1228,
+      "sha256": "65446ce4b6a3dbf5cb5692e23f5d2ff18ea35348dd9897c5d0cd3e81d1c7a637"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/generate/gen_material_defaults.py",
+      "bytes": 1254,
+      "sha256": "fbbd26cf985acc61bc73792292ce998f12fc5446d780071dc9dbd63c498faea6"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/generate/gen_matrix.py",
+      "bytes": 7367,
+      "sha256": "fcddb5eb8f0cd7ee95463d57dee0ca6cd0cfa0365f334acc64245b170dfa9c05"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/generate/gen_simulation_access.py",
+      "bytes": 1441,
+      "sha256": "b61c663e400e0b3ea4009274384e82a2dd775f600ca0f39ac1de539dd90480cb"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/luau/FixedRateBindingWithAttributes.luau",
+      "bytes": 1902,
+      "sha256": "094881d9a9a52c8928140103c6f21f4c24596d1847314993fe3d0d7d84c670ff"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/luau/ImplicitWheelSpin.luau",
+      "bytes": 1207,
+      "sha256": "8fe63425303337b82d1226def99dd319c724a1e69d32fa716af9f061cf2041ab"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/luau/StickPhaseFixture.luau",
+      "bytes": 1098,
+      "sha256": "28d0647298e84f50a7a894d2b0fa44773af83c51baeb1a55e147a1ca036ddcb8"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/luau/Units.luau",
+      "bytes": 959,
+      "sha256": "e246befd2373cab3580653246d0be00e1bcb6d62d520b395c52d584ee8b6fe61"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/luau/VehicleSimulation.luau",
+      "bytes": 6957,
+      "sha256": "c37203ae9eefed1e0e945ec47f208be16958a4ba7d7e471487167f63ceecd1b3"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/plot_kb_figures.py",
+      "bytes": 3862,
+      "sha256": "71111d2b2074e43348122921abe22ca45143c1f97b65f6f4497be272619b67f9"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/experiments.py",
+      "bytes": 14875,
+      "sha256": "08d97e407abde9a0b6c587d5fc28d814a9bf7a65d6cf8a9a0ec90daf98585acb"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/plots.py",
+      "bytes": 3943,
+      "sha256": "c80fc03f8a6e00297664e9ea9e9f27a80671f65d7e179f1fee093a39e15e92d6"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/refsim.py",
+      "bytes": 12289,
+      "sha256": "b97dd9c8ae0c76414d11b0648c9691f27e0a569e23b2350f0f061b75b370a421"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/E1_wheelspin.json",
+      "bytes": 2620,
+      "sha256": "66d16f283470876f61ec94d58cad026de8dd64efd99f561fb2ed6ab724f44173"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/E2_braking.json",
+      "bytes": 3022,
+      "sha256": "17e367aba16f77451ae9034d5fb0f9ecd657c006f1a10c7a93dd29c131b5bdc1"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/E3_swd.json",
+      "bytes": 2690,
+      "sha256": "43e701a48d546e8f8b2aefa8ec3efc3ce4560dde3abdacd28d1851ff9e97e804"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/E5_gravity.json",
+      "bytes": 898,
+      "sha256": "03ad7b67546e44961742ffdb8ef8dbc885e7386755007bc79af567d57f235d78"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/E6_ev_launch.json",
+      "bytes": 2014,
+      "sha256": "60f70eceace286b32b71b35f4f92a4fcb6ed8f868aa8d17f6c1c3161b1a6eddd"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/F1_wheelspin.png",
+      "bytes": 82361,
+      "sha256": "78daf133e42246fdfc5b681b002413637b5965dfed0bc7a7f0b7a4014f7b7261"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/F2_braking.png",
+      "bytes": 42850,
+      "sha256": "f5f6d58991214c2df658ecf899e24a33f196c950290a2a9e115f997478b2e562"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/F3_swd.png",
+      "bytes": 46158,
+      "sha256": "7e17e187a3b909398f8ffdf41a832fc93219881e6f7f89a46a499bf4653911dd"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/F4_zoh_window.png",
+      "bytes": 44185,
+      "sha256": "9ae019931af19e4549d30b5824bb215c5407ab333d084ce716c018402f2eb0cb"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/SUMMARY_E1_E2_E3_E5_E6.md",
+      "bytes": 5319,
+      "sha256": "0984a3029f5c724559efcde4c102c23e44e6de5b4e135618edcda0f379eb3912",
+      "title": "SUMMARY_E1_E2_E3_E5_E6.md",
+      "sections": [
+        "E1 — Wheel-spin integration with a 300 N·m-per-wheel rear drive torque (t = 1–2 s)",
+        "E2 — Straight-line stop from 100 km/h, full pedal (ILLUSTRATIVE brake sizing), dry coefficient set",
+        "E3 — FMVSS 126 sine with dwell at 80 km/h (series 1.5A … up to 270°; worst run reported)",
+        "E5 — Peak lateral friction per tire at the static corner load, by gravity scale",
+        "E6 — EV launch 0–100 km/h, rear motor 360 N·m / 149 kW / 7.05 (Bolt envelope on REF-CAR-1, synthetic)"
+      ]
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/results/zoh_stability.json",
+      "bytes": 1929,
+      "sha256": "7911c338d26b2a9296036072967403067e7163adc784cce5a4a107675d9e59b7"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/refsim/zoh_stability.py",
+      "bytes": 2924,
+      "sha256": "8a4eb0fbc463c28442e1de0746f1a5996d72857746ffe5530d5cda682fa23b72"
+    },
+    {
+      "path": "roblox-vehicle-physics-kb/tools/validate_knowledge_base.py",
+      "bytes": 2793,
+      "sha256": "6c13bc9a61227a2cf6b205ab2b3134e038f62bccb51b7b45c17b7fd3006fa5ae"
+    }
+  ]
+}

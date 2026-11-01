@@ -1,0 +1,32 @@
+--!strict
+-- Every value is a synthetic engineering parameter, not a real-car measurement.
+return table.freeze({
+    id = "AD-SEDAN-001",
+    massKg = 1400,
+    wheelbaseM = 2.7,
+    trackM = 1.55,
+    wheelRadiusM = 0.32,
+    wheelInertiaKgM2 = 1.4,
+    suspensionRestLengthM = 0.55,
+    springStiffnessNPerM = 32000,
+    damperNsPerM = 3200,
+    maximumWheelLoadN = 18000,
+    maximumSteerRad = math.rad(30),
+    steeringRateRadS = math.rad(75),
+    peakMotorTorqueNm = 240,
+    peakMotorPowerW = 110000,
+    maximumMotorSpeedRadS = 1200,
+    finalDriveRatio = 8,
+    drivelineEfficiency = 0.94,
+    brakeTorquePerWheelNm = 1800,
+    dragAreaM2 = 0.65,
+    airDensityKgM3 = 1.225,
+    slipRegularizationMS = 4,
+    tire = table.freeze({
+        frictionCoefficient = 1.0,
+        nominalLoadN = 3500,
+        loadSensitivity = 0.1,
+        longitudinalStiffnessN = 65000,
+        corneringStiffnessNPerRad = 55000,
+    }),
+})

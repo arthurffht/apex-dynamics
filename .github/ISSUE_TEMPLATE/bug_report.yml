@@ -1,0 +1,22 @@
+name: Physics bug
+description: Report a reproducible numerical, integration, or networking defect.
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction and expected behavior
+      description: Include the commit, preset, input sequence, and smallest reproducible case.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Measurement conditions
+      description: Studio version, stepping mode, gravity, frame rate, device, ownership, latency.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Attach logs or telemetry. Label offline results and Roblox measurements separately.

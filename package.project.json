@@ -1,0 +1,9 @@
+{
+  "name": "ApexDynamics",
+  "tree": {
+    "$className": "Folder",
+    "Core": { "$path": "src/core" },
+    "Roblox": { "$path": "src/roblox" },
+    "Presets": { "$path": "src/presets" }
+  }
+}

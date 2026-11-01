@@ -1,0 +1,44 @@
+{
+  "name": "ApexDynamicsSandbox",
+  "tree": {
+    "$className": "DataModel",
+    "Workspace": {
+      "$properties": { "Gravity": 35.02375 },
+      "Ground": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Size": [1600, 2, 1600],
+          "Position": [0, -1, 0],
+          "Color": [0.23, 0.25, 0.28],
+          "Material": "Asphalt"
+        }
+      },
+      "SpawnLocation": {
+        "$className": "SpawnLocation",
+        "$properties": {
+          "Anchored": true,
+          "Size": [6, 1, 6],
+          "Position": [12, 1, 8],
+          "Neutral": true
+        }
+      }
+    },
+    "ReplicatedStorage": {
+      "ApexDynamics": {
+        "$className": "Folder",
+        "Core": { "$path": "src/core" },
+        "Roblox": { "$path": "src/roblox" },
+        "Presets": { "$path": "src/presets" }
+      }
+    },
+    "ServerScriptService": {
+      "ApexSandbox": { "$path": "examples/sandbox.server.luau" }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "ApexInput": { "$path": "examples/input.client.luau" }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.local/
+build/
+coverage/
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+*.log
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+Thumbs.db
+sourcemap.json
+roblox.yml
