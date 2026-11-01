@@ -14,8 +14,8 @@ The objective is a validated, extensible open-source vehicle simulator. Advancem
 
 ## Immediate work queue
 
-1. Connect a dedicated Studio sandbox and execute the first integration protocols.
-2. Resolve held-force/body coupling and standstill support before increasing tire stiffness.
+1. Resolve the measured 10% slope parking failure using a physically justified static-contact treatment; keep the failed trace as a regression reference.
+2. Extend the completed local integration and two-client baseline to held-force/body coupling, imposed latency/loss, and standstill behavior before increasing tire stiffness.
 3. Compare ray and sphere contacts on curbs using equal mass, geometry, and input traces.
 4. Select one dataset with verified redistribution/calibration terms; keep complete provenance.
 5. Establish profiler and multiplayer baselines before choosing ECS, Parallel Luau, or rollback architecture.

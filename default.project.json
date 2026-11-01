@@ -26,10 +26,8 @@
     },
     "ReplicatedStorage": {
       "ApexDynamics": {
-        "$className": "Folder",
-        "Core": { "$path": "src/core" },
-        "Roblox": { "$path": "src/roblox" },
-        "Presets": { "$path": "src/presets" }
+        "$path": "package.project.json",
+        "Dev": { "$className": "Folder", "BuildInfo": { "$path": ".local/generated/BuildInfo.luau" } }
       }
     },
     "ServerScriptService": {

@@ -2,6 +2,7 @@
 
 The repository, documentation, identifiers, comments, and commits use professional English.
 Read `docs/STATE.md` before substantial work and update it with verified outcomes.
+Use `docs/development-workflow.md` for the canonical commands and synchronization model.
 
 - Keep pure SI physics in `src/core`; isolate Roblox APIs in `src/roblox`.
 - Use `--!strict`, explicit units, and documented coordinate/sign conventions.
@@ -14,3 +15,7 @@ Read `docs/STATE.md` before substantial work and update it with verified outcome
 - Keep secrets, downloaded tools, source archives, generated places, and personal data out of Git.
 - Preserve users' Studio content. The demo is an isolated place built from `default.project.json`.
 - Do not claim full determinism, production networking, or real-vehicle calibration without evidence.
+- Use `apex.ps1 doctor`, `check`, `studio`, and `audit` rather than recreating the harness.
+- Research decisions are linked to code and evidence in `docs/research/integration-map.json`.
+- `mode -Mode Client` is ordinary driver ownership; never confuse it with rollback Server Authority.
+- Automatic GitHub checkpoints require the explicit `dev -AutoCheckpoint` session. They never merge main or publish cloud places.

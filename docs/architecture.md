@@ -5,7 +5,7 @@ The initial implementation is a single rigid assembly with four raycast contacts
 ```mermaid
 flowchart LR
     A[Authorized driver input] --> B[Server validation and timeout]
-    B --> C[PreSimulation adapter]
+    B --> C[Selected host PreSimulation adapter]
     C --> D[Raycast contact and relative velocity]
     D --> E[SI suspension and tire loads]
     E --> F[Implicit wheel states and motor torque]
@@ -18,9 +18,9 @@ flowchart LR
 
 ## Boundaries
 
-`src/core` contains scalar functions and structural types without `game`, services, Instances, or engine scheduling. `src/roblox/Vehicle.luau` queries contact, transforms coordinates, reads engine velocity, and applies impulses. `examples` creates the sandbox and implements its transport policy. `src/presets` contains synthetic, auditable parameters.
+`src/core` contains scalar functions and structural types without `game`, services, Instances, or engine scheduling. `src/roblox/Vehicle.luau` owns the engine adapter; `VehicleFactory` creates the same fixture for the sandbox and tests. `ClientDriver` and `DriverSession` implement the host/transport boundary. `src/config/Runtime.luau` selects the execution host, and `src/presets` contains synthetic parameters.
 
-The adapter runs on the server in `PreSimulation`, using the supplied simulation interval. It does not pretend that repeated Luau calculations advance Roblox's world solver. A frame longer than 0.1 s skips impulse injection and invalidates a fidelity run; elapsed time remains observable. This is a development guard, not a hitch-recovery integrator.
+The adapter runs in `PreSimulation` on the selected host, using the supplied simulation interval. It does not pretend that repeated Luau calculations advance Roblox's world solver. A frame longer than 0.1 s skips impulse injection and invalidates a fidelity run; elapsed time and skipped-step counts remain observable. This is a development guard, not a hitch-recovery integrator.
 
 ## Contact and tires
 
@@ -44,15 +44,16 @@ The reference EV uses independent rear wheel envelopes, reduction gearing, and a
 
 ## Networking
 
-The sandbox accepts a small exact input schema only from the occupied seat's player. It rejects nonfinite/out-of-range values, limits accepted input to 40 packets/s, and applies brakes after 0.5 s without accepted input. The client sends at approximately 30 Hz. Server ownership is reasserted when a character is seated.
+The sandbox accepts an exact input schema only from the occupied seat's player. It rejects nonfinite/out-of-range values and limits accepted input to 40 packets/s. The client sends at approximately 30 Hz. The default Server host keeps conventional server ownership. The experimental Client host transfers ownership to the current driver and runs the same adapter on that client. Ownership epochs select one controller, while idle/stale-input behavior reclaims server ownership and brakes after 0.5 s without valid input.
 
-This conventional server-owned fixture is separate from Roblox Server Authority prediction/rollback. Mutable wheel state lives in ordinary tables and the adapter uses ordinary engine APIs, so it is not rollback safe. A prediction implementation requires explicit state capture, resimulation-safe access, input history, and latency measurements. See ADR-003.
+Neither host implements Roblox Server Authority prediction/rollback. Mutable wheel state lives in ordinary tables, so the adapter is not rollback safe. Ownership handoff initializes wheel speed from chassis motion; it does not preserve tire transient history. Input validation does not make client-owned physics trustworthy against a modified client. Moving-ground ownership conflicts, imposed network latency, reconciliation, and competitive anti-cheat remain unvalidated. See ADR-003 and ADR-004.
 
 ## Known sandbox limits
 
 - Single-ray contacts can miss curbs, sidewalls, narrow obstacles, and initial-overlap cases.
 - Chassis collisions still use native contact; visual wheels do not collide, steer, or roll visually.
 - Character seating changes total assembly mass and mass distribution.
-- Static slope hold, drag accuracy, low-speed creep, and high-speed robustness are unmeasured in Studio.
+- The initial slope-hold characterization measured 0.1178 m creep over 8 s on a 10% grade, failing its 0.01 m target. Static friction/contact remains an open modeling task.
+- Drag calibration, high-speed/curb robustness, imposed-latency networking, and mobile performance remain unvalidated.
 - Keyboard-only example input has no mobile/gamepad support or production camera/HUD.
 - No claim of deterministic replay, certified braking, or competition-grade anti-cheat is made.

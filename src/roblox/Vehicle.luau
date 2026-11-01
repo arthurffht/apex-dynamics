@@ -24,6 +24,7 @@ type VehicleState = {
     steering: number,
     elapsedS: number,
     supportedWheels: number,
+    skippedSteps: number,
 }
 export type Vehicle = typeof(setmetatable({} :: VehicleState, Vehicle))
 
@@ -57,18 +58,21 @@ function Vehicle.new(chassis: BasePart, config: Config?, exclusions: { Instance 
         steering = 0,
         elapsedS = 0,
         supportedWheels = 0,
+        skippedSteps = 0,
     }, Vehicle)
 end
 
 -- PreSimulation adapter; not a rollback-safe BindToSimulation implementation.
 function Vehicle.step(self: Vehicle, dt: number, command: Input.Command)
     if not Numerics.isFinite(dt) or dt <= 0 then
+        self.skippedSteps += 1
         return
     end
     -- An unbounded hitch must not inject a large impulse using stale contact geometry.
     -- Telemetry records elapsed time; callers should treat dt > 0.1 as a failed fidelity run.
     self.elapsedS += dt
     if dt > 0.1 then
+        self.skippedSteps += 1
         return
     end
     local config = self.config

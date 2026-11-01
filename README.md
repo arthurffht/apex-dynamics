@@ -7,7 +7,7 @@
 
 Apex Dynamics aims to make high-fidelity vehicle simulation on Roblox transparent, measurable, and open source. The project starts with explicit SI units, testable tire and wheel dynamics, and a small engine adapter. Fidelity is an engineering objective measured against data; the project does not yet claim real-vehicle accuracy or superiority over other chassis.
 
-**Status: experimental foundation.** Numerical tests and artifact inspection run outside Roblox. A local Studio static-support observation is recorded in [the experiment report](docs/experiments/2026-11-01-static-support/README.md). Driving, performance, and multiplayer validation remain pending. See [current state](docs/STATE.md) and [validation gates](docs/validation.md).
+**Status: experimental, measured development baseline.** Offline invariants, local engine regressions, and two-client ownership tests have been exercised. A slope-hold research target still fails. These results do not establish real-vehicle calibration or production networking. See [current state](docs/STATE.md), [validation gates](docs/validation.md), and the [integrated workflow](docs/development-workflow.md).
 
 ## Quick start on Windows
 
@@ -17,12 +17,13 @@ Install [Git](https://git-scm.com/downloads) and [PowerShell 7](https://learn.mi
 git clone https://github.com/arthurffht/apex-dynamics.git
 cd apex-dynamics
 ./scripts/bootstrap.ps1 -InstallStudioPlugin
-./scripts/check.ps1
+./apex.ps1 check
+./apex.ps1 dev -AutoCheckpoint
 ```
 
-Open `build/ApexDynamicsSandbox.rbxlx` in Roblox Studio. Press Play, sit in the driver seat, and use **W/S** for forward/reverse torque, **A/D** for steering, and **Space** for braking. The sandbox uses server simulation and keyboard input as an integration fixture. It is not a production driving game.
+Open `build/ApexDynamicsSandbox.rbxlx` in Roblox Studio and connect its Rojo plugin to `localhost:34872`. Press Play, sit in the driver seat, and use **W/S**, **A/D**, and **Space**. Server simulation is the default; use `./apex.ps1 mode -Mode Client` for the experimental driver-owned comparison, then restart Play.
 
-For live development, run `rojo serve default.project.json` and connect the installed Rojo plugin to `localhost:34872` in a dedicated sandbox place. The reusable library is built separately as `build/ApexDynamics.rbxm`.
+The development session watches source, maintains the LSP sourcemap, runs verification, and optionally pushes passing checkpoints to a branch/PR. The reusable library is `build/ApexDynamics.rbxm`. All commands, cloud boundaries, and MCP setup are maintained in [one workflow reference](docs/development-workflow.md).
 
 ## Implemented
 
@@ -32,8 +33,9 @@ For live development, run `rojo serve default.project.json` and connect the inst
 - Exact scalar relaxation helpers, unilateral spring/damper support, and Ackermann steering.
 - Idealized EV torque/power envelope and quadratic aerodynamic drag.
 - Four-wheel raycast adapter with moving-ground relative velocity and reciprocal impulses on dynamic ground.
-- Server-owned example with driver authorization, bounded input, rate limiting, and input timeout.
-- Pinned tooling, strict type checking, lint/format checks, numerical tests, Rojo builds, and GitHub Actions.
+- Configurable server/client execution with ownership epochs, driver authorization, rate limiting, and server reclamation after input timeout.
+- Pinned tools, source/artifact fingerprints, exact-source drift probes, regression reports, and verified GitHub checkpoints.
+- A repository skill, Serena Luau MCP integration, source-linked research decisions, and one root development CLI.
 
 The brush helper and the sandbox's longitudinal solver are distinct reference models. Their integration and limitations are described in [architecture](docs/architecture.md). ABS, TCS, ESC, tire thermal/wear models, a combustion drivetrain, rollback prediction, and real-car calibration remain on the [roadmap](docs/roadmap.md).
 
@@ -47,6 +49,8 @@ The brush helper and the sandbox's longitudinal solver are distinct reference mo
 | `examples` | Isolated sandbox and input transport |
 | `tests` | Numerical invariants and generated artifact inspection |
 | `scripts` | Reproducible setup, verification, and research indexing |
+| `config` | Engine profile, optional agent-tool pins, and staging configuration example |
+| `.agents/skills` | Repository-specific agent workflow without duplicated manuals |
 | `docs/research` | Evidence register, source catalog, and technical synthesis |
 | `docs/adr` | Architecture decisions and their consequences |
 

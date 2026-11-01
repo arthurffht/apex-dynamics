@@ -1,0 +1,6 @@
+{
+  "environment": "staging",
+  "universeId": 0,
+  "placeId": 0,
+  "description": "Copy to ignored .local/cloud.json and select an owned staging place. Credentials come only from ROBLOX_API_KEY."
+}

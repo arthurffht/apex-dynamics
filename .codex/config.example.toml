@@ -1,0 +1,7 @@
+# The setup command generates ignored config.toml with an absolute project launcher.
+# This example documents the schema without publishing machine-specific paths.
+[mcp_servers.apex_serena]
+command = "serena"
+args = ["start-mcp-server", "--context", "codex", "--project-from-cwd", "--agent-interface", "tools", "--enable-web-dashboard", "false", "--open-web-dashboard", "false"]
+startup_timeout_sec = 90
+tool_timeout_sec = 90

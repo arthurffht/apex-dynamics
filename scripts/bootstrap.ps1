@@ -34,5 +34,6 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Rojo Studio plugin installation failed' }
     }
     & (Join-Path $PSScriptRoot 'setup-types.ps1')
+    & (Join-Path $PSScriptRoot 'generate-project.ps1')
     Write-Output 'Pinned toolchain installed. Run scripts/check.ps1 in this terminal.'
 } finally { Pop-Location }

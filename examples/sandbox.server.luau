@@ -2,115 +2,121 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
-local Workspace = game:GetService("Workspace")
 local packageRoot = ReplicatedStorage:WaitForChild("ApexDynamics")
 local Units = require(packageRoot.Core.Units)
 local Input = require(packageRoot.Core.Input)
 local Config = require(packageRoot.Presets.ReferenceSedan)
+local Runtime = require(packageRoot.Config.Runtime)
 local Vehicle = require(packageRoot.Roblox.Vehicle)
+local Factory = require(packageRoot.Roblox.VehicleFactory)
+local DriverSession = require(packageRoot.Roblox.DriverSession)
+local BuildInfo = require(packageRoot.Dev.BuildInfo)
 
 local remote = Instance.new("RemoteEvent")
 remote.Name = "SandboxInput"
 remote.Parent = packageRoot
-
-local model = Instance.new("Model")
-model.Name = "ApexReferenceSedan"
-model.Parent = Workspace
-
-local chassis = Instance.new("Part")
-chassis.Name = "Chassis"
-chassis.Size = Vector3.new(Units.toStuds(1.7), Units.toStuds(0.45), Units.toStuds(4.1))
-chassis.CFrame = CFrame.new(0, Units.toStuds(1.1), 0)
-chassis.Color = Color3.fromRGB(30, 95, 130)
-local volume = chassis.Size.X * chassis.Size.Y * chassis.Size.Z
-local density = Units.toRobloxMass(Config.massKg) / volume
-chassis.CustomPhysicalProperties = PhysicalProperties.new(density, 0, 0, 100, 100)
-chassis.EnableFluidForces = false
-chassis.Parent = model
-model.PrimaryPart = chassis
-
-local seat = Instance.new("VehicleSeat")
-seat.Name = "DriverSeat"
-seat.Size = Vector3.new(2, 1, 2)
-seat.CFrame = chassis.CFrame * CFrame.new(0, 1.2, 0)
-seat.Massless = true
-seat.CanCollide = false
-seat.HeadsUpDisplay = false
-seat.MaxSpeed = 0
-seat.Torque = 0
-seat.Parent = model
-local seatWeld = Instance.new("WeldConstraint")
-seatWeld.Part0 = chassis
-seatWeld.Part1 = seat
-seatWeld.Parent = seat
-
-for _, z in { -0.5, 0.5 } do
-    for _, x in { -0.5, 0.5 } do
-        local wheel = Instance.new("Part")
-        wheel.Name = "WheelVisual"
-        wheel.Shape = Enum.PartType.Cylinder
-        local diameter = Units.toStuds(Config.wheelRadiusM * 2)
-        wheel.Size = Vector3.new(0.7, diameter, diameter)
-        wheel.CFrame = chassis.CFrame
-            * CFrame.new(
-                Units.toStuds(Config.trackM * x),
-                -Units.toStuds(0.44),
-                Units.toStuds(Config.wheelbaseM * z)
-            )
-        wheel.Color = Color3.fromRGB(25, 25, 28)
-        wheel.Massless = true
-        wheel.CanCollide = false
-        wheel.CanQuery = false
-        wheel.Parent = model
-        local weld = Instance.new("WeldConstraint")
-        weld.Part0 = chassis
-        weld.Part1 = wheel
-        weld.Parent = wheel
-    end
-end
-chassis:SetNetworkOwner(nil)
+local model, chassis, seat = Factory.create()
+model:SetAttribute("SourceFingerprint", BuildInfo.fingerprint)
+model:SetAttribute("SimulationHost", Runtime.simulationHost)
+model:SetAttribute("DriverUserId", 0)
+model:SetAttribute("SimulationEpoch", 0)
 local vehicle = Vehicle.new(chassis, Config, { model })
 local command: Input.Command = { throttle = 0, brake = 1, steering = 0 }
 local lastInputTime = 0
 local driver: Player? = nil
 local nextPacketTime: { [Player]: number } = {}
+local telemetryElapsed = 0
+local serverSteps, rejectedInputs, acceptedInputs = 0, 0, 0
+
+local function transfer(player: Player?)
+    chassis:SetNetworkOwner(nil)
+    local forwardSpeed = chassis.AssemblyLinearVelocity:Dot(chassis.CFrame.LookVector)
+        * Units.METERS_PER_STUD
+    for _, wheel in vehicle.wheels do
+        wheel.omega = forwardSpeed / Config.wheelRadiusM
+    end
+    vehicle.steering = 0
+    model:SetAttribute("InitialWheelOmega", forwardSpeed / Config.wheelRadiusM)
+    model:SetAttribute("DriverUserId", if player then player.UserId else 0)
+    model:SetAttribute("SimulationEpoch", (model:GetAttribute("SimulationEpoch") :: number) + 1)
+    if Runtime.simulationHost == "Client" and player then
+        chassis:SetNetworkOwner(player)
+    end
+end
 
 seat:GetPropertyChangedSignal("Occupant"):Connect(function()
     local occupant = seat.Occupant
     driver = if occupant then Players:GetPlayerFromCharacter(occupant.Parent) else nil
     command = { throttle = 0, brake = 1, steering = 0 }
-    lastInputTime = 0
-    -- Seating joins the character to the vehicle assembly; retain server ownership.
-    chassis:SetNetworkOwner(nil)
+    lastInputTime = os.clock()
+    transfer(driver)
 end)
 
 remote.OnServerEvent:Connect(function(player: Player, payload: unknown)
     if player ~= driver then
+        rejectedInputs += 1
         return
     end
     local now = os.clock()
     if now < (nextPacketTime[player] or 0) then
         return
     end
-    nextPacketTime[player] = now + 1 / 40
+    nextPacketTime[player] = now + 1 / Runtime.maximumInputHz
     local validated = Input.validate(payload)
     if validated then
+        acceptedInputs += 1
         command = validated
         lastInputTime = now
+        if
+            Runtime.simulationHost == "Client"
+            and model:GetAttribute("DriverUserId") ~= player.UserId
+        then
+            transfer(player)
+        end
+    else
+        rejectedInputs += 1
     end
 end)
 
 Players.PlayerRemoving:Connect(function(player)
     nextPacketTime[player] = nil
+    if player == driver then
+        driver = nil
+        command = { throttle = 0, brake = 1, steering = 0 }
+        transfer(nil)
+    end
 end)
 
 RunService.PreSimulation:Connect(function(dt)
-    if os.clock() - lastInputTime > 0.5 or not driver then
+    if os.clock() - lastInputTime > Runtime.inputTimeoutS or not driver then
         command = { throttle = 0, brake = 1, steering = 0 }
+        if Runtime.simulationHost == "Client" and model:GetAttribute("DriverUserId") ~= 0 then
+            transfer(nil)
+        end
     end
-    vehicle:step(dt, command)
-    model:SetAttribute("SpeedMS", chassis.AssemblyLinearVelocity.Magnitude * Units.METERS_PER_STUD)
-    model:SetAttribute("SupportedWheels", vehicle.supportedWheels)
+    local driverId = model:GetAttribute("DriverUserId") :: number
+    if DriverSession.shouldSimulate(Runtime.simulationHost, true, 0, driverId) then
+        vehicle:step(dt, command)
+        serverSteps += 1
+    end
+    telemetryElapsed += dt
+    if telemetryElapsed >= 1 / Runtime.telemetryHz then
+        telemetryElapsed = 0
+        model:SetAttribute(
+            "SpeedMS",
+            chassis.AssemblyLinearVelocity.Magnitude * Units.METERS_PER_STUD
+        )
+        model:SetAttribute("SupportedWheels", vehicle.supportedWheels)
+        model:SetAttribute("SkippedSteps", vehicle.skippedSteps)
+        model:SetAttribute("ServerSimulationSteps", serverSteps)
+        model:SetAttribute("RejectedInputs", rejectedInputs)
+        model:SetAttribute("AcceptedInputs", acceptedInputs)
+    end
 end)
 
-print("Apex Dynamics research sandbox ready. Sit in the driver seat; use W/S, A/D, Space.")
+print(
+    "Apex Dynamics sandbox ready. Simulation host:",
+    Runtime.simulationHost,
+    "Source:",
+    BuildInfo.fingerprint
+)

@@ -69,6 +69,12 @@ end
 -- interval first, then bisect the strictly increasing residual on the proper side.
 -- Velocity and load remain frozen: this does not prove coupled chassis stability.
 function Tire.stepWheel(input: WheelInput): (number, number)
+    for _, value in input do
+        assert(
+            typeof(value) == "number" and value == value and math.abs(value) < math.huge,
+            "Wheel inputs must be finite"
+        )
+    end
     assert(input.dt > 0 and input.inertiaKgM2 > 0 and input.radiusM > 0, "Invalid wheel dynamics")
     assert(input.slipRegularizationMS > 0, "Slip regularization must be positive")
     assert(input.forceLimitN >= 0 and input.brakeTorqueNm >= 0, "Invalid force/torque limits")
