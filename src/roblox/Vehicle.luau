@@ -11,6 +11,7 @@ local ReferenceSedan = require(script.Parent.Parent.Presets.ReferenceSedan)
 
 type Config = typeof(ReferenceSedan)
 type Wheel = { offset: Vector3, omega: number, front: boolean, left: boolean }
+type ContactImpulse = { impulse: Vector3, position: Vector3, ground: BasePart? }
 
 local Vehicle = {}
 Vehicle.__index = Vehicle
@@ -83,6 +84,7 @@ function Vehicle.step(self: Vehicle, dt: number, command: Input.Command)
     local leftSteer, rightSteer =
         Suspension.ackermann(self.steering, config.wheelbaseM, config.trackM)
     local supported = 0
+    local contactImpulses: { ContactImpulse } = {}
     for _, wheel in self.wheels do
         local origin = frame:PointToWorldSpace(wheel.offset)
         local castLength = Units.toStuds(config.suspensionRestLengthM + config.wheelRadiusM)
@@ -161,13 +163,21 @@ function Vehicle.step(self: Vehicle, dt: number, command: Input.Command)
             local left = normal:Cross(forward)
             local forceSI = normal * normalLoad + forward * longitudinalForce + left * lateralForce
             local impulse = forceSI * Units.toRobloxForce(dt)
-            chassis:ApplyImpulseAtPosition(impulse, contact)
-            if ground and not ground.Anchored then
-                ground:ApplyImpulseAtPosition(-impulse, contact)
-            end
+            table.insert(
+                contactImpulses,
+                { impulse = impulse, position = contact, ground = ground }
+            )
         end
     end
     self.supportedWheels = supported
+    -- Sample all wheels before mutating the body; otherwise damping and grip depend on loop order.
+    for _, contactImpulse in contactImpulses do
+        chassis:ApplyImpulseAtPosition(contactImpulse.impulse, contactImpulse.position)
+        local ground = contactImpulse.ground
+        if ground and not ground.Anchored then
+            ground:ApplyImpulseAtPosition(-contactImpulse.impulse, contactImpulse.position)
+        end
+    end
     local velocity = chassis.AssemblyLinearVelocity * Units.METERS_PER_STUD
     local speed = velocity.Magnitude
     if speed > 1e-6 then

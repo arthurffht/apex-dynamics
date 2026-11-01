@@ -7,6 +7,8 @@ local place = roblox.deserializePlace(fs.readFile("build/ApexDynamicsSandbox.rbx
 local workspace = place:GetService("Workspace")
 assert(math.abs(workspace.Gravity - 35.02375) < 1e-4, "Incorrect sandbox gravity")
 assert(workspace:FindFirstChild("Ground"), "Missing test surface")
+local ground = workspace:FindFirstChild("Ground")
+assert(ground and ground.CFrame.Position.Y == -1, "Ground translation was not serialized")
 local packageRoot = place:GetService("ReplicatedStorage"):FindFirstChild("ApexDynamics")
 assert(packageRoot and packageRoot:FindFirstChild("Core"), "Missing core package")
 assert(packageRoot:FindFirstChild("Roblox"), "Missing engine adapter")

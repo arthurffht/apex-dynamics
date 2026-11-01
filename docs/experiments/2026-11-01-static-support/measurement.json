@@ -1,0 +1,60 @@
+{
+  "experimentId": "AD-STUDIO-STATIC-001",
+  "runId": "20261101T212427841Z",
+  "evidenceClass": "MEASURED-ROBLOX",
+  "baselineCommit": "bb2d69f25d2950d4b22fade117a89736da621e58",
+  "sourceRevision": "Corrected source snapshot; hashes below. Changes are tracked with this report.",
+  "environment": {
+    "input": "zero throttle, brakes held",
+    "networkOwnership": "server",
+    "occupant": "none",
+    "devicePerformance": "not measured",
+    "platform": "Windows x86-64",
+    "mode": "Studio Run",
+    "dtDistribution": "not recorded"
+  },
+  "sourceSnapshot": [
+    {
+      "sha256": "909f18b1042cd3e6594f3fc6cbb29c3fc43be3e31f3bc40b2f8efce4c6241d04",
+      "path": "default.project.json"
+    },
+    {
+      "sha256": "5c668bf2ded878bd23447fb4426350d624585922e7e655b0a82c5c50e96b6268",
+      "path": "src/roblox/Vehicle.luau"
+    },
+    {
+      "sha256": "5c2312224e3a4dcae3ba8107015e48b6735e5cc8f6a8c6567f2e9b5c5e1c664a",
+      "path": "src/core/Suspension.luau"
+    },
+    {
+      "sha256": "46e4846f765d712c01fd78eb5ef58bca3760416d52198a9aaa2bf4a36ea31d5c",
+      "path": "src/presets/ReferenceSedan.luau"
+    },
+    {
+      "sha256": "8b15e09a172fea4fff8ea2bbe97078d6b2fb87e38e17f11274d98438c61231a1",
+      "path": "examples/sandbox.server.luau"
+    },
+    {
+      "sha256": "2b761bcca1e55ce1d30d5c046a882b5b4bb4801a8c2b4602a35ca0e9ab7029cc",
+      "path": "tests/studio/smoke.luau"
+    }
+  ],
+  "report": {
+    "success": true,
+    "result": {
+      "heightToleranceM": 0.05,
+      "observationDelayS": 6,
+      "expectedHeightM": 0.762739765625,
+      "heightM": 0.760558261871338,
+      "maximumSpeedMS": 0.1,
+      "supportedWheels": 4,
+      "engineVersion": "0.745.0.7451137",
+      "upY": 1,
+      "groundYStuds": -1,
+      "massRMU": 63.7755126953125,
+      "physicsSteppingMethod": "unavailable-to-probe",
+      "gravityStudsS2": 35.02375030517578,
+      "speedMS": 0.0017838275432586672
+    }
+  }
+}

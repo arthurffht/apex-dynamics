@@ -26,6 +26,8 @@ The adapter runs on the server in `PreSimulation`, using the supplied simulation
 
 The spring/damper supports each query contact with a nonnegative capped load. Ground velocity is subtracted at the contact point, including angular motion for BaseParts. Dynamic ground receives the opposite impulse. Terrain is treated as static.
 
+All contact loads and tire forces are evaluated before any contact impulse is applied. This avoids sampling later wheels from velocities already changed by earlier wheels in the same update.
+
 `Tire.brush` implements an original radial extension of a cubic brush saturation law. It provides an inspectable combined-force envelope. The sandbox uses its lateral branch and allocates the remaining friction-circle budget to a monotone saturated **linear longitudinal** law. The latter is solved implicitly with wheel rotation and dry brake torque. This split is deliberate for a small stable reference and is not a complete combined-slip brush or Magic Formula implementation.
 
 At every wheel update, with contact velocity and load frozen:

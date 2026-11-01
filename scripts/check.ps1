@@ -14,7 +14,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Pure Luau type check failed' }
     rojo sourcemap default.project.json --output sourcemap.json
     if ($LASTEXITCODE -ne 0) { throw 'Sourcemap generation failed' }
-    luau-lsp analyze --platform=roblox --definitions=.local/definitions/roblox.d.luau --sourcemap=sourcemap.json src examples
+    luau-lsp analyze --platform=roblox --definitions=.local/definitions/roblox.d.luau --sourcemap=sourcemap.json src examples tests/studio
     if ($LASTEXITCODE -ne 0) { throw 'Roblox Luau type check failed' }
     lune run tests/run
     if ($LASTEXITCODE -ne 0) { throw 'Physics tests failed' }
