@@ -30,6 +30,7 @@ Initial review date: 2026-11-01. Source hashes are in `catalog.json`. Tags disti
 | AD-E12 | Archived numerical audit has roughly 609 checks and offline vehicle comparisons | SOURCE-REPORTED; original suite/results were not reproduced in this setup |
 | AD-E13 | Research says Server Authority release status changed in 2026 | SOURCE-REPORTED with conflicting older summaries and a later correction; no release-status promise is needed by current fixture |
 | AD-E14 | Prototype matches a real sedan or passes regulatory maneuvers | No supporting measurement; configuration SYNTHETIC; validation OPEN |
+| AD-E15 | Corrected sandbox passes a six-second flat-ground static-support smoke on engine 0.745.0.7451137 | MEASURED-ROBLOX: [experiment and source hashes](../experiments/2026-11-01-static-support/README.md); driving, time-series settling, and actual stepping mode remain unverified |
 
 ## Source freshness and conflicts
 

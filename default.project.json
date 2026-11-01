@@ -9,7 +9,7 @@
         "$properties": {
           "Anchored": true,
           "Size": [1600, 2, 1600],
-          "Position": [0, -1, 0],
+          "CFrame": [0, -1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
           "Color": [0.23, 0.25, 0.28],
           "Material": "Asphalt"
         }
@@ -19,7 +19,7 @@
         "$properties": {
           "Anchored": true,
           "Size": [6, 1, 6],
-          "Position": [12, 1, 8],
+          "CFrame": [12, 1, 8, 1, 0, 0, 0, 1, 0, 0, 0, 1],
           "Neutral": true
         }
       }

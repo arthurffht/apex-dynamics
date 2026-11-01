@@ -35,6 +35,8 @@ git remote -v
 
 Authenticate using GitHub's device flow. Never paste tokens into this repository. Initial setup uses `main`, HTTPS, repository-local author settings, GitHub's no-reply author address, LF line endings, and fast-forward-only pulls. Existing global Git identity is preserved.
 
+The public repository has CI status requirements on `main`, linear history, force-push/deletion protection, dependency-update proposals, and private vulnerability reporting. Administrator bypass remains available for the solo owner. Research, physics, numerics, validation, and networking issues are organized around the `v0.1: Validated baseline` milestone.
+
 ## Studio workflow
 
 1. Build the sandbox with `scripts/check.ps1`.
@@ -44,9 +46,11 @@ Authenticate using GitHub's device flow. Never paste tokens into this repository
 5. Review the proposed synchronization tree and connect only to the dedicated sandbox.
 6. Play and execute the protocols in `validation.md`.
 
+To run the local engine smoke without MCP, execute `./scripts/studio-smoke.ps1` after building. It launches a dedicated Studio process through the [documented Studio CLI](https://create.roblox.com/docs/studio/cli), runs a six-second static-support probe, validates a completion marker rather than trusting the process exit code, and stores raw logs/JSON under ignored `build/studio`. It does not publish or save changes to an existing experience.
+
 Source-controlled code is authoritative on disk. Studio edits to synchronized scripts must be copied back deliberately before the next sync. The sandbox owns its generated map; use `package.project.json` to integrate just the library into another experience. No production place is published by these scripts.
 
-The initial Studio MCP inventory returned no connected Studio instances. Connecting Studio's MCP server is an engine-validation prerequisite when using an agent to drive tests. Its availability must be checked again for each session; a CLI installation does not establish a Studio MCP connection.
+The initial Studio MCP inventory returned no connected Studio instances. Interactive agent inspection through MCP requires a live connection; scripted engine probes can also run through the local Studio CLI. Check available instances again each session. A CLI installation does not establish a Studio MCP connection.
 
 ## Optional tools and dependencies
 

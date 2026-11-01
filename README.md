@@ -7,7 +7,7 @@
 
 Apex Dynamics aims to make high-fidelity vehicle simulation on Roblox transparent, measurable, and open source. The project starts with explicit SI units, testable tire and wheel dynamics, and a small engine adapter. Fidelity is an engineering objective measured against data; the project does not yet claim real-vehicle accuracy or superiority over other chassis.
 
-**Status: experimental foundation.** Numerical tests and artifact inspection run outside Roblox. The sandbox has not yet passed Studio driving, performance, or multiplayer validation. See [current state](docs/STATE.md) and [validation gates](docs/validation.md).
+**Status: experimental foundation.** Numerical tests and artifact inspection run outside Roblox. A local Studio static-support observation is recorded in [the experiment report](docs/experiments/2026-11-01-static-support/README.md). Driving, performance, and multiplayer validation remain pending. See [current state](docs/STATE.md) and [validation gates](docs/validation.md).
 
 ## Quick start on Windows
 

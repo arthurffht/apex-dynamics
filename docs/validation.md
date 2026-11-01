@@ -13,14 +13,14 @@ Required properties include SI round trips, passive drag/lateral friction signs,
 | Protocol | Setup and observable | Initial acceptance target | Status |
 | --- | --- | --- | --- |
 | B1: free-body units | Known mass, impulse, measured delta velocity | relative error below 1%, record sampling error | Pending |
-| B2: static suspension | Synthetic sedan, flat ground, no occupant; record support height and load | settles without growing oscillation; total modeled load within 2% of weight | Pending |
+| B2: static suspension | Synthetic sedan, flat ground, no occupant; record support height and load | settles without growing oscillation; total modeled load within 2% of weight | Preliminary static smoke recorded; full protocol pending |
 | B3: forward/reverse braking | Identical signed initial speeds; log wheel speeds and body velocity | signed response symmetry within 2%; no brake-driven reversal | Pending |
 | B4: low-speed and slope hold | 0–3 m/s and 10% slope, brakes held, 60 s | no growing oscillation; slope creep target below 1 cm per minute | Pending |
 | B5: frame-rate sweep | Repeat at 30, 60, 120 FPS, include a recorded hitch | no nonfinite state; report trajectory error and skipped steps | Pending |
 | B6: moving platform | Translate and rotate contacted ground | relative slip converges; reciprocal momentum documented | Pending |
 | B7: curb and obstacle | Compare ray and sphere query variants | record contact loss and chassis strikes; no assumed pass | Pending |
 
-Targets are proposed engineering criteria. They are not achieved measurements. A failure should cause a model/coupling change, not an undocumented tolerance adjustment.
+Targets are proposed engineering criteria. A static smoke observation does not complete the full protocol. See the [initial experiment report](experiments/2026-11-01-static-support/README.md) for the narrower assertions and actual observations. A failure should cause a model/coupling change, not an undocumented tolerance adjustment.
 
 ## Gate C: performance and networking
 
@@ -36,4 +36,4 @@ Standards such as FMVSS or ISO maneuvers may inspire experiments only after cons
 
 ## Measurement record
 
-Store future results under a dated directory in `docs/experiments/`, with raw machine-readable telemetry and a concise report. Include: experiment ID, engine/build version, commit, tool pins, units, gravity, stepping mode, simulation dt distribution, device, input trace, ownership, network conditions, reference data license, acceptance criteria, exclusions, and failed runs. No initial Roblox measurements exist in this repository.
+Store results under a dated directory in `docs/experiments/`, with raw machine-readable telemetry and a concise report. Include: experiment ID, engine/build version, commit or file hashes, tool pins, units, gravity, stepping mode, simulation dt distribution, device, input trace, ownership, network conditions, reference data license, acceptance criteria, exclusions, and failed runs. Mark unobserved fields explicitly instead of inferring them from a default.
