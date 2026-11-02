@@ -22,7 +22,7 @@ Read system-design.md for architecture/contracts, laboratory.md for place operat
 
 Source fingerprint: `1abdda21832a76f882a0167a86013c11ea423bdcb78cc1d8673f7e4eca09b252`.
 
-- Full local check: formatting, lint, strict pure/Roblox types, 18 historical physics cases / 32,122 assertions, 3,307 foundation assertions, two builds, 19 strict modules, serialized scene/profile/matrix checks, and 27 harness assertions passed.
+- Full local check: formatting, lint, strict pure/Roblox types, 18 historical physics cases / 32,122 assertions, 3,307 foundation assertions, two builds, 19 strict modules, serialized scene/profile/matrix checks, and 31 harness assertions passed.
 - Isolated Foundation: eight checks passed using the interactive laboratory's shared module. Identity, gravity, no default vehicle, fixture map, world budgets/idempotency/lifecycle, and ray/sphere query semantics were executed.
 - Isolated Audit: nine checks passed, including source drift, unexpected scripts, missing/stale vehicle identity, and missing/stale laboratory identity.
 - Live official MCP: auto-run and requested rerun each passed eight checks without a vehicle. Sectors ±100,000,000 retained 25 cells and maximum observed position about 2,956.67 studs. Invalid fractional sector input was rejected and previous selection restored.
@@ -45,6 +45,8 @@ Continuous body rebasing, long soak, imposed latency/jitter/loss, adversarial cl
 Only the explicitly identified ApexDynamicsSandbox.rbxlx instance is in scope. Place1 belongs to another project and was not inspected, edited, playtested, or closed. Select the current sandbox inventory ID; isolated CLI tests temporarily register extra instances with the same filename.
 
 Services use localhost:34872 and owned process records. dev -StudioChecks runs offline plus isolated Foundation verification; adding -AutoCheckpoint permits passing stable branch/PR checkpoints. Repeated dev preserves Rojo while replacing the verifier. Explicit stop disconnects services; a new Rojo server session may require plugin reconnection. No watcher merges main or publishes Roblox automatically.
+
+A final session check found exited transport launchers while the verifier remained alive. The recovery change records pinned native Rojo processes and rejects dead, mismatched, or stopped process records in aggregate health/doctor. Regression checks exercise those status failures; do not treat code verification alone as transport health.
 
 GitHub repository: arthurffht/apex-dynamics, authenticated CLI, protected main, pinned CI, validation backlog. Check the current commit's CI. PR #9 carries the integrated foundation work until review/merge.
 

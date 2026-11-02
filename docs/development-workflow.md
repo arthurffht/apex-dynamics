@@ -65,6 +65,8 @@ With `-AutoCheckpoint`, changes from clean `main` go to a new work branch. Furth
 
 The session is scoped to this repository and current login. Repeating `dev` updates verification options by replacing only the owned watcher, preserving Rojo's connection and sourcemap process. Use `stop` when deliberately disconnecting all project services. Process cleanup verifies both the recorded PID and its expected project argument before terminating the owned process tree. Start `dev` again after a machine restart; no system-wide background agent was installed.
 
+Transport processes launch the pinned native Rojo binary from Rokit's managed storage, so recorded PIDs identify the actual server/sourcemap executables rather than tool-manager launchers. The pinned version is read from rokit.toml and checked before launch. The watcher checks process ownership at least every 15 seconds while idle and again before declaring verification successful; missing/mismatched/stopped transports make aggregate health fail even if an earlier code check passed. A healthy PID is still not proof of a connected Studio plugin.
+
 ## MCP and agent context
 
 The existing official `Roblox_Studio` connector is reused. Its process being installed is not a live connection. In Studio, the owner enables **Assistant → Settings → MCP Servers → Enable Studio as MCP server**, and the ChatGPT/Codex Quick Connect option. The [official Roblox plugin](https://github.com/Roblox/roblox-studio-agent-plugin) documents this setup. A connector inventory must name the intended place before live inspection or edits.

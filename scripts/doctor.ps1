@@ -14,6 +14,7 @@ $branch=& git -C $root branch --show-current
 $mcpLauncher=Join-Path $env:LOCALAPPDATA 'Roblox/mcp.bat'
 $snapshot=Get-ApexSourceSnapshot
 $result=[ordered]@{schemaVersion=1;tools=$checks;studioInstalled=($null -ne $studio);studioPath=$studio;mcpLauncherInstalled=(Test-Path -LiteralPath $mcpLauncher);mcpConnected='Check list_roblox_studios through the current connector; executable presence is not a connection';branch=$branch;workingTreeClean=([string]::IsNullOrWhiteSpace(($status -join '')));sourceFingerprint=$snapshot.fingerprint;engineProfile=(Get-Content (Join-Path $root 'config/engine.json') -Raw | ConvertFrom-Json);cloud='Not configured; local place is canonical';generatedPlaceExists=(Test-Path (Join-Path $root 'build/ApexDynamicsSandbox.rbxlx'))}
+$result.developmentSession=Get-ApexTransportState
 $directory=Join-Path $root '.local/diagnostics'
 [IO.Directory]::CreateDirectory($directory) | Out-Null
 $result | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $directory 'doctor.json') -Encoding utf8
