@@ -35,5 +35,9 @@ jobs:
           path: |
             build/ApexDynamicsSandbox.rbxlx
             build/ApexDynamics.rbxm
+            .local/generated/BuildInfo.luau
+            .local/generated/source-snapshot.json
+            .local/build-receipt.json
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 14

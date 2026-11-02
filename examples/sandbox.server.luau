@@ -3,6 +3,13 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local packageRoot = ReplicatedStorage:WaitForChild("ApexDynamics")
+local Laboratory = require(packageRoot.Config.Laboratory)
+if
+    not Laboratory.referenceVehicleEnabled
+    and workspace:GetAttribute("ApexReferenceEnabled") ~= true
+then
+    return
+end
 local Units = require(packageRoot.Core.Units)
 local Input = require(packageRoot.Core.Input)
 local Config = require(packageRoot.Presets.ReferenceSedan)

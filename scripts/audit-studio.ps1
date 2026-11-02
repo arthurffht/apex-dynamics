@@ -6,11 +6,13 @@ $entries=@()
 foreach ($file in $snapshot.files) {
     if (-not $file.path.EndsWith('.luau')) { continue }
     $instancePath=$null
-    if ($file.path -match '^src/(core|roblox|presets|config)/(.+)\.luau$') {
-        $groups=@{core='Core';roblox='Roblox';presets='Presets';config='Config'}
+    if ($file.path -match '^src/(core|roblox|presets|config|foundation)/(.+)\.luau$') {
+        $groups=@{core='Core';roblox='Roblox';presets='Presets';config='Config';foundation='Foundation'}
         $instancePath='ReplicatedStorage/ApexDynamics/'+$groups[$Matches[1]]+'/'+$Matches[2]
     } elseif ($file.path -eq 'examples/sandbox.server.luau') { $instancePath='ServerScriptService/ApexSandbox' }
     elseif ($file.path -eq 'examples/input.client.luau') { $instancePath='StarterPlayer/StarterPlayerScripts/ApexInput' }
+    elseif ($file.path -eq 'examples/lab.server.luau') { $instancePath='ServerScriptService/ApexLabServer' }
+    elseif ($file.path -eq 'examples/lab.client.luau') { $instancePath='StarterPlayer/StarterPlayerScripts/ApexLabHUD' }
     if ($instancePath) {
         $source=[IO.File]::ReadAllText((Join-Path $root $file.path)).Replace("`r`n","`n")
         $delimiter='='
@@ -48,9 +50,12 @@ if package then
     end
 end
 local runtime = workspace:FindFirstChild("ApexReferenceSedan")
+local lab = workspace:FindFirstChild("ApexLab")
+local labRunning = lab ~= nil and lab:FindFirstChild("Runtime") ~= nil
+local labFingerprint = if labRunning then lab:GetAttribute("SourceFingerprint") else nil
 local runtimeFingerprint = if runtime then runtime:GetAttribute("SourceFingerprint") else nil
-local runtimeFresh = runtime == nil or runtimeFingerprint == "FINGERPRINT"
-return {success=#drift==0, checked=checked, drift=drift, expectedFingerprint="FINGERPRINT",runtimePresent=runtime~=nil,runtimeFingerprint=runtimeFingerprint,runtimeFresh=runtimeFresh,action=if runtimeFresh then "none" else "restart play to load the current modules"}
+local runtimeFresh = (runtime == nil or runtimeFingerprint == "FINGERPRINT") and (not labRunning or labFingerprint == "FINGERPRINT")
+return {success=#drift==0, checked=checked, drift=drift, expectedFingerprint="FINGERPRINT",labRunning=labRunning,labFingerprint=labFingerprint,runtimePresent=runtime~=nil,runtimeFingerprint=runtimeFingerprint,runtimeFresh=runtimeFresh,action=if runtimeFresh then "none" else "restart play to load the current modules"}
 '@
 $script=$script.Replace('ENTRIES',($entries -join ",`n")).Replace('FINGERPRINT',$snapshot.fingerprint)
 $destination=Join-Path $root '.local/generated/studio-audit.luau'

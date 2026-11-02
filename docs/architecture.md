@@ -1,5 +1,7 @@
 # Architecture
 
+The current phase delivers the project foundation. The accepted target architecture and subsystem contracts are in [system-design.md](system-design.md), with the default place documented in [laboratory.md](laboratory.md). The vehicle described below is an opt-in historical measurement fixture, not the default place behavior or a final design.
+
 The initial implementation is a single rigid assembly with four raycast contacts. It provides an observable reference for testing script-owned tire forces. This is a provisional architecture decision, not a finding that raycasts are universally the most realistic contact model.
 
 ```mermaid

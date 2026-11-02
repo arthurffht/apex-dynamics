@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([string]$Message='Checkpoint verified development changes')
+param([string]$Message='Checkpoint verified development changes',[switch]$StudioChecks)
 $ErrorActionPreference='Stop'
 Import-Module (Join-Path $PSScriptRoot 'lib/Project.psm1') -Force
 Initialize-ApexEnvironment
@@ -9,13 +9,14 @@ try {
     $before=Get-ApexWorktreeFingerprint
     $head=(& git rev-parse HEAD).Trim()
     & ./scripts/check.ps1
+    if ($StudioChecks) { & ./scripts/studio-test.ps1 -Suite Foundation }
     if ((Get-ApexWorktreeFingerprint) -ne $before -or (& git rev-parse HEAD).Trim() -ne $head) { throw 'Files or HEAD changed during verification; checkpoint cancelled' }
     $branch=(& git branch --show-current).Trim()
     if (-not $branch) { throw 'Cannot synchronize a detached HEAD' }
     $dirty=(& git status --porcelain) -join ''
     if ($branch -eq 'main') {
         if (-not $dirty) { Write-Output 'Main is clean; no checkpoint needed'; return }
-        $branch='work/checkpoint-'+[DateTime]::UtcNow.ToString('yyyyMMdd-HHmmss')
+        $branch='codex/checkpoint-'+[DateTime]::UtcNow.ToString('yyyyMMdd-HHmmss')
         Invoke-ApexTool git @('switch','-c',$branch)
     }
     if ($dirty) {

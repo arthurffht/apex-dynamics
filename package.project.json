@@ -3,6 +3,7 @@
   "tree": {
     "$className": "Folder",
     "Core": { "$path": "src/core" },
+    "Foundation": { "$path": "src/foundation" },
     "Config": { "$path": "src/config" },
     "Roblox": { "$path": "src/roblox" },
     "Presets": { "$path": "src/presets" }

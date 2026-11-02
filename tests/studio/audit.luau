@@ -44,6 +44,25 @@ local ok, problem = pcall(function()
     local stale = inspect()
     runtime:Destroy()
     check("cached-runtime-is-distinct-from-source", stale.success and not stale.runtimeFresh)
+    local lab = workspace:FindFirstChild("ApexLab")
+    assert(lab, "Laboratory scene is missing")
+    local originalFingerprint = lab:GetAttribute("SourceFingerprint")
+    local labRuntime = Instance.new("Folder")
+    labRuntime.Name = "Runtime"
+    labRuntime.Parent = lab
+    local unstampedLab = inspect()
+    check(
+        "unstamped-laboratory-is-not-verified",
+        unstampedLab.success and not unstampedLab.runtimeFresh
+    )
+    lab:SetAttribute("SourceFingerprint", "deliberately-stale")
+    local staleLab = inspect()
+    labRuntime:Destroy()
+    lab:SetAttribute("SourceFingerprint", originalFingerprint)
+    check(
+        "cached-laboratory-is-distinct-from-source",
+        staleLab.success and not staleLab.runtimeFresh
+    )
     check("audit-restores-clean-state", inspect().success)
 end)
 if not ok then

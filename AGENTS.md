@@ -3,6 +3,7 @@
 The repository, documentation, identifiers, comments, and commits use professional English.
 Read `docs/STATE.md` before substantial work and update it with verified outcomes.
 Use `docs/development-workflow.md` for the canonical commands and synchronization model.
+The current phase is foundation/laboratory work. Read `docs/system-design.md` and `docs/laboratory.md`; keep vehicle features opt-in and do not begin new vehicle physics until the foundation gate is accepted and vehicle work is requested.
 
 - Keep pure SI physics in `src/core`; isolate Roblox APIs in `src/roblox`.
 - Use `--!strict`, explicit units, and documented coordinate/sign conventions.

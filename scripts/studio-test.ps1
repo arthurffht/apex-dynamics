@@ -1,7 +1,9 @@
 [CmdletBinding()]
-param([ValidateSet('Smoke','Regression','Research','Multiplayer','Audit')][string]$Suite='Regression',[string]$StudioExecutable,[int]$TimeoutSeconds=180)
+param([ValidateSet('Smoke','Regression','Research','Multiplayer','Audit','Foundation')][string]$Suite='Regression',[string]$StudioExecutable,[int]$TimeoutSeconds=180)
 $ErrorActionPreference='Stop'
 Import-Module (Join-Path $PSScriptRoot 'lib/Project.psm1') -Force
+$verification=Enter-ApexVerification
+try {
 $root=Get-ApexRoot
 if (-not $StudioExecutable) { $StudioExecutable=Get-ApexStudio }
 $place=Join-Path $root 'build/ApexDynamicsSandbox.rbxlx'
@@ -16,7 +18,7 @@ foreach($artifact in $receipt.artifacts){
 }
 $run=Join-Path $root ('build/studio/'+[DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffZ'))
 [IO.Directory]::CreateDirectory($run) | Out-Null
-$suiteFile=if($Suite -eq 'Multiplayer'){'tests/studio/multiplayer.server.luau'}elseif($Suite -eq 'Audit'){'tests/studio/audit.luau'}else{'tests/studio/suite.server.luau'}
+$suiteFile=if($Suite -eq 'Multiplayer'){'tests/studio/multiplayer.server.luau'}elseif($Suite -eq 'Audit'){'tests/studio/audit.luau'}elseif($Suite -eq 'Foundation'){'tests/studio/foundation.server.luau'}else{'tests/studio/suite.server.luau'}
 $source=[IO.File]::ReadAllText((Join-Path $root $suiteFile))
 $harness=@{suitePath=$suiteFile;suiteSha256=(Get-FileHash -LiteralPath (Join-Path $root $suiteFile)).Hash.ToLowerInvariant();entrySha256=(Get-FileHash -LiteralPath (Join-Path $root 'tests/studio/entry.luau')).Hash.ToLowerInvariant();runnerSha256=(Get-FileHash -LiteralPath $PSCommandPath).Hash.ToLowerInvariant();toolchainSha256=(Get-FileHash -LiteralPath (Join-Path $root 'rokit.toml')).Hash.ToLowerInvariant()}
 $requestedEngine=Get-Content -LiteralPath (Join-Path $root 'config/engine.json') -Raw | ConvertFrom-Json
@@ -27,6 +29,7 @@ $entry=$entry.Replace('"" -- APEX_PROBE_SOURCE',('['+$delimiter+'['+$source+']'+
 $version=(Get-Item -LiteralPath $StudioExecutable).VersionInfo.FileVersion -replace ',\s*','.'
 $entry=$entry.Replace('{ suite = "Regression", engineVersion = "unknown" } -- APEX_ARGS',('{ suite = "'+$Suite+'", engineVersion = "'+$version+'" }'))
 if($Suite -eq 'Multiplayer'){
+    $entry="workspace:SetAttribute('ApexReferenceEnabled',true)"+"`n"+$entry
     $entry=$entry.Replace('sandbox.Enabled = false -- APEX_SANDBOX_ENABLED','sandbox.Enabled = true')
     $entry=$entry.Replace('StudioTestService:ExecuteRunModeAsync(testArgs) -- APEX_MODE','StudioTestService:ExecuteMultiplayerTestAsync(2,testArgs)')
     $clientSource=[IO.File]::ReadAllText((Join-Path $root 'tests/studio/multiplayer.client.luau'))
@@ -34,6 +37,7 @@ if($Suite -eq 'Multiplayer'){
     $clientSetup='local original = game:GetService("StarterPlayer").StarterPlayerScripts:FindFirstChild("ApexInput"); if original then original.Enabled=false end'+"`n"+'local client=Instance.new("LocalScript"); client.Name="ApexClientProbe"; client.Source=[==['+$clientSource+']==]; client.Parent=game:GetService("StarterPlayer").StarterPlayerScripts'
     $entry=$entry.Replace('-- APEX_CLIENT_SETUP',$clientSetup)
 }
+if($Suite -eq 'Foundation'){$entry=$entry.Replace('laboratory.Enabled = false -- APEX_LAB_ENABLED','laboratory.Enabled = true')}
 $keepalive=if($Suite -eq 'Smoke'){20}elseif($Suite -eq 'Research' -or $Suite -eq 'Multiplayer'){100}else{65}
 $entry=$entry.Replace('task.wait(50) -- APEX_KEEPALIVE',"task.wait($keepalive)")
 if($Suite -eq 'Audit'){
@@ -57,7 +61,9 @@ $lines=Get-Content -LiteralPath $log
 $line=$lines | Where-Object { $_.StartsWith('APEX_TEST_REPORT=') } | Select-Object -Last 1
 if (-not $line) { throw "No structured completion report; inspect $log" }
 $report=$line.Substring('APEX_TEST_REPORT='.Length) | ConvertFrom-Json
-if($Suite -eq 'Audit'){$report | Add-Member sourceFingerprint $snapshot.fingerprint; $report | Add-Member engineVersion $version}
+if(-not $report.PSObject.Properties['sourceFingerprint']){$report | Add-Member sourceFingerprint $snapshot.fingerprint}
+if(-not $report.PSObject.Properties['engineVersion']){$report | Add-Member engineVersion $version}
+if(-not $report.PSObject.Properties['engineVersionSource']){$report | Add-Member engineVersionSource 'Studio executable file version'}
 $report | Add-Member sourceSnapshot $snapshot
 $report | Add-Member harness $harness
 $report | Add-Member requestedEngineProfile $requestedEngine
@@ -68,3 +74,4 @@ $report.cases | Select-Object name,research,passed,error | Format-Table -AutoSiz
 if (-not $report.requiredPassed -or $lines -notcontains 'APEX_TEST_REQUIRED_PASS') { throw 'Required Studio regressions failed; raw evidence was preserved' }
 if ($Suite -eq 'Research' -and -not $report.researchTargetsPassed) { throw 'Research targets failed; this is a measured limitation, not a passing fidelity claim' }
 Write-Output 'Studio suite passed its declared gates'
+} finally { $verification.Dispose() }

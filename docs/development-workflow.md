@@ -2,6 +2,8 @@
 
 ## Decisions
 
+The immediate deliverable is the project foundation and laboratory described in system-design.md and laboratory.md. The default place starts the infrastructure suite without spawning a vehicle; earlier vehicle code is an opt-in measurement fixture.
+
 The local filesystem is the source of truth for managed code and configuration. Rojo synchronizes that source into a dedicated local Studio place. GitHub receives verified commits through branches and pull requests. A Roblox cloud place is a versioned staging destination, not a second editable codebase.
 
 The default vehicle simulation host is **Server**. An explicitly selectable **Client** mode assigns conventional ownership to the current driver and runs the same `Vehicle` adapter on that client. An unoccupied vehicle and stale-input fallback remain server simulated. These two modes use engine `AuthorityMode.Automatic`; neither is Roblox's predicted/rollback Server Authority architecture.
@@ -18,6 +20,7 @@ Run commands from PowerShell 7 in the repository root.
 | `./apex.ps1 build` | Generate the active Rojo project, source fingerprint, place, library, and artifact receipts |
 | `./apex.ps1 check` | Formatting, lint, strict types, numerical invariants, builds, artifact checks, and harness checks |
 | `./apex.ps1 studio -Suite Smoke` | Short engine support check |
+| `./apex.ps1 studio -Suite Foundation` | Current lab's shared infrastructure checks, no vehicle |
 | `./apex.ps1 studio -Suite Regression` | Engine integration battery with time-series evidence |
 | `./apex.ps1 studio -Suite Research` | Regression plus fleet-cost and slope-creep characterization; failed research targets return failure |
 | `./apex.ps1 studio -Suite Multiplayer` | Two-client driver authorization, ownership, single simulator, and stale-input fallback |
@@ -27,6 +30,7 @@ Run commands from PowerShell 7 in the repository root.
 | `./apex.ps1 mode -Mode Client` | Select driver-owned execution, rebuild, then restart Play |
 | `./apex.ps1 dev` | Start local Rojo, absolute sourcemap watching, and background offline verification |
 | `./apex.ps1 dev -AutoCheckpoint` | Also commit and push stable, passing changes to a branch/PR |
+| `./apex.ps1 dev -StudioChecks -AutoCheckpoint` | Offline plus isolated Foundation gates before a branch/PR checkpoint |
 | `./apex.ps1 stop` | Stop only verified project-owned development processes |
 | `./apex.ps1 sync -Message 'Describe the change'` | Verify a stable worktree, commit, push, and create/reuse a PR |
 | `./apex.ps1 status` | Show Git and development-session state |
@@ -53,9 +57,13 @@ MCP edits to managed scripts must be reconciled back to source deliberately. Rec
 
 The watcher waits for stable edits, verifies once, and records the outcome in `.local/dev-health.json`. Unchanged failures wait for a new edit instead of retrying forever. An edit during verification cancels its checkpoint. Ignored caches, credentials, downloaded references, and build artifacts do not affect the worktree fingerprint or enter a commit.
 
+The watcher also verifies its initial state on startup. With `-StudioChecks`, the isolated Foundation suite is part of the local verification gate before any optional checkpoint. This does not edit or run Play in the owner's currently open places. Full physics/latency/soak suites remain separately selected work.
+
+Checks, standalone builds, and isolated Studio runs share a repository-local exclusive file lease. A concurrent verifier waits with a deadline rather than overwriting an artifact being tested. The OS releases the lease if the owning process exits; the ignored lock file is not a persistent busy flag.
+
 With `-AutoCheckpoint`, changes from clean `main` go to a new work branch. Further edits update that branch and PR. The watcher does not force-push, merge `main`, change branch protection, or publish cloud versions. A failing local check remains visible locally; it does not become a falsely verified GitHub checkpoint. CI independently checks every PR and main commit.
 
-The session is scoped to this repository and current login. Use `stop` before restarting it with different options. Process cleanup verifies both the recorded PID and its expected project argument before terminating the owned process tree. Start `dev` again after a machine restart; no system-wide background agent was installed.
+The session is scoped to this repository and current login. Repeating `dev` updates verification options by replacing only the owned watcher, preserving Rojo's connection and sourcemap process. Use `stop` when deliberately disconnecting all project services. Process cleanup verifies both the recorded PID and its expected project argument before terminating the owned process tree. Start `dev` again after a machine restart; no system-wide background agent was installed.
 
 ## MCP and agent context
 

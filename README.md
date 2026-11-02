@@ -7,7 +7,7 @@
 
 Apex Dynamics aims to make high-fidelity vehicle simulation on Roblox transparent, measurable, and open source. The project starts with explicit SI units, testable tire and wheel dynamics, and a small engine adapter. Fidelity is an engineering objective measured against data; the project does not yet claim real-vehicle accuracy or superiority over other chassis.
 
-**Status: experimental, measured development baseline.** Offline invariants, local engine regressions, and two-client ownership tests have been exercised. A slope-hold research target still fails. These results do not establish real-vehicle calibration or production networking. See [current state](docs/STATE.md), [validation gates](docs/validation.md), and the [integrated workflow](docs/development-workflow.md).
+**Current phase: project foundation and laboratory.** The default place runs infrastructure checks, diagnostics, and a bounded world window; it does not spawn a vehicle. Earlier physics and multiplayer code remains an opt-in experimental fixture. Vehicle feature development starts after the foundation gate. Read the [system design](docs/system-design.md), [laboratory guide](docs/laboratory.md), [platform capability matrix](docs/platform-capabilities.md), and [current state](docs/STATE.md).
 
 ## Quick start on Windows
 
@@ -18,10 +18,10 @@ git clone https://github.com/arthurffht/apex-dynamics.git
 cd apex-dynamics
 ./scripts/bootstrap.ps1 -InstallStudioPlugin
 ./apex.ps1 check
-./apex.ps1 dev -AutoCheckpoint
+./apex.ps1 dev -StudioChecks -AutoCheckpoint
 ```
 
-Open `build/ApexDynamicsSandbox.rbxlx` in Roblox Studio and connect its Rojo plugin to `localhost:34872`. Press Play, sit in the driver seat, and use **W/S**, **A/D**, and **Space**. Server simulation is the default; use `./apex.ps1 mode -Mode Client` for the experimental driver-owned comparison, then restart Play.
+Open the latest `build/ApexDynamicsSandbox.rbxlx` in Roblox Studio and connect only that place's Rojo plugin to `localhost:34872`. Press Play to run the Foundation suite and display its diagnostic panel. Fixed stations cover flat ground, a 10% grade, curbs, and split surfaces. A separate 25-cell seeded world window exercises logical sector residency. See the laboratory guide for test reruns, sector controls, and the optional historical vehicle fixture.
 
 The development session watches source, maintains the LSP sourcemap, runs verification, and optionally pushes passing checkpoints to a branch/PR. The reusable library is `build/ApexDynamics.rbxm`. All commands, cloud boundaries, and MCP setup are maintained in [one workflow reference](docs/development-workflow.md).
 
@@ -44,6 +44,7 @@ The brush helper and the sandbox's longitudinal solver are distinct reference mo
 | Path | Purpose |
 | --- | --- |
 | `src/core` | Engine-independent scalar physics in SI units |
+| `src/foundation` | Engine-independent world planning and bounded diagnostics |
 | `src/roblox` | Contact queries and Roblox impulse application |
 | `src/presets` | Explicitly synthetic reference configuration |
 | `examples` | Isolated sandbox and input transport |
@@ -53,6 +54,7 @@ The brush helper and the sandbox's longitudinal solver are distinct reference mo
 | `.agents/skills` | Repository-specific agent workflow without duplicated manuals |
 | `docs/research` | Evidence register, source catalog, and technical synthesis |
 | `docs/adr` | Architecture decisions and their consequences |
+| `laboratory.project.json` | Canonical static laboratory fixture scene |
 
 Start with [setup](docs/setup.md), [units](docs/units.md), and the [research map](docs/research/README.md). Contributions must include reproducible evidence; see [CONTRIBUTING.md](CONTRIBUTING.md).
 

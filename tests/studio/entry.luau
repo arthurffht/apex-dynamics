@@ -1,6 +1,10 @@
 --!strict
 -- Generated entry replaces the probe literal; the source suite remains a single file.
 local StudioTestService = game:GetService("StudioTestService")
+local laboratory = game:GetService("ServerScriptService"):FindFirstChild("ApexLabServer")
+if laboratory and laboratory:IsA("Script") then
+    laboratory.Enabled = false -- APEX_LAB_ENABLED
+end
 local sandbox = game:GetService("ServerScriptService"):FindFirstChild("ApexSandbox")
 if sandbox and sandbox:IsA("Script") then
     sandbox.Enabled = false -- APEX_SANDBOX_ENABLED

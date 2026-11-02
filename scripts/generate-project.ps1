@@ -23,6 +23,7 @@ $properties = $project.tree.Workspace.'$properties'
 $properties.AuthorityMode = @{Enum=$authorityValues[$engine.authorityMode]}
 $properties.UseFixedSimulation = @{Enum=$rolloutValues[$engine.fixedSimulation]}
 $properties.PhysicsSteppingMethod = @{Enum=$steppingValues[$engine.physicsSteppingMethod]}
+$properties.StreamingEnabled = [bool]$engine.streamingEnabled
 $project.serveAddress = '127.0.0.1'
 $project.servePort = 34872
 $project.servePlaceIds = @(0)

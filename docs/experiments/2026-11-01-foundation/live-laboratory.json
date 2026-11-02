@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "localDate": "2026-11-01",
+  "target": "ApexDynamicsSandbox.rbxlx",
+  "sourceFingerprint": "1abdda21832a76f882a0167a86013c11ea423bdcb78cc1d8673f7e4eca09b252",
+  "observations": {
+    "initial": {
+      "researchTargetsPassed": true,
+      "schemaVersion": 1,
+      "requiredPassed": true,
+      "sourceFingerprint": "1abdda21832a76f882a0167a86013c11ea423bdcb78cc1d8673f7e4eca09b252",
+      "durationS": 0.010373299999628216,
+      "seed": 20261101,
+      "cases": [
+        {
+          "id": "foundation.identity",
+          "name": "foundation.identity",
+          "passed": true,
+          "durationS": 0.000011299998732283711
+        },
+        {
+          "id": "foundation.gravity",
+          "name": "foundation.gravity",
+          "passed": true,
+          "durationS": 0.0000043000036384910345
+        },
+        {
+          "id": "foundation.safe-default",
+          "name": "foundation.safe-default",
+          "passed": true,
+          "durationS": 0.000014300007023848593
+        },
+        {
+          "id": "foundation.fixture-map",
+          "name": "foundation.fixture-map",
+          "passed": true,
+          "durationS": 0.000013500000932253897
+        },
+        {
+          "id": "foundation.world-budget",
+          "name": "foundation.world-budget",
+          "passed": true,
+          "durationS": 0.0000022000021999701858
+        },
+        {
+          "id": "foundation.world-idempotency",
+          "name": "foundation.world-idempotency",
+          "passed": true,
+          "durationS": 0.00012519999290816486
+        },
+        {
+          "id": "foundation.world-lifecycle",
+          "name": "foundation.world-lifecycle",
+          "passed": true,
+          "durationS": 0.006813699990743771
+        },
+        {
+          "id": "foundation.query-contracts",
+          "name": "foundation.query-contracts",
+          "passed": true,
+          "durationS": 0.003154200006974861
+        }
+      ],
+      "suite": "Foundation",
+      "runId": 1,
+      "scope": "Laboratory infrastructure; no vehicle fidelity claim"
+    },
+    "repeated": {
+      "researchTargetsPassed": true,
+      "schemaVersion": 1,
+      "requiredPassed": true,
+      "sourceFingerprint": "1abdda21832a76f882a0167a86013c11ea423bdcb78cc1d8673f7e4eca09b252",
+      "durationS": 0.008376900004805066,
+      "seed": 20261101,
+      "cases": [
+        {
+          "id": "foundation.identity",
+          "name": "foundation.identity",
+          "passed": true,
+          "durationS": 0.000011299998732283711
+        },
+        {
+          "id": "foundation.gravity",
+          "name": "foundation.gravity",
+          "passed": true,
+          "durationS": 0.0000041000021155923605
+        },
+        {
+          "id": "foundation.safe-default",
+          "name": "foundation.safe-default",
+          "passed": true,
+          "durationS": 0.000006099988240748644
+        },
+        {
+          "id": "foundation.fixture-map",
+          "name": "foundation.fixture-map",
+          "passed": true,
+          "durationS": 0.000014500008546747267
+        },
+        {
+          "id": "foundation.world-budget",
+          "name": "foundation.world-budget",
+          "passed": true,
+          "durationS": 0.000006700007361359894
+        },
+        {
+          "id": "foundation.world-idempotency",
+          "name": "foundation.world-idempotency",
+          "passed": true,
+          "durationS": 0.0002275000006193295
+        },
+        {
+          "id": "foundation.world-lifecycle",
+          "name": "foundation.world-lifecycle",
+          "passed": true,
+          "durationS": 0.00747550000960473
+        },
+        {
+          "id": "foundation.query-contracts",
+          "name": "foundation.query-contracts",
+          "passed": true,
+          "durationS": 0.00043429998913779855
+        }
+      ],
+      "suite": "Foundation",
+      "runId": 2,
+      "scope": "Laboratory infrastructure; no vehicle fidelity claim"
+    },
+    "referenceVehiclePresent": false,
+    "maximumPositionStuds": 2956.66845703125,
+    "invalidSectorRejected": true,
+    "finalActiveCells": 25,
+    "success": true,
+    "activeCells": 25
+  },
+  "sourceTransport": {
+    "target": "ApexDynamicsSandbox.rbxlx",
+    "diskEditReachedStudio": true,
+    "transport": "Rojo",
+    "probeRemovedFromStudio": true
+  },
+  "scope": "Foundation infrastructure, short lifecycle and a temporary comment round trip. No continuous chassis rebasing, soak, cloud or vehicle fidelity claim.",
+  "finalMode": "Edit"
+}

@@ -2,6 +2,13 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 local Package = ReplicatedStorage:WaitForChild("ApexDynamics")
+local Laboratory = require(Package.Config.Laboratory)
+if
+    not Laboratory.referenceVehicleEnabled
+    and workspace:GetAttribute("ApexReferenceEnabled") ~= true
+then
+    return
+end
 local ClientDriver = require(Package.Roblox.ClientDriver)
 local function key(code: Enum.KeyCode): number
     return if UserInputService:IsKeyDown(code) then 1 else 0

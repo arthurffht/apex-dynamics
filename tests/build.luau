@@ -7,6 +7,24 @@ local serde = require("@lune/serde")
 local place = roblox.deserializePlace(fs.readFile("build/ApexDynamicsSandbox.rbxlx"))
 local intended = serde.decode("json", fs.readFile(".local/generated/active.project.json"))
 local xml = fs.readFile("build/ApexDynamicsSandbox.rbxlx")
+local matrix = serde.decode("json", fs.readFile("config/validation-matrix.json"))
+assert(
+    matrix.schemaVersion == 1 and matrix.defaultSuite == "Foundation",
+    "Invalid validation matrix"
+)
+local suiteIds = {}
+for _, suite in matrix.suites do
+    assert(not suiteIds[suite.id], "Duplicate validation suite")
+    suiteIds[suite.id] = true
+    if suite.entry then
+        assert(fs.isFile(suite.entry), "Validation entrypoint is missing: " .. suite.entry)
+    else
+        assert(
+            suite.status == "planned" and not suite.requiredForFoundation,
+            "Required suite has no implementation"
+        )
+    end
+end
 for _, property in { "AuthorityMode", "PhysicsSteppingMethod", "UseFixedSimulation" } do
     local value = intended.tree.Workspace["$properties"][property].Enum
     assert(
@@ -16,9 +34,16 @@ for _, property in { "AuthorityMode", "PhysicsSteppingMethod", "UseFixedSimulati
 end
 local workspace = place:GetService("Workspace")
 assert(math.abs(workspace.Gravity - 35.02375) < 1e-4, "Incorrect sandbox gravity")
+assert(
+    workspace.StreamingEnabled == intended.tree.Workspace["$properties"].StreamingEnabled,
+    "Streaming profile mismatch"
+)
 assert(workspace:FindFirstChild("Ground"), "Missing test surface")
 local ground = workspace:FindFirstChild("Ground")
 assert(ground and ground.CFrame.Position.Y == -1, "Ground translation was not serialized")
+local lab = workspace:FindFirstChild("ApexLab")
+assert(lab and lab:GetAttribute("LabSchemaVersion") == 1, "Missing current laboratory scene")
+assert(lab:FindFirstChild("Stations"), "Laboratory fixtures were not built")
 local packageRoot = place:GetService("ReplicatedStorage"):FindFirstChild("ApexDynamics")
 assert(packageRoot and packageRoot:FindFirstChild("Core"), "Missing core package")
 assert(packageRoot:FindFirstChild("Roblox"), "Missing engine adapter")

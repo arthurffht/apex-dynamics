@@ -4,6 +4,7 @@
     "$className": "DataModel",
     "Workspace": {
       "$properties": { "Gravity": 35.02375 },
+      "ApexLab": { "$path": "laboratory.project.json" },
       "Ground": {
         "$className": "Part",
         "$properties": {
@@ -31,10 +32,12 @@
       }
     },
     "ServerScriptService": {
+      "ApexLabServer": { "$path": "examples/lab.server.luau" },
       "ApexSandbox": { "$path": "examples/sandbox.server.luau" }
     },
     "StarterPlayer": {
       "StarterPlayerScripts": {
+        "ApexLabHUD": { "$path": "examples/lab.client.luau" },
         "ApexInput": { "$path": "examples/input.client.luau" }
       }
     }

@@ -18,6 +18,13 @@ $id=[Guid]::NewGuid().ToString('N')
 $ignored=Join-Path $root ('.local/harness-'+$id+'.txt')
 $candidate=Join-Path $root ('tests/harness-'+$id+'.txt')
 $testProfilePath=Join-Path $root ('.local/profile-'+$id+'.json')
+$ownedLease=$null
+try{$ownedLease=Enter-ApexVerification -TimeoutSeconds 0}catch [TimeoutException]{}
+try {
+    $blocked=$false
+    try{$unexpectedLease=Enter-ApexVerification -TimeoutSeconds 0; $unexpectedLease.Dispose()}catch [TimeoutException]{$blocked=$true}
+    Assert-Harness $blocked 'Concurrent artifact verification was not excluded'
+} finally { if($ownedLease){$ownedLease.Dispose()} }
 try{
     [IO.File]::WriteAllText($ignored,'local credential/cache fixture')
     Assert-Harness ((Get-ApexWorktreeFingerprint) -eq $baseline) 'Ignored data changed the checkpoint fingerprint'

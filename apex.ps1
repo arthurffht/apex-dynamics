@@ -5,9 +5,10 @@ param(
     [string]$Query,
     [string]$Message='Checkpoint verified development changes',
     [switch]$AutoCheckpoint,
+    [switch]$StudioChecks,
     [switch]$Execute,
     [string]$Evidence,
-    [ValidateSet('Smoke','Regression','Research','Multiplayer','Audit')][string]$Suite='Regression'
+    [ValidateSet('Smoke','Regression','Research','Multiplayer','Audit','Foundation')][string]$Suite='Foundation'
 )
 $ErrorActionPreference='Stop'
 Import-Module (Join-Path $PSScriptRoot 'scripts/lib/Project.psm1') -Force
@@ -36,9 +37,9 @@ try {
             & ./apex.ps1 build
             Write-Output "Simulation host: $Mode. Restart play mode after Rojo synchronizes; this is ordinary ownership, not rollback Server Authority."
         }
-        'dev' { & ./scripts/dev.ps1 -AutoCheckpoint:$AutoCheckpoint }
+        'dev' { & ./scripts/dev.ps1 -AutoCheckpoint:$AutoCheckpoint -StudioChecks:$StudioChecks }
         'stop' { & ./scripts/dev.ps1 -Stop }
-        'sync' { & ./scripts/sync.ps1 -Message $Message }
+        'sync' { & ./scripts/sync.ps1 -Message $Message -StudioChecks:$StudioChecks }
         'audit' { & ./scripts/audit-studio.ps1 }
         'publish' { & ./scripts/publish.ps1 -Execute:$Execute -Evidence $Evidence }
         'setup-agents' { & ./scripts/setup-agent-tools.ps1; & ./scripts/fetch-references.ps1; & ./scripts/configure-agents.ps1 }

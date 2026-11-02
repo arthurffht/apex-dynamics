@@ -1,11 +1,11 @@
 [CmdletBinding()]
-param([switch]$AutoCheckpoint)
+param([switch]$AutoCheckpoint,[switch]$StudioChecks)
 $ErrorActionPreference='Stop'
 Import-Module (Join-Path $PSScriptRoot 'lib/Project.psm1') -Force
 Initialize-ApexEnvironment
 $root=Get-ApexRoot
 Set-Location $root
-$last=Get-ApexWorktreeFingerprint
+$last=''
 $healthPath=Join-Path $root '.local/dev-health.json'
 while ($true) {
     Start-Sleep -Milliseconds 1500
@@ -15,11 +15,12 @@ while ($true) {
     $stable=Get-ApexWorktreeFingerprint
     if ($stable -ne $current) { continue }
     try {
-        if ($AutoCheckpoint) { & ./scripts/sync.ps1 }
-        else { & ./scripts/check.ps1 }
-        $health=@{success=$true;verifiedAtUtc=[DateTime]::UtcNow.ToString('o');fingerprint=$stable;githubCheckpoints=[bool]$AutoCheckpoint}
+        if ($AutoCheckpoint) { & ./scripts/sync.ps1 -StudioChecks:$StudioChecks }
+        else { & ./scripts/check.ps1; if ($StudioChecks) { & ./scripts/studio-test.ps1 -Suite Foundation } }
+        if ((Get-ApexWorktreeFingerprint) -ne $stable) { throw 'Files changed during background verification; result cancelled' }
+        $health=@{success=$true;verifiedAtUtc=[DateTime]::UtcNow.ToString('o');fingerprint=$stable;githubCheckpoints=[bool]$AutoCheckpoint;studioChecks=[bool]$StudioChecks}
     } catch {
-        $health=@{success=$false;verifiedAtUtc=[DateTime]::UtcNow.ToString('o');fingerprint=$stable;error=$_.Exception.Message;githubCheckpoints=[bool]$AutoCheckpoint}
+        $health=@{success=$false;verifiedAtUtc=[DateTime]::UtcNow.ToString('o');fingerprint=$stable;error=$_.Exception.Message;githubCheckpoints=[bool]$AutoCheckpoint;studioChecks=[bool]$StudioChecks}
     }
     $health | ConvertTo-Json | Set-Content -LiteralPath $healthPath -Encoding utf8
     $last=$stable

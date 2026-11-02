@@ -1,5 +1,19 @@
 $ErrorActionPreference = 'Stop'
 function Get-ApexRoot { Split-Path -Parent (Split-Path -Parent $PSScriptRoot) }
+function Enter-ApexVerification {
+    param([ValidateRange(0,600)][int]$TimeoutSeconds=300)
+    $directory=Join-Path (Get-ApexRoot) '.local'
+    [IO.Directory]::CreateDirectory($directory) | Out-Null
+    $path=Join-Path $directory 'verification.lock'
+    $deadline=[DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
+    while ($true) {
+        try { return [IO.File]::Open($path,[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None) }
+        catch [IO.IOException] {
+            if ([DateTime]::UtcNow -ge $deadline) { throw [TimeoutException]::new('Another project verification owns the artifact lock') }
+            Start-Sleep -Milliseconds 250
+        }
+    }
+}
 function Initialize-ApexEnvironment {
     $paths = @((Join-Path $env:USERPROFILE '.rokit\bin'),(Join-Path $env:LOCALAPPDATA 'ApexDynamics\tools\gh\bin'),(Join-Path $env:LOCALAPPDATA 'ApexDynamics\tools\uv'),(Join-Path $env:USERPROFILE '.local\bin'))
     $env:Path = ($paths -join ';') + ';' + $env:Path
@@ -20,7 +34,7 @@ function Get-ApexSourceSnapshot {
     foreach ($directory in @('src','examples','config')) {
         $files += Get-ChildItem -LiteralPath (Join-Path $root $directory) -File -Recurse | Where-Object { $_.Extension -in '.luau','.json' }
     }
-    $files += Get-Item -LiteralPath (Join-Path $root 'default.project.json'),(Join-Path $root 'package.project.json')
+    $files += Get-Item -LiteralPath (Join-Path $root 'default.project.json'),(Join-Path $root 'package.project.json'),(Join-Path $root 'laboratory.project.json')
     $records = @($files | Sort-Object FullName | ForEach-Object {
         $relative = [IO.Path]::GetRelativePath($root,$_.FullName).Replace('\','/')
         $content = [IO.File]::ReadAllText($_.FullName).Replace("`r`n","`n")
@@ -42,4 +56,4 @@ function Get-ApexWorktreeFingerprint {
     }
     [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(($records -join "`n")))).ToLowerInvariant()
 }
-Export-ModuleMember -Function Get-ApexRoot,Initialize-ApexEnvironment,Invoke-ApexTool,Get-ApexStudio,Get-ApexSourceSnapshot,Get-ApexWorktreeFingerprint
+Export-ModuleMember -Function Get-ApexRoot,Initialize-ApexEnvironment,Invoke-ApexTool,Get-ApexStudio,Get-ApexSourceSnapshot,Get-ApexWorktreeFingerprint,Enter-ApexVerification

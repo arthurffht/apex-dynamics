@@ -1,0 +1,267 @@
+{
+  "name": "ApexLab",
+  "tree": {
+    "$className": "Folder",
+    "$attributes": {
+      "LabSchemaVersion": 1,
+      "Phase": "Foundation",
+      "Profile": "LocalLaboratory"
+    },
+    "Stations": {
+      "$className": "Folder",
+      "Flat": {
+        "$className": "Model",
+        "Surface": {
+          "$className": "Part",
+          "$attributes": {
+            "TestFamily": "StaticSupport"
+          },
+          "$properties": {
+            "Anchored": true,
+            "Size": [
+              140,
+              1,
+              160
+            ],
+            "CFrame": [
+              -180,
+              0.5,
+              -300,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Color": [
+              0.25,
+              0.3,
+              0.35
+            ],
+            "Material": "Concrete"
+          }
+        }
+      },
+      "Grade10": {
+        "$className": "Model",
+        "Ramp": {
+          "$className": "Part",
+          "$attributes": {
+            "Grade": 0.1,
+            "Calibration": "GeometryOnly"
+          },
+          "$properties": {
+            "Anchored": true,
+            "Size": [
+              100,
+              2,
+              160
+            ],
+            "CFrame": [
+              0,
+              9,
+              -300,
+              1,
+              0,
+              0,
+              0,
+              0.9950371902099892,
+              -0.09950371902099893,
+              0,
+              0.09950371902099893,
+              0.9950371902099892
+            ],
+            "Color": [
+              0.25,
+              0.35,
+              0.43
+            ],
+            "Material": "Concrete"
+          }
+        }
+      },
+      "Curbs": {
+        "$className": "Model",
+        "Step005": {
+          "$className": "Part",
+          "$attributes": {
+            "HeightM": 0.05
+          },
+          "$properties": {
+            "Anchored": true,
+            "Size": [
+              100,
+              0.17857142857142858,
+              20
+            ],
+            "CFrame": [
+              180,
+              0.08928571428571429,
+              -250,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Color": [
+              0.5,
+              0.38,
+              0.2
+            ],
+            "Material": "Concrete"
+          }
+        },
+        "Step010": {
+          "$className": "Part",
+          "$attributes": {
+            "HeightM": 0.1
+          },
+          "$properties": {
+            "Anchored": true,
+            "Size": [
+              100,
+              0.35714285714285715,
+              20
+            ],
+            "CFrame": [
+              180,
+              0.17857142857142858,
+              -290,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Color": [
+              0.6,
+              0.4,
+              0.2
+            ],
+            "Material": "Concrete"
+          }
+        },
+        "Step020": {
+          "$className": "Part",
+          "$attributes": {
+            "HeightM": 0.2
+          },
+          "$properties": {
+            "Anchored": true,
+            "Size": [
+              100,
+              0.7142857142857143,
+              20
+            ],
+            "CFrame": [
+              180,
+              0.35714285714285715,
+              -330,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Color": [
+              0.7,
+              0.42,
+              0.2
+            ],
+            "Material": "Concrete"
+          }
+        }
+      },
+      "SplitSurface": {
+        "$className": "Model",
+        "Left": {
+          "$className": "Part",
+          "$attributes": {
+            "SurfaceId": "dry-reference",
+            "Calibration": "Pending"
+          },
+          "$properties": {
+            "Anchored": true,
+            "Size": [
+              70,
+              1,
+              120
+            ],
+            "CFrame": [
+              -35,
+              0.5,
+              -520,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Color": [
+              0.3,
+              0.35,
+              0.4
+            ],
+            "Material": "Concrete"
+          }
+        },
+        "Right": {
+          "$className": "Part",
+          "$attributes": {
+            "SurfaceId": "low-grip-reference",
+            "Calibration": "Pending"
+          },
+          "$properties": {
+            "Anchored": true,
+            "Size": [
+              70,
+              1,
+              120
+            ],
+            "CFrame": [
+              35,
+              0.5,
+              -520,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Color": [
+              0.25,
+              0.4,
+              0.5
+            ],
+            "Material": "Concrete"
+          }
+        }
+      }
+    }
+  }
+}
