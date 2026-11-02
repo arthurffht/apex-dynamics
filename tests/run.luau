@@ -6,6 +6,7 @@ local Suspension = require("../src/core/Suspension")
 local Powertrain = require("../src/core/Powertrain")
 local Input = require("../src/core/Input")
 local Preset = require("../src/presets/ReferenceSedan")
+local DriverSession = require("../src/roblox/DriverSession")
 
 local cases = 0
 local assertions = 0
@@ -214,6 +215,72 @@ test("remote input rejects malformed and nonfinite commands", function()
     }
     for _, payload in invalid do
         check(Input.validate(payload) == nil, "Malformed input accepted")
+    end
+end)
+
+test("ownership policy selects exactly one simulator", function()
+    for _, host in { "Server", "Client" } do
+        for _, driver in { 0, 10, 20 } do
+            local simulators = if DriverSession.shouldSimulate(host, true, 0, driver) then 1 else 0
+            for _, localUser in { 10, 20 } do
+                if DriverSession.shouldSimulate(host, false, localUser, driver) then
+                    simulators += 1
+                end
+            end
+            check(simulators == 1, "Concurrent or missing simulator")
+        end
+    end
+    check(not DriverSession.shouldSimulate("Unknown", true, 0, 0), "Unknown mode must fail closed")
+end)
+
+test("wheel API rejects nonfinite fields", function()
+    local fields = {
+        "angularSpeedRadS",
+        "longitudinalSpeedMS",
+        "driveTorqueNm",
+        "brakeTorqueNm",
+        "inertiaKgM2",
+        "radiusM",
+        "longitudinalStiffnessN",
+        "forceLimitN",
+        "slipRegularizationMS",
+        "dt",
+    }
+    for _, field in fields do
+        for _, value in { 0 / 0, math.huge, -math.huge } do
+            local ok = pcall(Tire.stepWheel, wheel({ [field] = value }))
+            check(not ok, "Nonfinite " .. field .. " was accepted")
+        end
+    end
+end)
+
+test("passive wheel energy under seeded adversarial physical inputs", function()
+    local seed = 20261101
+    local function random(): number
+        seed = (seed * 48271) % 2147483647
+        return seed / 2147483647
+    end
+    for _ = 1, 4000 do
+        local data = wheel({
+            angularSpeedRadS = (random() - 0.5) * 2000,
+            inertiaKgM2 = 0.1 + random() * 100,
+            radiusM = 0.05 + random() * 2,
+            longitudinalStiffnessN = 1000 + random() * 1e6,
+            forceLimitN = random() * 100000,
+            slipRegularizationMS = 0.1 + random() * 10,
+            brakeTorqueNm = random() * 10000,
+            dt = 0.0001 + random() * 0.1,
+        })
+        local nextOmega, force = Tire.stepWheel(data)
+        check(
+            Numerics.isFinite(nextOmega) and Numerics.isFinite(force),
+            "Nonfinite adversarial result"
+        )
+        check(
+            nextOmega ^ 2 <= data.angularSpeedRadS ^ 2 + 1e-6,
+            "Passive wheel gained kinetic energy"
+        )
+        check(math.abs(force) <= data.forceLimitN + 1e-6, "Adversarial grip exceeded")
     end
 end)
 

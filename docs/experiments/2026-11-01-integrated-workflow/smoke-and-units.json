@@ -1,0 +1,406 @@
+{
+  "researchTargetsPassed": true,
+  "schemaVersion": 1,
+  "sourceFingerprint": "a23156db7fd367c62f947ad3b267ca05f88fa2627bbec40c47683c9e2a7ad2a4",
+  "engineVersion": "0.745.0.7451137",
+  "engineVersionSource": "Studio executable file version",
+  "requiredPassed": true,
+  "suite": "Smoke",
+  "gravityStudsS2": 35.02375030517578,
+  "cases": [
+    {
+      "passed": true,
+      "research": false,
+      "name": "static-support",
+      "metrics": {
+        "expectedHeightM": 0.7627397656250001,
+        "samples": 232,
+        "heightM": 0.7688128566741944,
+        "maximumDtS": 0.06666667014360428,
+        "durationS": 4.012500209733844,
+        "residualSpeedMS": 0.06149957180023194,
+        "trace": [
+          {
+            "timeS": 0.13333334028720856,
+            "speedMS": 0.5720546817779542,
+            "supported": 0,
+            "heightM": 1.0821232986450195,
+            "upY": 1
+          },
+          {
+            "timeS": 0.24583334662020206,
+            "speedMS": 2.083849830627442,
+            "supported": 0,
+            "heightM": 0.8742468452453614,
+            "upY": 1
+          },
+          {
+            "timeS": 0.3458333518356085,
+            "speedMS": 0.9031107902526856,
+            "supported": 4,
+            "heightM": 0.6965233516693116,
+            "upY": 1
+          },
+          {
+            "timeS": 0.4458333570510149,
+            "speedMS": 0.15503452301025392,
+            "supported": 4,
+            "heightM": 0.6808129119873048,
+            "upY": 1
+          },
+          {
+            "timeS": 0.5458333622664213,
+            "speedMS": 0.4462128496170044,
+            "supported": 4,
+            "heightM": 0.725203914642334,
+            "upY": 1
+          },
+          {
+            "timeS": 0.6458333674818277,
+            "speedMS": 0.25941474914550783,
+            "supported": 4,
+            "heightM": 0.767029037475586,
+            "upY": 1
+          },
+          {
+            "timeS": 0.7458333726972342,
+            "speedMS": 0.003860493898391724,
+            "supported": 4,
+            "heightM": 0.7836085891723633,
+            "upY": 1
+          },
+          {
+            "timeS": 0.8458333779126406,
+            "speedMS": 0.12875571727752685,
+            "supported": 4,
+            "heightM": 0.7811957168579102,
+            "upY": 1
+          },
+          {
+            "timeS": 0.945833383128047,
+            "speedMS": 0.1387504804134369,
+            "supported": 4,
+            "heightM": 0.7731409263610841,
+            "upY": 1
+          },
+          {
+            "timeS": 1.0500000547617674,
+            "speedMS": 0.09840746760368348,
+            "supported": 4,
+            "heightM": 0.7677970123291016,
+            "upY": 1
+          },
+          {
+            "timeS": 1.162500061094761,
+            "speedMS": 0.05907528400421143,
+            "supported": 4,
+            "heightM": 0.766522150039673,
+            "upY": 1
+          },
+          {
+            "timeS": 1.2625000663101673,
+            "speedMS": 0.048378527164459235,
+            "supported": 4,
+            "heightM": 0.7675295162200928,
+            "upY": 1
+          },
+          {
+            "timeS": 1.3625000715255737,
+            "speedMS": 0.051911835670471196,
+            "supported": 4,
+            "heightM": 0.7686811447143556,
+            "upY": 1
+          },
+          {
+            "timeS": 1.4625000767409801,
+            "speedMS": 0.058671219348907476,
+            "supported": 4,
+            "heightM": 0.7692174053192139,
+            "upY": 1
+          },
+          {
+            "timeS": 1.5625000819563866,
+            "speedMS": 0.06270004987716675,
+            "supported": 4,
+            "heightM": 0.769213800430298,
+            "upY": 1
+          },
+          {
+            "timeS": 1.662500087171793,
+            "speedMS": 0.06337603330612183,
+            "supported": 4,
+            "heightM": 0.7690121269226075,
+            "upY": 1
+          },
+          {
+            "timeS": 1.7625000923871994,
+            "speedMS": 0.062415856122970584,
+            "supported": 4,
+            "heightM": 0.7688541126251222,
+            "upY": 1
+          },
+          {
+            "timeS": 1.8625000976026058,
+            "speedMS": 0.06140602827072144,
+            "supported": 4,
+            "heightM": 0.7688040447235108,
+            "upY": 1
+          },
+          {
+            "timeS": 1.9625001028180122,
+            "speedMS": 0.0609648883342743,
+            "supported": 4,
+            "heightM": 0.7688232040405274,
+            "upY": 1
+          },
+          {
+            "timeS": 2.0625001080334187,
+            "speedMS": 0.060991182327270514,
+            "supported": 4,
+            "heightM": 0.7688569164276123,
+            "upY": 1
+          },
+          {
+            "timeS": 2.162500113248825,
+            "speedMS": 0.061176266670227054,
+            "supported": 4,
+            "heightM": 0.768876543045044,
+            "upY": 1
+          },
+          {
+            "timeS": 2.2625001184642315,
+            "speedMS": 0.06131253480911256,
+            "supported": 4,
+            "heightM": 0.7688793468475342,
+            "upY": 1
+          },
+          {
+            "timeS": 2.362500123679638,
+            "speedMS": 0.06135049462318421,
+            "supported": 4,
+            "heightM": 0.768874273300171,
+            "upY": 1
+          },
+          {
+            "timeS": 2.4625001288950443,
+            "speedMS": 0.061330325603485114,
+            "supported": 4,
+            "heightM": 0.7688692665100099,
+            "upY": 1
+          },
+          {
+            "timeS": 2.5625001341104507,
+            "speedMS": 0.06129963397979737,
+            "supported": 4,
+            "heightM": 0.7688671302795411,
+            "upY": 1
+          },
+          {
+            "timeS": 2.662500139325857,
+            "speedMS": 0.06128320336341859,
+            "supported": 4,
+            "heightM": 0.7688673973083496,
+            "upY": 1
+          },
+          {
+            "timeS": 2.7625001445412636,
+            "speedMS": 0.061281350851058965,
+            "supported": 4,
+            "heightM": 0.7688681983947755,
+            "upY": 1
+          },
+          {
+            "timeS": 2.86250014975667,
+            "speedMS": 0.061285698413848885,
+            "supported": 4,
+            "heightM": 0.7688689994812012,
+            "upY": 1
+          },
+          {
+            "timeS": 2.9625001549720764,
+            "speedMS": 0.06129110574722291,
+            "supported": 4,
+            "heightM": 0.7688694000244142,
+            "upY": 1
+          },
+          {
+            "timeS": 3.062500160187483,
+            "speedMS": 0.06129350066184998,
+            "supported": 4,
+            "heightM": 0.7688690662384033,
+            "upY": 1
+          },
+          {
+            "timeS": 3.1625001654028893,
+            "speedMS": 0.061291898488998416,
+            "supported": 4,
+            "heightM": 0.7688687324523926,
+            "upY": 1
+          },
+          {
+            "timeS": 3.2625001706182957,
+            "speedMS": 0.06129101395606995,
+            "supported": 4,
+            "heightM": 0.7688689994812012,
+            "upY": 1
+          },
+          {
+            "timeS": 3.362500175833702,
+            "speedMS": 0.061291815042495736,
+            "supported": 4,
+            "heightM": 0.7688689994812012,
+            "upY": 1
+          },
+          {
+            "timeS": 3.4625001810491085,
+            "speedMS": 0.061291915178298954,
+            "supported": 4,
+            "heightM": 0.7688689327239991,
+            "upY": 1
+          },
+          {
+            "timeS": 3.562500186264515,
+            "speedMS": 0.06129171490669251,
+            "supported": 4,
+            "heightM": 0.7688689327239991,
+            "upY": 1
+          },
+          {
+            "timeS": 3.6625001914799213,
+            "speedMS": 0.0612916648387909,
+            "supported": 4,
+            "heightM": 0.7688689327239991,
+            "upY": 1
+          },
+          {
+            "timeS": 3.7625001966953278,
+            "speedMS": 0.06284175038337708,
+            "supported": 4,
+            "heightM": 0.7691467094421387,
+            "upY": 1
+          },
+          {
+            "timeS": 3.862500201910734,
+            "speedMS": 0.06304223895072937,
+            "supported": 4,
+            "heightM": 0.7689637279510498,
+            "upY": 1
+          },
+          {
+            "timeS": 3.9625002071261406,
+            "speedMS": 0.062100111246109015,
+            "supported": 4,
+            "heightM": 0.7688408279418946,
+            "upY": 1
+          }
+        ],
+        "peakSpeedMS": 2.3289852142333984,
+        "meanDtS": 0.017295259524714845
+      }
+    },
+    {
+      "passed": true,
+      "research": false,
+      "name": "free-body-impulse-units",
+      "metrics": {
+        "expectedVelocityMS": 2,
+        "observedVelocityMS": 2.000000114440918,
+        "observedMassKg": 1400.0000546875
+      }
+    }
+  ],
+  "sourceSnapshot": {
+    "fingerprint": "a23156db7fd367c62f947ad3b267ca05f88fa2627bbec40c47683c9e2a7ad2a4",
+    "files": [
+      {
+        "path": "config/agent-tools.json",
+        "sha256": "d479e997f745f97de17f739cfc4d8e8ddcf2f447c36c8be4a09e82ebb29ae709"
+      },
+      {
+        "path": "config/cloud.example.json",
+        "sha256": "e834feb2bbac99f6eb4366b7e82744a7161251ecd6b555d17ce0590e5f721dc6"
+      },
+      {
+        "path": "config/engine.json",
+        "sha256": "e2003cac66eaa8448f9c1346450f5261aa13dfc0c843c255027512567d86d5d0"
+      },
+      {
+        "path": "default.project.json",
+        "sha256": "4da2bc38217c6409ae582a3a9d1d673311bea148df58bb43550f56168ef6dc05"
+      },
+      {
+        "path": "examples/input.client.luau",
+        "sha256": "a40fd8be3aaed9138e2e43afb08c4583a76716a8a4f126a69e1b58f9fdc5d5c9"
+      },
+      {
+        "path": "examples/sandbox.server.luau",
+        "sha256": "cbce5bd41a5873ef51286da8675aa061a1794ced62c5f63290a9e5bc691be3ce"
+      },
+      {
+        "path": "package.project.json",
+        "sha256": "5d2bb5a866c6aeec702e13a37e842530f83ee098f02629b8668d143b7dac0c7c"
+      },
+      {
+        "path": "src/config/Runtime.luau",
+        "sha256": "c86f8d67cb6b95977c19389b56d5b430951aa3acd5c6defb8ce895377898357f"
+      },
+      {
+        "path": "src/core/Input.luau",
+        "sha256": "296c2ef9aa225dea7c4af1aeabc3cb937ebaf0fde91a46d57050a526be424a7e"
+      },
+      {
+        "path": "src/core/Numerics.luau",
+        "sha256": "01961183ad585368c8d8612dc69f30cdb302304b4e2f9fd224ba9b33617575cf"
+      },
+      {
+        "path": "src/core/Powertrain.luau",
+        "sha256": "ac9bbcf88909a86c6f5adba056c8dcda810d39036808f31186fa985a5705d737"
+      },
+      {
+        "path": "src/core/Suspension.luau",
+        "sha256": "5c2312224e3a4dcae3ba8107015e48b6735e5cc8f6a8c6567f2e9b5c5e1c664a"
+      },
+      {
+        "path": "src/core/Tire.luau",
+        "sha256": "724cd3f5e8a90c97c976269b65dbdacd0792c155b7ea51f7c8271c311627f76e"
+      },
+      {
+        "path": "src/core/Units.luau",
+        "sha256": "a4859d652483a455876d052796d7b428575f321f2b4951dc6474927e9cda15c8"
+      },
+      {
+        "path": "src/presets/ReferenceSedan.luau",
+        "sha256": "46e4846f765d712c01fd78eb5ef58bca3760416d52198a9aaa2bf4a36ea31d5c"
+      },
+      {
+        "path": "src/roblox/ClientDriver.luau",
+        "sha256": "5b20cdaf8952152aba335fcb705414e3be7563aed71ff2b409d8103ee3a22788"
+      },
+      {
+        "path": "src/roblox/DriverSession.luau",
+        "sha256": "bd45a9ce0f42264e6f8fac29bcf83c41b17d53424c656b385b2b53dacd5d5d8c"
+      },
+      {
+        "path": "src/roblox/Vehicle.luau",
+        "sha256": "44b7dc67adf25c77f785ee8965ec097ba1a51393a5506e50af0fb80ca82a5555"
+      },
+      {
+        "path": "src/roblox/VehicleFactory.luau",
+        "sha256": "6f47d34902e53d02d3b95d2cd445b9febdb2008a9ae0328539cd9c6d07f16f0d"
+      }
+    ]
+  },
+  "harness": {
+    "runnerSha256": "4a8153ffab1043214cd7299dd2b88666901775dc3f025da1aae6a13333104bb1",
+    "toolchainSha256": "3f21c8227d94b613e8a9c5bc5d8e274c449c2f43c786897f0f3b16e3374d45a4",
+    "entrySha256": "883633063e91cce1702083f810a4936f8565217ca2dd26643f1331a88903fa8d",
+    "suiteSha256": "daf07dba7aa82001a94f9b57776ae4ca58b1f1fe54ea37a3364352c6891bac20",
+    "suitePath": "tests/studio/suite.server.luau"
+  },
+  "requestedEngineProfile": {
+    "authorityMode": "Automatic",
+    "fixedSimulation": "Disabled",
+    "physicsSteppingMethod": "Fixed"
+  },
+  "testSuiteSha256": "daf07dba7aa82001a94f9b57776ae4ca58b1f1fe54ea37a3364352c6891bac20"
+}

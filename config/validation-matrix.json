@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "phase": "Foundation",
+  "defaultSuite": "Foundation",
+  "suites": [
+    {
+      "id": "Foundation",
+      "entry": "tests/studio/foundation.server.luau",
+      "status": "implemented",
+      "requiredForFoundation": true,
+      "topology": "single Studio server",
+      "purpose": "Laboratory identity, fixtures, safe defaults, world budgets/lifecycle and query semantics"
+    },
+    {
+      "id": "OfflineFoundation",
+      "entry": "tests/foundation.luau",
+      "status": "implemented",
+      "requiredForFoundation": true,
+      "topology": "Lune",
+      "purpose": "Signed sector normalization, deterministic plans, input rejection and bounded diagnostics"
+    },
+    {
+      "id": "Regression",
+      "entry": "tests/studio/suite.server.luau",
+      "status": "implemented",
+      "requiredForFoundation": false,
+      "topology": "isolated Studio",
+      "purpose": "Historical opt-in vehicle fixture; no new vehicle features in this phase"
+    },
+    {
+      "id": "Multiplayer",
+      "entry": "tests/studio/multiplayer.server.luau",
+      "status": "implemented",
+      "requiredForFoundation": false,
+      "topology": "two local clients; Server and Client profiles",
+      "purpose": "Ownership/input fixture; imposed network conditions are separate"
+    },
+    {
+      "id": "Audit",
+      "entry": "tests/studio/audit.luau",
+      "status": "implemented",
+      "requiredForFoundation": true,
+      "topology": "isolated edit place plus official MCP probe",
+      "purpose": "Source, unexpected-script, missing/stale runtime identity"
+    },
+    {
+      "id": "Research",
+      "entry": "tests/studio/suite.server.luau",
+      "status": "characterization",
+      "requiredForFoundation": false,
+      "topology": "isolated Studio",
+      "purpose": "Retain measured slope-hold failure and script-cost characterization"
+    },
+    {
+      "id": "OriginRebase",
+      "status": "planned",
+      "requiredForFoundation": false,
+      "acceptance": "Pose/velocity/constraints/camera/query/ownership invariants across an origin epoch; no live rebase implemented"
+    },
+    {
+      "id": "NetworkImpairment",
+      "status": "planned",
+      "requiredForFoundation": false,
+      "acceptance": "Explicit ping/jitter/loss profiles and measured response/reconciliation under each host mode"
+    },
+    {
+      "id": "ContactComparison",
+      "status": "planned",
+      "requiredForFoundation": false,
+      "acceptance": "Equal fixture/input data for ray, finite-volume, and native-constraint variants"
+    },
+    {
+      "id": "MemorySoak",
+      "status": "planned",
+      "requiredForFoundation": false,
+      "acceptance": "Long-run instance/connection/memory plateaus, repeated stop/restart, failure and recovery; bounded short lifecycle checks are not a soak test"
+    }
+  ]
+}

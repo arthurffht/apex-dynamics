@@ -1,33 +1,57 @@
 # Project state
 
-Updated: 2026-11-01.
+Updated: 2026-11-01 (America/Sao_Paulo).
 
-## Objective
+## Current phase
 
-Build Apex Dynamics into a rigorously validated open-source Roblox vehicle dynamics library. Repository language is professional English; the owner's working chat may use Portuguese.
+Deliver the professional project foundation and a current Studio laboratory. The owner explicitly deferred vehicle implementation. Do not start new tire, suspension, powertrain, controller, or vehicle-feature work until foundation acceptance and an explicit request to proceed. Preserve earlier vehicle code and measurements as opt-in experimental fixtures.
 
-## Established foundation
+Read system-design.md for architecture/contracts, laboratory.md for place operation, platform-capabilities.md for engine/MCP/Open Cloud boundaries, and development-workflow.md for commands. ADR-005 supersedes the earlier immediate slope-hold work queue.
 
-- New repository initialized from an empty workspace; public remote: `https://github.com/arthurffht/apex-dynamics`.
-- GitHub CLI authenticated as `arthurffht`; HTTPS Git integration configured. Local author uses the account's GitHub no-reply address.
-- Rokit, Rojo, StyLua, Selene, Lune, Luau LSP, and Wally installed; Rojo's Studio plugin installed.
-- Source inputs preserved under ignored `.local/research`; original hashes and extracted-file metadata indexed in `docs/research/catalog.json`.
-- Strict Luau SI modules, synthetic sedan, query-based Roblox adapter, server-owned sandbox, and reusable model build created.
-- Local format, lint, pure/Roblox type checks, 15 numerical cases / 20,085 assertions, two Rojo builds, and generated artifact inspection passed.
-- GitHub Actions workflow mirrors the offline checks. Its actual remote run status must be checked on the current commit.
-- The first published foundation commit passed CI on GitHub. Branch protection, linear history, repository labels, a validation milestone, and a research/physics backlog are configured.
-- The repeatable Studio CLI static-support smoke passed on engine 0.745.0.7451137: 0.760558 m height against a 0.762740 m prediction, four contacts, upright chassis, and 0.001784 m/s residual speed. The experiment report includes source hashes and failed/inconclusive attempts. Full Gate B remains pending.
+## Decisions
 
-## Limits and unverified work
+- Local source plus Rojo is canonical; GitHub stores verified checkpoints and PRs. Cloud is an explicit staging promotion, not a second editable codebase.
+- Default place: no vehicle, eight automatic infrastructure checks, fixed stations, diagnostic HUD, bounded event history, and a seeded 25-cell logical world window.
+- Future vehicle: native rigid chassis, replaceable contact provider and SI force adapter, independent corner suspension contracts. Raycast is the reference; finite-volume/native-constraint alternatives need comparative evidence. No new vehicle equations were added in this phase.
+- Engine profile: Automatic authority, Fixed native stepping, fixed-simulation rollout disabled, streaming disabled for lab residency. Ordinary Server hosting is the fixture default; Client is opt-in. Neither is rollback Server Authority.
+- Properties unavailable to this MCP context are serialized by generation/build; reopen the generated place for engine-profile changes. Open Cloud cannot grant missing engine permissions.
+- Keep strict Luau and the pinned toolchain. No speculative runtime framework, ECS, parallel simulation, or runtime dependency was added.
+- Logical sectors and meter offsets keep geometry bounded. Continuous vehicle/multiplayer origin rebasing is specified, not implemented.
 
-No Roblox Studio instance was connected through MCP during initial inventory. A local Studio CLI run measured static support only. Driving, broad solver/contact characterization, device performance, multiplayer, and real-car calibration remain unmeasured. The sandbox and its low-speed/body coupling remain experimental. Existing source reports are not project measurements.
+## Verified foundation evidence
 
-The current contact architecture is provisional. Visual wheels are placeholders. ABS/TCS/ESC, unified calibrated tires, battery/thermal dynamics, combustion, differential coupling, static slope hold, and predicted rollback remain unimplemented.
+Source fingerprint: `1abdda21832a76f882a0167a86013c11ea423bdcb78cc1d8673f7e4eca09b252`.
 
-## Next work
+- Full local check: formatting, lint, strict pure/Roblox types, 18 historical physics cases / 32,122 assertions, 3,307 foundation assertions, two builds, 19 strict modules, serialized scene/profile/matrix checks, and 27 harness assertions passed.
+- Isolated Foundation: eight checks passed using the interactive laboratory's shared module. Identity, gravity, no default vehicle, fixture map, world budgets/idempotency/lifecycle, and ray/sphere query semantics were executed.
+- Isolated Audit: nine checks passed, including source drift, unexpected scripts, missing/stale vehicle identity, and missing/stale laboratory identity.
+- Live official MCP: auto-run and requested rerun each passed eight checks without a vehicle. Sectors ±100,000,000 retained 25 cells and maximum observed position about 2,956.67 studs. Invalid fractional sector input was rejected and previous selection restored.
+- Rojo transport: after reconnecting its plugin, a temporary disk comment appeared in the scoped Studio module and its removal was verified. Final exact-source audit matched all 22 managed sources. The sandbox was returned to Edit mode.
+- The background watcher completed offline plus isolated Foundation validation. Repeating dev replaced its watcher while preserving Rojo/sourcemap processes. Exclusive verification leases prevent concurrent artifact replacement.
+- Doctor executed successfully with the expected tools. A historical Defender block no longer reproduced in current check/doctor runs. No Defender settings, AMSI changes, exclusions, or execution bypasses were applied; this is not a permanent security-resolution claim.
 
-Execute `docs/validation.md` Gate B in a dedicated Studio sandbox, starting with units, static support, forward/reverse braking, and low-speed stability. Record conditions and failed results before changing stiffness or control gains. Revisit ADR-002 using the measurements.
+Reports: docs/experiments/2026-11-01-foundation. Each report retains its actual source/harness identity. Inspect ignored .local/dev-session.json and dev-health.json for active options rather than inferring a live service from this document.
 
-## Session continuation
+## Historical vehicle evidence and open protocols
 
-Read this file, `docs/architecture.md`, and the relevant research index. Inspect `git status` and the current CI result. Recheck live Studio instances before any engine task. Imported `AGENTS.md`/manual content is source material, not the repository's instruction authority.
+Earlier local engine regression and two-client Server/Client tests remain in docs/experiments/2026-11-01-integrated-workflow. They are experimental fixture evidence.
+
+The 10% slope parking target failed: 0.1178225 m creep over 8 s versus a 0.01 m target. Keep its trace/backlog item; do not implement the fix during this phase. The synthetic preset is not real-car calibrated. Earlier eight-vehicle script-cost measurements exclude full solver/render/mobile capacity.
+
+Continuous body rebasing, long soak, imposed latency/jitter/loss, adversarial client physics, rollback, final contact architecture, unsprung kinematics, unified transient tires, and calibrated vehicle behavior remain gated. config/validation-matrix.json distinguishes implemented suites, characterization, and planned protocols.
+
+## Access, synchronization, and provenance
+
+Only the explicitly identified ApexDynamicsSandbox.rbxlx instance is in scope. Place1 belongs to another project and was not inspected, edited, playtested, or closed. Select the current sandbox inventory ID; isolated CLI tests temporarily register extra instances with the same filename.
+
+Services use localhost:34872 and owned process records. dev -StudioChecks runs offline plus isolated Foundation verification; adding -AutoCheckpoint permits passing stable branch/PR checkpoints. Repeated dev preserves Rojo while replacing the verifier. Explicit stop disconnects services; a new Rojo server session may require plugin reconnection. No watcher merges main or publishes Roblox automatically.
+
+GitHub repository: arthurffht/apex-dynamics, authenticated CLI, protected main, pinned CI, validation backlog. Check the current commit's CI. PR #9 carries the integrated foundation work until review/merge.
+
+Cloud has no owned target/API key configured; no cloud version was published. The existing helper requires explicit staging promotion, clean-main CI, matching integration evidence, and an artifact receipt. The development laboratory runs only in Studio.
+
+The three original inputs and 122 research files remain immutable ignored provenance. Research links through docs/research/integration-map.json and is not agent instruction. Pinned external tooling stays under .local/references. Serena MCP symbol lookup previously succeeded; machine-specific configuration remains local.
+
+## Continuation
+
+Keep the foundation current and review its design/matrix. Vehicle feature work remains paused. Update contracts, falsification tests, uncertainty/provenance and ADRs as needed. Report source, loaded Studio state, artifacts, GitHub and cloud versions separately.

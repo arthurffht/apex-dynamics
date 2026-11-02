@@ -1,0 +1,198 @@
+{
+  "researchTargetsPassed": true,
+  "schemaVersion": 1,
+  "scope": "Laboratory infrastructure; no vehicle fidelity claim",
+  "sourceFingerprint": "1abdda21832a76f882a0167a86013c11ea423bdcb78cc1d8673f7e4eca09b252",
+  "durationS": 0.018335900007514283,
+  "seed": 20261101,
+  "cases": [
+    {
+      "name": "foundation.identity",
+      "id": "foundation.identity",
+      "passed": true,
+      "durationS": 1.09999964479357E-05
+    },
+    {
+      "name": "foundation.gravity",
+      "id": "foundation.gravity",
+      "passed": true,
+      "durationS": 4.49999060947448E-06
+    },
+    {
+      "name": "foundation.safe-default",
+      "id": "foundation.safe-default",
+      "passed": true,
+      "durationS": 4.9000082071870565E-06
+    },
+    {
+      "name": "foundation.fixture-map",
+      "id": "foundation.fixture-map",
+      "passed": true,
+      "durationS": 1.9700004486367106E-05
+    },
+    {
+      "name": "foundation.world-budget",
+      "id": "foundation.world-budget",
+      "passed": true,
+      "durationS": 2.2100008209235966E-05
+    },
+    {
+      "name": "foundation.world-idempotency",
+      "id": "foundation.world-idempotency",
+      "passed": true,
+      "durationS": 0.00011020000965800136
+    },
+    {
+      "name": "foundation.world-lifecycle",
+      "id": "foundation.world-lifecycle",
+      "passed": true,
+      "durationS": 0.007565299994894303
+    },
+    {
+      "name": "foundation.query-contracts",
+      "id": "foundation.query-contracts",
+      "passed": true,
+      "durationS": 0.010338799998862669
+    }
+  ],
+  "suite": "Foundation",
+  "runId": 1,
+  "requiredPassed": true,
+  "engineVersion": "0.745.0.7451137",
+  "engineVersionSource": "Studio executable file version",
+  "sourceSnapshot": {
+    "fingerprint": "1abdda21832a76f882a0167a86013c11ea423bdcb78cc1d8673f7e4eca09b252",
+    "files": [
+      {
+        "path": "config/agent-tools.json",
+        "sha256": "d479e997f745f97de17f739cfc4d8e8ddcf2f447c36c8be4a09e82ebb29ae709"
+      },
+      {
+        "path": "config/cloud.example.json",
+        "sha256": "e834feb2bbac99f6eb4366b7e82744a7161251ecd6b555d17ce0590e5f721dc6"
+      },
+      {
+        "path": "config/engine.json",
+        "sha256": "2aee28de257586517e1f5dbe77107e87dc05f628e9b62687ba07f6a4c3530eec"
+      },
+      {
+        "path": "config/validation-matrix.json",
+        "sha256": "06066966ca16aad6759ba98b5a5fc9c9cf8e3673c138bd899f8c520457ffc724"
+      },
+      {
+        "path": "default.project.json",
+        "sha256": "e907c4ee483be06c08db741163465b6d82c30fdf8cff5dec0eddd7ec1c7156e0"
+      },
+      {
+        "path": "examples/input.client.luau",
+        "sha256": "5151b1d0ff35a7ce8e88500f03a295f6098c253a21c372ee5f56c438c0b080b9"
+      },
+      {
+        "path": "examples/lab.client.luau",
+        "sha256": "b5322cf1cf96d719957ac54d00e05c15a8b192cad04815c1114efb6534a2697c"
+      },
+      {
+        "path": "examples/lab.server.luau",
+        "sha256": "8be9e998940ac246e880b1184554251528297d0cc82c51e3804cbe7b839e8e5b"
+      },
+      {
+        "path": "examples/sandbox.server.luau",
+        "sha256": "4afbafd7b97c7de9e980b1a670984a0af5ea81721f10a6fb4e45fe312b525db0"
+      },
+      {
+        "path": "laboratory.project.json",
+        "sha256": "da942fa321fd4633334f9ed09382db6bb15a8882fe77efae278112e56afa3984"
+      },
+      {
+        "path": "package.project.json",
+        "sha256": "0af0b5570c9729a83774ac56055324e6a37f985a5f241ac156d893fb16534b33"
+      },
+      {
+        "path": "src/config/Laboratory.luau",
+        "sha256": "2447fc0182525d7e0d8206b54579259ee5e883863c1553eee15fdea351763e88"
+      },
+      {
+        "path": "src/config/Runtime.luau",
+        "sha256": "c86f8d67cb6b95977c19389b56d5b430951aa3acd5c6defb8ce895377898357f"
+      },
+      {
+        "path": "src/core/Input.luau",
+        "sha256": "296c2ef9aa225dea7c4af1aeabc3cb937ebaf0fde91a46d57050a526be424a7e"
+      },
+      {
+        "path": "src/core/Numerics.luau",
+        "sha256": "01961183ad585368c8d8612dc69f30cdb302304b4e2f9fd224ba9b33617575cf"
+      },
+      {
+        "path": "src/core/Powertrain.luau",
+        "sha256": "ac9bbcf88909a86c6f5adba056c8dcda810d39036808f31186fa985a5705d737"
+      },
+      {
+        "path": "src/core/Suspension.luau",
+        "sha256": "5c2312224e3a4dcae3ba8107015e48b6735e5cc8f6a8c6567f2e9b5c5e1c664a"
+      },
+      {
+        "path": "src/core/Tire.luau",
+        "sha256": "724cd3f5e8a90c97c976269b65dbdacd0792c155b7ea51f7c8271c311627f76e"
+      },
+      {
+        "path": "src/core/Units.luau",
+        "sha256": "a4859d652483a455876d052796d7b428575f321f2b4951dc6474927e9cda15c8"
+      },
+      {
+        "path": "src/foundation/Diagnostics.luau",
+        "sha256": "840ea31d1e9fb6b2a367ab355fd47975f4f04eb936b00c52bfa9ac5656e7ab26"
+      },
+      {
+        "path": "src/foundation/WorldGrid.luau",
+        "sha256": "704eba5e0facd177c6b1275014aaa8fec69292c2e6f784a88321b289caadba34"
+      },
+      {
+        "path": "src/presets/ReferenceSedan.luau",
+        "sha256": "46e4846f765d712c01fd78eb5ef58bca3760416d52198a9aaa2bf4a36ea31d5c"
+      },
+      {
+        "path": "src/roblox/ClientDriver.luau",
+        "sha256": "5b20cdaf8952152aba335fcb705414e3be7563aed71ff2b409d8103ee3a22788"
+      },
+      {
+        "path": "src/roblox/DriverSession.luau",
+        "sha256": "bd45a9ce0f42264e6f8fac29bcf83c41b17d53424c656b385b2b53dacd5d5d8c"
+      },
+      {
+        "path": "src/roblox/lab/Checks.luau",
+        "sha256": "d0c83a6b69168cb4c49dc4cea99fbeca87716f166123957dba5733d02d9215e1"
+      },
+      {
+        "path": "src/roblox/lab/Laboratory.luau",
+        "sha256": "61135814c1d4763f87d5b9f69d7ed2221a6a5a6b486ae72ae1fc63a920022909"
+      },
+      {
+        "path": "src/roblox/lab/TileWorld.luau",
+        "sha256": "606e98726a2d52dff94d0c19b97b878e987bf5538297d9b9c1710e4e51f04f34"
+      },
+      {
+        "path": "src/roblox/Vehicle.luau",
+        "sha256": "44b7dc67adf25c77f785ee8965ec097ba1a51393a5506e50af0fb80ca82a5555"
+      },
+      {
+        "path": "src/roblox/VehicleFactory.luau",
+        "sha256": "6f47d34902e53d02d3b95d2cd445b9febdb2008a9ae0328539cd9c6d07f16f0d"
+      }
+    ]
+  },
+  "harness": {
+    "suiteSha256": "624dd560c26ce2227adb54f545a11debbcd0fbbfebfdb85d08f7e0cbcd923fa3",
+    "toolchainSha256": "3f21c8227d94b613e8a9c5bc5d8e274c449c2f43c786897f0f3b16e3374d45a4",
+    "runnerSha256": "d25f13bd9a66b0d55c9d08c7a6b72752f55f183017346798dbff8e587f12ad1c",
+    "entrySha256": "caf7645368846d4f4317518937f9e5cd001a33e766fc4d68e2435bd60a088ae3",
+    "suitePath": "tests/studio/foundation.server.luau"
+  },
+  "requestedEngineProfile": {
+    "authorityMode": "Automatic",
+    "fixedSimulation": "Disabled",
+    "physicsSteppingMethod": "Fixed",
+    "streamingEnabled": false
+  },
+  "testSuiteSha256": "624dd560c26ce2227adb54f545a11debbcd0fbbfebfdb85d08f7e0cbcd923fa3"
+}

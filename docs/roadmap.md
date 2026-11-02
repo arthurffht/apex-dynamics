@@ -14,10 +14,10 @@ The objective is a validated, extensible open-source vehicle simulator. Advancem
 
 ## Immediate work queue
 
-1. Connect a dedicated Studio sandbox and execute the first integration protocols.
-2. Resolve held-force/body coupling and standstill support before increasing tire stiffness.
-3. Compare ray and sphere contacts on curbs using equal mass, geometry, and input traces.
-4. Select one dataset with verified redistribution/calibration terms; keep complete provenance.
-5. Establish profiler and multiplayer baselines before choosing ECS, Parallel Luau, or rollback architecture.
+1. Close the foundation gate: current place/source/runtime identity, automatic infrastructure checks, bounded diagnostics/world lifecycle, and demonstrated synchronization.
+2. Keep environment/connection health explicit; the latest local harness executes after a historical Defender block, with no security-setting changes.
+3. Complete the contact/constraint and timing measurement protocols before choosing the final contact implementation; preserve the measured slope-hold failure.
+4. Start vehicle implementation only after foundation acceptance and an explicit request to proceed, using the subsystem contracts in system-design.md.
+5. Select a coherent licensed calibration dataset and define held-out maneuvers; introduce ECS, Parallel Luau, or rollback only after their respective evidence gates.
 
 Soft-body damage, thousands of suspension nodes, and arbitrary tire coefficient downloads are outside the initial scope. They may enter only after the base model's accuracy and cost are measured.

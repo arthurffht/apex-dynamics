@@ -1,6 +1,9 @@
 {
   "files.eol": "\n",
   "editor.formatOnSave": true,
+  "files.exclude": { ".local": true, "build": true, ".serena/cache": true },
+  "luau-lsp.sourcemap.autogenerate": false,
+  "luau-lsp.sourcemap.sourcemapFile": "sourcemap.json",
   "[luau]": { "editor.defaultFormatter": "JohnnyMorganz.stylua" },
   "luau-lsp.sourcemap.rojoProjectFile": "default.project.json"
 }

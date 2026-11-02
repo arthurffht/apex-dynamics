@@ -1,0 +1,24 @@
+{
+  "uv": {
+    "version": "0.13.6",
+    "url": "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-pc-windows-msvc.zip",
+    "sha256": "a2a8820d5eea32f08ef467ef3b7f66883a9b076d5737a2fc2fbb5f458d1bb50f"
+  },
+  "serena": { "version": "2.1.0", "python": "3.13.18" },
+  "references": [
+    {
+      "name": "serena",
+      "repository": "https://github.com/oraios/serena.git",
+      "commit": "ede329aaf0c824bea75455a2926f01420d7aa620",
+      "license": "GPL-3.0-or-later",
+      "use": "External agent tooling and Luau LSP integration; no code vendored into the library"
+    },
+    {
+      "name": "roblox-studio-agent-plugin",
+      "repository": "https://github.com/Roblox/roblox-studio-agent-plugin.git",
+      "commit": "0ae5b1105f82748946d0b35ea168482e470647a7",
+      "license": "MIT",
+      "use": "Official MCP setup and capability reference; existing connector is reused"
+    }
+  ]
+}

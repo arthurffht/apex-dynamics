@@ -1,59 +1,22 @@
-# Development setup
+# Setup
 
-The supported bootstrap target is Windows x86-64 with PowerShell 7. Roblox Studio is required for engine validation. GitHub authentication and Roblox authentication are separate.
-
-## Toolchain
-
-| Tool | Pinned version | Responsibility |
-| --- | --- | --- |
-| Rokit | 1.2.0 | Install project-specific CLI versions |
-| Rojo | 7.7.1 | Build and synchronize Roblox instances |
-| StyLua | 2.6.0 | Luau formatting |
-| Selene | 0.32.0 | Static linting |
-| Luau LSP | 1.70.1 | Strict Luau and Roblox type checking |
-| Lune | 0.11.1 | Offline Luau tests and artifact inspection |
-| Wally | 0.3.2 | Available for reviewed future runtime dependencies |
-| GitHub CLI | 2.103.3 at initial setup | Repository and account operations |
-
-`rokit.toml` is authoritative for project tools. The bootstrap pins Rokit and verifies its Windows release archive SHA-256 before executing it. Roblox definitions are downloaded from the pinned Luau LSP tag and verified independently. Upgrading a tool requires updating its pin and rerunning all checks.
+The supported workstation is Windows x86-64 with PowerShell 7, Git, and Roblox Studio. Core development requires no cloud credentials or paid runtime dependencies.
 
 ```powershell
 ./scripts/bootstrap.ps1 -InstallStudioPlugin
-./scripts/check.ps1
+./apex.ps1 check
+./apex.ps1 setup-agents
+./apex.ps1 dev -AutoCheckpoint
 ```
 
-Bootstrap places Rokit in the user's `.rokit/bin` and sets the current process path. The initial machine setup also added that directory and the portable GitHub CLI directory to the user PATH; reopen terminals to inherit it. The portable CLI lives under `%LOCALAPPDATA%/ApexDynamics/tools/gh/bin`. No administrator installation is required.
+The [development workflow](development-workflow.md) is the canonical command and synchronization reference. It explains Studio connection, host selection, background verification, GitHub checkpoints, diagnostics, research retrieval, and optional staging publishing.
 
-## Git and GitHub
+`rokit.toml` pins the physics/build toolchain. `config/agent-tools.json` pins optional uv/Serena tooling and downloaded reference revisions. Bootstrap verifies committed release checksums. Agent setup installs external tools, trusts only this exact project for its reviewed Serena settings, and writes an ignored project MCP configuration with machine-specific paths.
 
-```powershell
-gh auth login --hostname github.com --git-protocol https --web
-gh auth setup-git
-gh auth status
-git remote -v
-```
+GitHub CLI authentication uses `gh auth login --hostname github.com --git-protocol https --web`, followed by `gh auth setup-git`. Tokens remain in the CLI's credential storage. Initial setup uses repository-local no-reply author settings, LF line endings, fast-forward-only pulls, protected main, and linear merge history.
 
-Authenticate using GitHub's device flow. Never paste tokens into this repository. Initial setup uses `main`, HTTPS, repository-local author settings, GitHub's no-reply author address, LF line endings, and fast-forward-only pulls. Existing global Git identity is preserved.
+Open the generated sandbox and connect Rojo once. Enable the official Studio MCP and ChatGPT/Codex Quick Connect manually if interactive agent inspection is desired. The installed connector and local CLI are separate surfaces; check actual connections before claiming MCP availability.
 
-The public repository has CI status requirements on `main`, linear history, force-push/deletion protection, dependency-update proposals, and private vulnerability reporting. Administrator bypass remains available for the solo owner. Research, physics, numerics, validation, and networking issues are organized around the `v0.1: Validated baseline` milestone.
+Changing `config/engine.json` requires rebuilding and reopening the generated place because the relevant engine properties are not ordinary runtime setters. Changing only the simulation host requires a build/sync and Play restart. The current implementation rejects rollback Server Authority profiles rather than pretending a configuration flag makes the adapter replay safe.
 
-## Studio workflow
-
-1. Build the sandbox with `scripts/check.ps1`.
-2. Open `build/ApexDynamicsSandbox.rbxlx` in Studio as a dedicated development place.
-3. Start `rojo serve default.project.json` in the repository.
-4. Open the Rojo plugin and connect to `localhost:34872`.
-5. Review the proposed synchronization tree and connect only to the dedicated sandbox.
-6. Play and execute the protocols in `validation.md`.
-
-To run the local engine smoke without MCP, execute `./scripts/studio-smoke.ps1` after building. It launches a dedicated Studio process through the [documented Studio CLI](https://create.roblox.com/docs/studio/cli), runs a six-second static-support probe, validates a completion marker rather than trusting the process exit code, and stores raw logs/JSON under ignored `build/studio`. It does not publish or save changes to an existing experience.
-
-Source-controlled code is authoritative on disk. Studio edits to synchronized scripts must be copied back deliberately before the next sync. The sandbox owns its generated map; use `package.project.json` to integrate just the library into another experience. No production place is published by these scripts.
-
-The initial Studio MCP inventory returned no connected Studio instances. Interactive agent inspection through MCP requires a live connection; scripted engine probes can also run through the local Studio CLI. Check available instances again each session. A CLI installation does not establish a Studio MCP connection.
-
-## Optional tools and dependencies
-
-Editor extensions are recommended in `.vscode/extensions.json`. Wally is installed, but the library currently has zero third-party runtime packages, so there is no empty package manifest or invented lockfile. Add one only with an actual dependency. Serena, vector databases, external memory servers, ECS frameworks, Open Cloud deployment, and extra package managers are deferred until a measured requirement justifies them.
-
-Node.js is used only by optional research indexing. Core development and CI use PowerShell and the pinned Roblox/Luau tools. The original research scripts remain archived and are never executed automatically by import.
+No package framework, vector database, cloud publishing credential, or system-wide startup service is needed. Wally is available for future reviewed dependencies; the library currently has none.

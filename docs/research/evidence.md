@@ -31,6 +31,9 @@ Initial review date: 2026-11-01. Source hashes are in `catalog.json`. Tags disti
 | AD-E13 | Research says Server Authority release status changed in 2026 | SOURCE-REPORTED with conflicting older summaries and a later correction; no release-status promise is needed by current fixture |
 | AD-E14 | Prototype matches a real sedan or passes regulatory maneuvers | No supporting measurement; configuration SYNTHETIC; validation OPEN |
 | AD-E15 | Corrected sandbox passes a six-second flat-ground static-support smoke on engine 0.745.0.7451137 | MEASURED-ROBLOX: [experiment and source hashes](../experiments/2026-11-01-static-support/README.md); driving, time-series settling, and actual stepping mode remain unverified |
+| AD-E16 | Local regression, SI impulse, source-drift detection, and two-client ordinary ownership checks execute against explicit snapshots | MEASURED-ROBLOX: [integrated reports](../experiments/2026-11-01-integrated-workflow/README.md); no cloud/imposed-latency/calibrated-car claim |
+| AD-E17 | Current parked vehicle satisfies the short slope-hold target | Refuted for the tested snapshot: 0.1178225 m in 8 s on a 10% grade versus 0.01 m target; failed series preserved in the integrated report |
+| AD-E18 | Serena can resolve this repository's Luau wheel solver over MCP | Executed MCP lookup: `find_symbol` resolved `Tire.stepWheel`; [agent verification](../experiments/2026-11-01-integrated-workflow/agent-mcp.json) |
 
 ## Source freshness and conflicts
 

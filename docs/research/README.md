@@ -4,6 +4,8 @@ The initial corpus consists of one vehicle-physics knowledge-base ZIP and two Ro
 
 Read [technical findings](findings.md) for the implementation consequences and [the evidence register](evidence.md) for claims that were rechecked, derived, or remain unresolved. `catalog.json` records every extracted file's path, size, SHA-256, and available headings; it also identifies the three original inputs by hash. It is an inventory, not a claim that every paragraph was independently verified.
 
+The [integration map](integration-map.json) connects research sections and equations directly to source files and tests. The [development workflow](../development-workflow.md) applies the operational research through the actual root CLI, agent skill, source audit, and verification pipeline. Research is part of this project; the original archive is retained only as an immutable local provenance layer.
+
 ## Local archive navigation
 
 The original hierarchy is preserved under `.local/research/roblox-vehicle-physics-kb`. This keeps the source's cross-links and equation IDs intact. Search before opening the compiled 1.5 MB report.

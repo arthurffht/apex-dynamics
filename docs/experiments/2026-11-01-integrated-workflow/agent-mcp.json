@@ -1,0 +1,9 @@
+{
+  "serenaVersion": "2.1.0",
+  "evidence": "Official MCP client initialized the server and performed a real Luau symbol lookup",
+  "symbol": "Tire.stepWheel",
+  "toolCount": 23,
+  "luauLspVersion": "1.70.1",
+  "tool": "find_symbol",
+  "success": true
+}

@@ -1,0 +1,6 @@
+{
+  "authorityMode": "Automatic",
+  "fixedSimulation": "Disabled",
+  "physicsSteppingMethod": "Fixed",
+  "streamingEnabled": false
+}
