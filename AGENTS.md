@@ -14,6 +14,7 @@ Use `docs/development-workflow.md` for the canonical commands and synchronizatio
 - Avoid runtime dependencies until a concrete requirement justifies their cost and license.
 - Keep secrets, downloaded tools, source archives, generated places, and personal data out of Git.
 - Preserve users' Studio content. The demo is an isolated place built from `default.project.json`.
+- Target only the explicitly identified Apex sandbox through Studio MCP. `Place1` belongs to a separate project and must not be inspected, edited, playtested, or closed.
 - Do not claim full determinism, production networking, or real-vehicle calibration without evidence.
 - Use `apex.ps1 doctor`, `check`, `studio`, and `audit` rather than recreating the harness.
 - Research decisions are linked to code and evidence in `docs/research/integration-map.json`.

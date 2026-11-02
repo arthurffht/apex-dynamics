@@ -22,6 +22,11 @@
     },
     {
       "research": false,
+      "name": "unstamped-runtime-is-not-verified",
+      "passed": true
+    },
+    {
+      "research": false,
       "name": "cached-runtime-is-distinct-from-source",
       "passed": true
     },
@@ -119,16 +124,17 @@
     ]
   },
   "harness": {
-    "toolchainSha256": "3f21c8227d94b613e8a9c5bc5d8e274c449c2f43c786897f0f3b16e3374d45a4",
-    "suiteSha256": "b4a26bf80aa0e41fa77dbb2fbd9548c8cf5d8146a91d4d009fddb0f34e65bae8",
+    "auditProbeSha256": "2d6b926f816a7830463927559222a43cff5da2618d6ce4adcbc056a74c0267c2",
+    "entrySha256": "883633063e91cce1702083f810a4936f8565217ca2dd26643f1331a88903fa8d",
+    "runnerSha256": "e3853b9e34099491d32e04860cd6a846bf56c20858faba5763a3e78653858dd1",
     "suitePath": "tests/studio/audit.luau",
-    "runnerSha256": "41c50bb2537128039f1e508beec31263b72fe79f0f266aec5c3a9a7f53df85c2",
-    "entrySha256": "883633063e91cce1702083f810a4936f8565217ca2dd26643f1331a88903fa8d"
+    "suiteSha256": "d5ba0bce51ad5fefe5eb6b8fc2cea7697634462fac6eeff57d4d80b5bd21f5ec",
+    "toolchainSha256": "3f21c8227d94b613e8a9c5bc5d8e274c449c2f43c786897f0f3b16e3374d45a4"
   },
   "requestedEngineProfile": {
     "authorityMode": "Automatic",
     "fixedSimulation": "Disabled",
     "physicsSteppingMethod": "Fixed"
   },
-  "testSuiteSha256": "b4a26bf80aa0e41fa77dbb2fbd9548c8cf5d8146a91d4d009fddb0f34e65bae8"
+  "testSuiteSha256": "d5ba0bce51ad5fefe5eb6b8fc2cea7697634462fac6eeff57d4d80b5bd21f5ec"
 }

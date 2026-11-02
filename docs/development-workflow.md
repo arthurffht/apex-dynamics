@@ -61,6 +61,8 @@ The session is scoped to this repository and current login. Use `stop` before re
 
 The existing official `Roblox_Studio` connector is reused. Its process being installed is not a live connection. In Studio, the owner enables **Assistant → Settings → MCP Servers → Enable Studio as MCP server**, and the ChatGPT/Codex Quick Connect option. The [official Roblox plugin](https://github.com/Roblox/roblox-studio-agent-plugin) documents this setup. A connector inventory must name the intended place before live inspection or edits.
 
+Only the dedicated `ApexDynamicsSandbox.rbxlx` instance is in scope. The owner's separate `Place1` is excluded from inspection, edits, Play, and process cleanup. Enabling MCP in another Studio window does not establish access to the Apex sandbox.
+
 Serena 2.1.0 is installed as external agent tooling, with Luau LSP supplied by the pinned project toolchain. Its actual MCP symbol lookup was exercised against `Tire.stepWheel`. The generated `.codex/config.toml` uses an absolute project launcher so desktop working-directory differences do not activate another repository. Machine paths stay ignored. Project MCP configuration is loaded in a new trusted Codex session; see [official MCP configuration](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
 
 The repository skill `.agents/skills/apex-engineering` supplies the workflow; `AGENTS.md` stays short. Persistent technical facts live in `docs/STATE.md`, ADRs, source-linked research decisions, and measurement reports. Serena caches/memories are local conveniences, not another authority for project facts.

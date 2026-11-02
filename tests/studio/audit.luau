@@ -37,8 +37,10 @@ local ok, problem = pcall(function()
     check("unexpected-managed-script-is-detected", not unexpected.success)
     local runtime = Instance.new("Model")
     runtime.Name = "ApexReferenceSedan"
-    runtime:SetAttribute("SourceFingerprint", "deliberately-stale")
     runtime.Parent = workspace
+    local unstamped = inspect()
+    check("unstamped-runtime-is-not-verified", unstamped.success and not unstamped.runtimeFresh)
+    runtime:SetAttribute("SourceFingerprint", "deliberately-stale")
     local stale = inspect()
     runtime:Destroy()
     check("cached-runtime-is-distinct-from-source", stale.success and not stale.runtimeFresh)

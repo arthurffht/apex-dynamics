@@ -49,8 +49,8 @@ if package then
 end
 local runtime = workspace:FindFirstChild("ApexReferenceSedan")
 local runtimeFingerprint = if runtime then runtime:GetAttribute("SourceFingerprint") else nil
-local runtimeFresh = runtimeFingerprint == nil or runtimeFingerprint == "FINGERPRINT"
-return {success=#drift==0, checked=checked, drift=drift, expectedFingerprint="FINGERPRINT",runtimeFingerprint=runtimeFingerprint,runtimeFresh=runtimeFresh,action=if runtimeFresh then "none" else "restart play to load the current modules"}
+local runtimeFresh = runtime == nil or runtimeFingerprint == "FINGERPRINT"
+return {success=#drift==0, checked=checked, drift=drift, expectedFingerprint="FINGERPRINT",runtimePresent=runtime~=nil,runtimeFingerprint=runtimeFingerprint,runtimeFresh=runtimeFresh,action=if runtimeFresh then "none" else "restart play to load the current modules"}
 '@
 $script=$script.Replace('ENTRIES',($entries -join ",`n")).Replace('FINGERPRINT',$snapshot.fingerprint)
 $destination=Join-Path $root '.local/generated/studio-audit.luau'

@@ -39,6 +39,7 @@ $entry=$entry.Replace('task.wait(50) -- APEX_KEEPALIVE',"task.wait($keepalive)")
 if($Suite -eq 'Audit'){
     $auditPath=& (Join-Path $PSScriptRoot 'audit-studio.ps1')
     $audit=[IO.File]::ReadAllText($auditPath)
+    $harness.auditProbeSha256=[Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes($audit))).ToLowerInvariant()
     $auditDelimiter='===='
     while($audit.Contains(']'+$auditDelimiter+']')){$auditDelimiter+='='}
     $entry=$source.Replace('"" -- APEX_AUDIT_SOURCE',('['+$auditDelimiter+'['+$audit+']'+$auditDelimiter+']'))
