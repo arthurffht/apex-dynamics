@@ -24,6 +24,7 @@ The default simulation host is Server. `apex.ps1 mode -Mode Client` selects an e
 - Engine SI impulse: 2.0000001144 m/s observed for 2 m/s expected; assembly mass 1400.0000547 kg for 1400 kg configured.
 - Two-client localhost tests: eight ownership/input checks passed separately in Server and Client modes. The client run observed 129 driver-client steps, zero other-client steps, and zero server steps in its driver window; stale input reclaimed server ownership and applied brakes.
 - Exact-source audit: seven checks passed, including deliberate source drift, an unexpected package script, and missing/stale runtime identity.
+- Live official Studio MCP: the dedicated sandbox's 14 managed sources matched the local snapshot. A short Play observation confirmed the same runtime fingerprint, Server mode, and advancing server simulation steps (327 to 373). Play was stopped afterward; this does not verify a live Rojo transport connection.
 - Eight-vehicle characterization: about 0.896 ms p95 for adapter calls in a short local Studio run; no full solver/mobile capacity conclusion follows.
 - **Failed research target:** the parked vehicle moved 0.1178225 m over 8 s on a 10% grade, exceeding the 0.01 m characterization target. Preserve this failure; static-contact modeling remains open.
 
@@ -31,9 +32,9 @@ Machine-readable reports and their limits are in `docs/experiments/2026-11-01-in
 
 ## Access and remaining limits
 
-Studio MCP is responding, but its latest inventory exposes only `Place1`, a separate project explicitly excluded by the owner. Do not inspect, edit, playtest, or close that instance. The Apex sandbox is open in a separate Studio process; live auditing is pending its own MCP registration. A running Rojo server is not proof that a particular Studio plugin session is connected; use the source audit and runtime fingerprint after connection.
+Studio MCP now exposes the dedicated `ApexDynamicsSandbox.rbxlx` instance and an unrelated `Place1`. The sandbox passed an exact-source audit and a short runtime identity check; it was returned to Edit mode. `Place1` was not inspected, edited, playtested, or closed. Always select the current inventory ID for the Apex sandbox; never reuse an ID from an old session. A running Rojo server is not proof that a particular Studio plugin session is connected; continuous Rojo transport remains unverified in the current stopped development session.
 
-The latest local `doctor` attempt was blocked by Windows Defender AMSI with `HackTool:PowerShell/ApexToolkit.A`, identifying `scripts/lib/Project.psm1`. No Defender settings, exclusions, or script execution bypasses were applied. The development session remains stopped. Earlier numerical/Studio results remain valid for their recorded snapshots; local harness availability must be revalidated after security review. Keep the integration PR unmerged while this machine's workflow is blocked.
+The latest local `doctor` attempt was blocked by Windows Defender AMSI with `HackTool:PowerShell/ApexToolkit.A`, identifying `scripts/lib/Project.psm1`. No Defender settings, exclusions, or script execution bypasses were applied. The development session remains stopped. Earlier numerical/Studio results remain valid for their recorded snapshots; local harness availability must be revalidated after security review. GitHub's Windows CI passed for commit `4f6788b`; that remote result does not resolve the local block. Keep integration PR #9 unmerged while this machine's workflow is blocked.
 
 Cloud staging has no configured owned target or API key, and no cloud version was published. The helper supports plan/execute separation, clean-main CI/evidence checks, scoped environment credentials, and a release receipt. It was not network-tested against a Roblox destination.
 

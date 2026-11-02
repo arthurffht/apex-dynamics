@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "transport": "Official Roblox Studio MCP",
+  "target": "ApexDynamicsSandbox.rbxlx",
+  "placeId": 0,
+  "sourceAudit": {
+    "drift": [],
+    "success": true,
+    "expectedFingerprint": "a23156db7fd367c62f947ad3b267ca05f88fa2627bbec40c47683c9e2a7ad2a4",
+    "action": "none",
+    "runtimeFresh": true,
+    "runtimePresent": false,
+    "checked": 14
+  },
+  "runtime": {
+    "chassisPresent": true,
+    "simulationHost": "Server",
+    "success": true,
+    "sourceFingerprint": "a23156db7fd367c62f947ad3b267ca05f88fa2627bbec40c47683c9e2a7ad2a4",
+    "serverStepsAfter": 373,
+    "speedStudsPerSecond": 0.35004934668540955,
+    "driverUserId": 0,
+    "serverStepsBefore": 327
+  },
+  "finalMode": "Edit",
+  "limitations": [
+    "Read-only exact-source audit and a short server runtime observation; not a Rojo transport test.",
+    "No Place1 inspection, edits, Play, or process cleanup was performed.",
+    "Background development services remain stopped because Windows Defender AMSI blocks the PowerShell module."
+  ]
+}

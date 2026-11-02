@@ -12,6 +12,7 @@ Date: 2026-11-01. Engine binary: 0.745.0.7451137. Environment: local Windows Stu
 | [Smoke and SI impulse](smoke-and-units.json) | Two checks passed | Engine mass/impulse conversion and flat-ground support |
 | [Source audit](source-audit.json) | Seven checks passed | Exact sources, deliberate drift, restoration, unexpected managed script, missing/stale runtime identity |
 | [Serena MCP](agent-mcp.json) | Actual MCP lookup succeeded | 23 tools exposed; `find_symbol` resolved `Tire.stepWheel` using Luau LSP |
+| [Live Studio MCP](studio-live-mcp.json) | Exact-source audit and short runtime check passed | 14 matching managed sources, matching runtime fingerprint, Server mode, advancing simulation steps; returned to Edit |
 
 The offline suite separately passed 18 cases and 32,122 assertions. Development-harness tests check PowerShell syntax, content-based change detection, exclusion of ignored data, clean fixture restoration, and rejection of unsupported rollback profiles without mutating the active project.
 
@@ -29,6 +30,6 @@ Initial multiplayer output appeared only in the child Studio server log, so the 
 
 Engine settings are serialized through the generated Rojo project. Artifact inspection verifies the requested enum tokens. Runtime access to some settings is restricted, so the report labels the profile as requested rather than claiming an unavailable getter measured it. Neither ordinary server ownership nor client ownership is Roblox's replay/rollback Server Authority implementation.
 
-The Studio MCP inventory was initially empty. After owner enablement it exposed only an unrelated `Place1`, which was left untouched. The dedicated Apex sandbox is open separately; these reports do not establish its live MCP/Rojo synchronization or a Roblox cloud version.
+The Studio MCP inventory was initially empty, then exposed only an unrelated `Place1`, which was left untouched. After the dedicated Apex sandbox registered, its 14 managed sources matched the local snapshot and a short Play observation confirmed the matching runtime fingerprint and active Server simulation. It was returned to Edit mode. This establishes MCP access and snapshot consistency; it does not establish continuous Rojo transport or a Roblox cloud version.
 
 After the recorded test runs, Windows Defender AMSI blocked the local PowerShell module as `HackTool:PowerShell/ApexToolkit.A`. The current development session is stopped; previous passing reports do not establish that the local harness remains executable. No security exclusion or execution bypass was applied.
