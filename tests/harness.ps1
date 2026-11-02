@@ -6,6 +6,15 @@ function Assert-Harness([bool]$Condition,[string]$Message){
     $script:assertions++
     if(-not $Condition){throw $Message}
 }
+$currentCommand=(Get-CimInstance Win32_Process -Filter "ProcessId = $PID").CommandLine
+$fixtureSession=@{status='running';processes=@('rojo','sourcemap','watch' | ForEach-Object {@{kind=$_;id=$PID;expectedArgument=$currentCommand}})}
+Assert-Harness (Get-ApexTransportState -Session $fixtureSession).healthy 'Live matching processes were rejected'
+$fixtureSession.processes[0].expectedArgument='apex-mismatched-command-fixture'
+Assert-Harness (-not (Get-ApexTransportState -Session $fixtureSession).healthy) 'A reused/mismatched PID was accepted'
+$fixtureSession.processes[0].id=2147483647
+Assert-Harness (-not (Get-ApexTransportState -Session $fixtureSession).healthy) 'An exited transport was accepted'
+$fixtureSession.status='stopped'
+Assert-Harness (-not (Get-ApexTransportState -Session $fixtureSession).healthy) 'A stopped session was accepted'
 $files=@(Get-ChildItem (Join-Path $root 'scripts'),(Join-Path $root 'tests') -Filter '*.ps1' -File -Recurse)
 $files+=Get-Item (Join-Path $root 'apex.ps1')
 foreach($file in $files){

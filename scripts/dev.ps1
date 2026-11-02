@@ -57,7 +57,7 @@ try { $null=Invoke-RestMethod http://127.0.0.1:34872/api/rojo -TimeoutSec 1; thr
 catch { if ($_.Exception.Message -like 'Port 34872*') { throw } }
 & (Join-Path $PSScriptRoot 'generate-project.ps1')
 $project=Join-Path $root '.local/generated/active.project.json'
-$rojo=(Get-Command rojo -ErrorAction Stop).Source
+$rojo=Get-ApexRojoExecutable
 $rojoProcess=Start-Process -FilePath $rojo -ArgumentList @('serve',('"'+$project+'"'),'--address','127.0.0.1') -WorkingDirectory $root -WindowStyle Hidden -RedirectStandardOutput (Join-Path $logs 'rojo.out.log') -RedirectStandardError (Join-Path $logs 'rojo.err.log') -PassThru
 $sourcemap=Join-Path $root 'sourcemap.json'
 $mapProcess=Start-Process -FilePath $rojo -ArgumentList @('sourcemap',('"'+$project+'"'),'--absolute','--watch','--output',('"'+$sourcemap+'"')) -WorkingDirectory $root -WindowStyle Hidden -RedirectStandardOutput (Join-Path $logs 'sourcemap.out.log') -RedirectStandardError (Join-Path $logs 'sourcemap.err.log') -PassThru

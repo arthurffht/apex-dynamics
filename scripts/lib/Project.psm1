@@ -1,5 +1,33 @@
 $ErrorActionPreference = 'Stop'
 function Get-ApexRoot { Split-Path -Parent (Split-Path -Parent $PSScriptRoot) }
+function Get-ApexRojoExecutable {
+    $manifest=[IO.File]::ReadAllText((Join-Path (Get-ApexRoot) 'rokit.toml'))
+    $toolMatch=[regex]::Match($manifest,'(?m)^rojo\s*=\s*"rojo-rbx/rojo@([^"]+)"')
+    if(-not $toolMatch.Success){throw 'Cannot resolve the pinned Rojo version'}
+    $version=$toolMatch.Groups[1].Value
+    $binary=Join-Path $env:USERPROFILE ".rokit/tool-storage/rojo-rbx/rojo/$version/rojo.exe"
+    if(-not (Test-Path -LiteralPath $binary)){throw 'Pinned native Rojo is missing; run bootstrap first'}
+    if((& $binary --version) -ne "Rojo $version"){throw 'Native Rojo does not match the manifest'}
+    return $binary
+}
+function Get-ApexTransportState {
+    param($Session)
+    if(-not $Session){
+        $path=Join-Path (Get-ApexRoot) '.local/dev-session.json'
+        if(-not (Test-Path -LiteralPath $path)){return [pscustomobject]@{healthy=$false;errors=@('No development session')}}
+        $Session=Get-Content -LiteralPath $path -Raw | ConvertFrom-Json
+    }
+    $issues=@()
+    if($Session.status -ne 'running'){$issues+='Development session is stopped'}
+    foreach($kind in @('rojo','sourcemap','watch')){
+        $records=@($Session.processes | Where-Object kind -EQ $kind)
+        if($records.Count -ne 1){$issues+="Expected one $kind process";continue}
+        $owned=$records[0]
+        $process=if([long]$owned.id -gt 0){Get-CimInstance Win32_Process -Filter "ProcessId = $([long]$owned.id)" -ErrorAction SilentlyContinue}else{$null}
+        if(-not $process -or -not $process.CommandLine -or -not $owned.expectedArgument -or -not $process.CommandLine.Contains($owned.expectedArgument)){$issues+="Missing or mismatched $kind process"}
+    }
+    [pscustomobject]@{healthy=($issues.Count -eq 0);errors=@($issues)}
+}
 function Enter-ApexVerification {
     param([ValidateRange(0,600)][int]$TimeoutSeconds=300)
     $directory=Join-Path (Get-ApexRoot) '.local'
@@ -56,4 +84,4 @@ function Get-ApexWorktreeFingerprint {
     }
     [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(($records -join "`n")))).ToLowerInvariant()
 }
-Export-ModuleMember -Function Get-ApexRoot,Initialize-ApexEnvironment,Invoke-ApexTool,Get-ApexStudio,Get-ApexSourceSnapshot,Get-ApexWorktreeFingerprint,Enter-ApexVerification
+Export-ModuleMember -Function Get-ApexRoot,Initialize-ApexEnvironment,Invoke-ApexTool,Get-ApexStudio,Get-ApexSourceSnapshot,Get-ApexWorktreeFingerprint,Enter-ApexVerification,Get-ApexRojoExecutable,Get-ApexTransportState
